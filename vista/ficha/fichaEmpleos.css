@@ -1,0 +1,184 @@
+/* body {
+    background: #d3cce3;
+}
+.container my-4{
+    padding-right: 5rem;
+}
+.centered {
+    text-align: center !important;
+    vertical-align: middle !important;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ********************************** IMPORTANTE ****************************** */
+.importante{
+    border: 1px solid #5480E5;
+    color: #3A7831;
+    padding: 10px;
+    font-family: "Lato", sans-serif;
+    margin-bottom: 20px;
+}
+/* ****************************************************************************** */
+
+.navbar-brand {
+  margin-left: 5vw;
+  font-style: italic;
+}
+.contenedor-logout {
+  margin-bottom: 20px;
+  margin-right: 5vw;
+  color: #0f3eaa;
+}
+
+.table-responsive {
+  margin-bottom: 10px;
+}
+
+thead {
+  text-align: center;
+}
+
+th {
+  vertical-align: middle;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.cargo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: -20px;
+  color: #0f3eaa;
+}
+
+.cargo-header p {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 26px;
+}
+
+select,
+input {
+  border: none;
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #0f3eaa;
+  font-style: italic;
+}
+
+caption {
+  margin-left: 80px;
+  color: black;
+  font-weight: bold;
+}
+.cualidades-title {
+  text-align: center;
+}
+
+.cualidades {
+  margin: 50 10px;
+  text-align: left;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.cualidades input::placeholder {
+  padding-left: 10px;
+  font-weight: bold;
+  color: #0f3eaa;
+}
+
+.titulo-tercera-seccion, .titulo-sexta-seccion, .titulo-septima-seccion {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.opciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-check-label {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+/* ********************************** BOTON FORMULARIO ****************************** */
+.container-button{
+    display: flex;
+    justify-content: center;
+}
+
+.formulario__btn{
+    width: 20%;
+    background-color: #0f3eaa;
+    border-radius: 20px;
+    font-weight: bold;
+    font-family: monospace;
+    margin-bottom: 20px;
+}
+/* ****************************************************************************** */
+
+/* TAMAÑO ESCRITORIO MAYORE O IGUAL A 1200 px */
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 70%;
+  }
+}
+/* TAMAÑO TABLET DE 960 A 1199 px */
+@media screen and (max-width: 1199px) {
+
+}
+
+/* TAMAÑO CELULARES DE 600 A 959 px */
+@media screen and (max-width: 959px) {
+    th {
+      font-size: 15px;
+    }
+    input, select{
+      font-size: 15px;
+      text-align: center;
+    }
+    caption {
+        font-size: 15px;
+        text-align: left;
+      }
+  }
+
+/* TAMAÑO CELULARES PEQUEÑOS MENORES  A 600 px */
+@media screen and (max-width: 599px) {
+  th {
+    font-size: 10px;
+  }
+  input, select {
+    font-size: 10px;
+    text-align: center;
+  }
+  caption {
+    font-size: 10px;
+    text-align: left;
+  }
+  .titulo-tercera-seccion, .titulo-sexta-seccion, .titulo-septima-seccion {
+    font-size: 15px;
+    margin-bottom: 1px;
+    }
+    .form-check-label {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    caption {
+        font-size: 10px;
+        text-align: center;
+      }
+    }

@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .contenedor-principal{
+} */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo-principal {
+    text-align: center;
+    font-size: 25px;
+    color: #0F3EAA;
+    margin-left: 50px;
+
+}
+
+.form-group {
+    flex: 1;
+    margin-left: 20px;
+    /* Ajusta el espacio entre los elementos */
+}
+
+/* Estilos opcionales para mejorar la apariencia */
+label {
+    font-weight: bold;
+    color: #0F3EAA;
+
+}
+
+#cargo {
+    border: none;
+    border-bottom: 1px solid #0F3EAA !important;
+
+}
+
+.importante {
+    border: 1px solid #5480E5;
+    color: #3A7831;
+    padding: 10px;
+    font-family: "Lato", sans-serif;
+    margin: 10px 30px 20px;
+    width: 88%;
+    
+}
+
+.table {
+    border: 2px solid #ADD8E6;
+    /* Borde celeste claro */
+}
+
+.table th {
+    background-color: #ADD8E6;
+    /* Fondo celeste claro */
+    text-align: center;
+}
+
+
+#cargo {
+    border-color: #ADD8E6;
+}
+
+.label {
+    color: #ADD8E6;
+}
+
+#tablaFecha {
+    margin-left: 20px;
+}
+
+#tablaFecha th {
+    background-color: transparent;
+    /* Fondo transparente */
+    color: #0F3EAA;
+    text-align: center;
+}
