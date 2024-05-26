@@ -41,7 +41,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     </div>
   </div>
   <hr />
-  <form class="container py-2 contenedor-formulario formulario" action="" method="post"  id="formulario">
+  <form class="container py-2 contenedor-formulario formulario" action="" method="post" id="formulario">
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
@@ -112,7 +112,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
             <th>Nacionalidad:</th>
             <th>Fecha de <br>Nacimiento:</th>
             <th>Estado civil /<br>compromiso:</th>
-            <th>Edad:</th>
           </tr>
         </thead>
         <tbody>
@@ -145,6 +144,28 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 <option value="Viudo(a)">Viudo(a)</option>
                 <option value="Divorciado(a)">Divorciado(a)</option>
               </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table  table-bordered">
+        <thead>
+          <tr class="table-info">
+            <th>Celular:</th>
+            <th>Correo:</th>
+            <th>Edad:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" onkeypress="return soloNumeros(event)">
+            </td>
+            <td>
+              <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico">
             </td>
             <td>
               <select name="edad">
@@ -187,33 +208,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         </tbody>
       </table>
     </div>
-    <hr class="separador" />
-
-    <h4 class="titulo-tercera-seccion">¿Tienes hijos? ¿Cuántos?:</h4>
-    <div class="row tercera-seccion">
-      <div class="col-md-2 form-check text-center opciones"> <!-- Agregado text-center -->
-        <input class="form-check-input" type="radio" id="no_Hijos" name="hijos" checked>
-        <label class="form-check-label" for="no_hijos">No tengo</label>
-      </div>
-
-      <div class="col-md-2 form-check text-center opciones"> <!-- Agregado text-center -->
-        <input class="form-check-input" type="radio" id="si_Hijos" name="hijos">
-        <label class="form-check-label" for="si_hijos">Si tengo</label>
-      </div>
-
-      <div class="col-md-8 form-check">
-        <label for="nombres">Número de hijos:</label>
-        <select name="hijos" id="hijosSelect" disabled>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5_a_mas">5 a mas</option>
-        </select>
-      </div>
-    </div>
-    <hr class="separador" />
-
+    
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
@@ -317,6 +312,32 @@ if (!isset($_SESSION['nombre_sesion'])) {
       </table>
     </div>
     <hr class="separador" />
+
+    <h4 class="titulo-tercera-seccion">¿Tienes hijos? ¿Cuántos?:</h4>
+    <div class="row tercera-seccion">
+      <div class="col-md-2 form-check text-center opciones"> <!-- Agregado text-center -->
+        <input class="form-check-input" type="radio" id="no_Hijos" name="hijos" checked>
+        <label class="form-check-label" for="no_hijos">No tengo</label>
+      </div>
+
+      <div class="col-md-2 form-check text-center opciones"> <!-- Agregado text-center -->
+        <input class="form-check-input" type="radio" id="si_Hijos" name="hijos">
+        <label class="form-check-label" for="si_hijos">Si tengo</label>
+      </div>
+
+      <div class="col-md-8 form-check">
+        <label for="nombres">Número de hijos:</label>
+        <select name="hijos" id="hijosSelect" disabled>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5_a_mas">5 a mas</option>
+        </select>
+      </div>
+    </div>
+    <hr class="separador" />
+
 
     <h4 class="titulo-sexta-seccion">¿Estás estudiando? ¿Qué estudias?:</h4>
     <div class="row sexta-seccion">

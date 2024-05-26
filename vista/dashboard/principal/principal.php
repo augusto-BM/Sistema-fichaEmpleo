@@ -76,22 +76,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </div>
 
                 <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
-                <?php
-                if (isset($_SESSION['mensaje']) && $_SESSION['mensaje'] != "") {
-                ?>
-                    <script>
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "<?php echo $_SESSION['mensaje']; ?>",
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                    </script>
-                <?php
-                    unset($_SESSION['mensaje']);
-                }
-                ?>
+                <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>
                 <!-- ************************************************************************** -->
 
                 <!-- BUSQUEDA POR RANGO DE FECHAS -->
@@ -114,12 +99,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <!-- Necesario Clase busqueda: tabla -->
                     <table class="table student_list table-borderless table-striped tabla w-100" id="myTable">
                         <thead class="table-dark">
-                            <style>
-                                .centrado {
-                                    text-align: center !important;
-                                    vertical-align: middle !important;
-                                }
-                            </style>
+                            <style>.centrado { text-align: center !important; vertical-align: middle !important;}</style>
+                            
                             <tr class="align-middle"><!--  -->
                                 <th class="centrado" style="display: none;">ID</th>
                                 <th class="centrado">Nombre</th>

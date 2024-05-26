@@ -6,15 +6,17 @@
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <form class="container py-2 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
+      <form class="container p-5 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
         <input type="hidden" id="user_id" name="id_postulante">
 
         <div class="table-responsive">
-
           <table class="table table-bordered">
             <thead>
               <tr class="table-info">
                 <th>Entrevistador:</th>
+                <th>Sede:</th>
+                <th>Cargo cual postula:</th>
+                <th>Fecha:</th>
               </tr>
             </thead>
             <tbody>
@@ -40,22 +42,6 @@
                     ?>
                   </select>
                 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr class="table-info">
-                <th>Sede:</th>
-                <th>Cargo cual postula:</th>
-                <th>Fecha:</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
                 <td>
                   <select name="sede" id="sede" class="">
                     <option value="Imfca Contacto">Imfca Contacto</option>
@@ -115,7 +101,6 @@
                 <th>Nacionalidad:</th>
                 <th>Fecha de <br>Nacimiento:</th>
                 <th>Estado civil /<br>compromiso:</th>
-                <th>Edad:</th>
               </tr>
             </thead>
             <tbody>
@@ -149,8 +134,30 @@
                     <option value="Divorciado(a)">Divorciado(a)</option>
                   </select>
                 </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table  table-bordered">
+            <thead>
+              <tr class="table-info">
+                <th>Celular:</th>
+                <th>Correo:</th>
+                <th>Edad:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td>
-                  <select name="edad" id="edad">
+                  <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" onkeypress="return soloNumeros(event)">
+                </td>
+                <td>
+                  <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico">
+                </td>
+                <td>
+                  <select name="edad">
                     <option value="18">18</option>
                     <option value="19">19</option>
                     <option value="20">20</option>
@@ -190,24 +197,6 @@
             </tbody>
           </table>
         </div>
-        <hr class="separador" />
-
-        <h4 class="titulo-tercera-seccion">¿Tienes hijos? ¿Cuántos?:</h4>
-        <div class="row tercera-seccion">
-
-          <div class="col-md-8 form-check">
-            <label for="nombres">Número de hijos:</label>
-            <select name="hijos" id="hijosSelect">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5_a_mas">5 a mas</option>
-            </select>
-          </div>
-        </div>
-        <hr class="separador" />
 
         <div class="table-responsive">
           <table class="table table-bordered">
@@ -281,6 +270,45 @@
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
+              <tr class="table-info">
+                <th>¿Tienes hijos?:</th>
+                <th>¿Estas estudiando?:</th>
+                <th>Donde viste el trabajo?:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <select name="hijos" id="hijosSelect">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5_a_mas">5 a mas</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando">
+
+                </td>
+                <td>
+                  <select class="form-select" name="fuente_trabajo" id="fuente_trabajo">
+                    <option value="bumeran">Bumeran</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="tiktok">Tik Tok</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="otros">Otros</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
               <tr>
                 <th colspan="4" class="table-info">Indique ultima experiencia relevante a cargo</th>
               </tr>
@@ -313,27 +341,6 @@
         </div>
         <hr class="separador" />
 
-        <h4 class="titulo-sexta-seccion">¿Estás estudiando? ¿Qué estudias?:</h4>
-        <div class="row sexta-seccion">
-          <div class="col-md-12 form-check opciones">
-            <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando">
-          </div>
-        </div>
-        <hr class="separador" />
-
-        <h4 class="titulo-sexta-seccion">¿Dónde viste la oferta de trabajo?</h4>
-        <div class="row sexta-seccion">
-          <div class="col-md-12 form-check opciones">
-            <select class="form-select" name="fuente_trabajo" id="fuente_trabajo">
-              <option value="bumeran">Bumeran</option>
-              <option value="facebook">Facebook</option>
-              <option value="tiktok">Tik Tok</option>
-              <option value="instagram">Instagram</option>
-              <option value="otros">Otros</option>
-            </select>
-          </div>
-        </div>
-        <hr class="separador" />
 
         <div class="table-responsive">
           <table class="table table-bordered caption-top">
@@ -367,7 +374,7 @@
           </table>
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary" name="click_btn_editar_cambios">Guardar Cambios</button>
         </div>
 

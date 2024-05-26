@@ -1,6 +1,6 @@
 const configurarDataTble = {
     //scrollX: "2000px", 
-    dom: 'Bfrtip',
+    dom: 'Blfrtip',
     buttons: [{
         extend: 'excelHtml5',
         text: '<i class="fas fa-file-excel h4 text-success"></i>',
@@ -56,7 +56,7 @@ const configurarDataTble = {
             targets: [8],
 
             width: "35px",
-            targets: [6]
+            targets: [7]
         }
         //{searchable: false, targets: [1]}
     ],

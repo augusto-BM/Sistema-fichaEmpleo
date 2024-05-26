@@ -1,162 +1,275 @@
 <?php
-  @include '../../modelo/conexion.php';
+@include '../../modelo/conexion.php';
 
-  if (isset($_POST['click_btn_ver'])) {
+if (isset($_POST['click_btn_ver'])) {
     $id = $_POST['user_id'];
     $sql = "SELECT * FROM fichaEmpleo WHERE id = '$id'";
     $resultado = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {
-      
-      while ($fila = mysqli_fetch_array($resultado)) {
-        $id_entrevistador = $fila['id_entrevistador'] ?? 'No ha sido asignado un entrevistador';
-        echo '
-        <div class="card">
-        <div class="card-header">
-        Ficha de Empleo #' .$fila['id'].'
-        </div>
-        <ul class="list-group list-group-flush">
-        <div class="card-body">
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Estado del proceso de seleccion:</strong>
-                <span>' . $fila['proceso'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>ID Postulante:</strong>
-                <span>' . $fila['id'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>ID Entrevistador:</strong>
-                <span>' . $id_entrevistador . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Sede:</strong>
-              <span>' . $fila['sede'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Cargo:</strong>
-              <span>' . $fila['cargoPostulante'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Fecha que postulo: </strong>
-              <span>' . $fila['fecha'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Nombre:</strong>
-              <span>' . $fila['nombrePostulante'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Ap. Paterno:</strong>
-              <span>' . $fila['ApPaternoPostulante'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Ap. Materno:</strong>
-              <span>' . $fila['ApMaternoPostulante'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Dni:</strong>
-              <span>' . $fila['nroDni_Cedula'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Nacionalidad:</strong>
-              <span>' . $fila['Nacionalidad'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Fecha nacimiento:</strong>
-              <span>' . $fila['fechaNacimiento'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Estado Civil:</strong>
-              <span>' . $fila['EstadoCivil'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Edad:</strong>
-              <span>' . $fila['Edad'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Numero de hijos:</strong>
-              <span>' . $fila['nroHijos'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Direccion:</strong>
-              <span>' . $fila['direccion'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Distrito:</strong>
-              <span>' . $fila['distrito'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Ciudad:</strong>
-              <span>' . $fila['ciudad'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Celular:</strong>
-              <span>' . $fila['celular'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Correo:</strong>
-              <span>' . $fila['correo'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Estudios:</strong>
-              <span>' . $fila['estudios'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Fuente del trabajo:</strong>
-              <span>' . $fila['fuente_trabajo'] . '</span></li>
-            </div>
-          </div>
-          <hr class="separador" />
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Cualidad positiva A:</strong>
-              <span>' . $fila['cualidadPositiva_a'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Cualidad positiva B:</strong>
-              <span>' . $fila['cualidadPositiva_b'] . '</span></li>
-            </div>
-          </div>
 
-          <div class="row mb-3">
-            <div class="col-12">
-            <li class="list-group-item"><strong>Cualidad negativa A:</strong>
-              <span>' . $fila['cualidadNegativa_a'] . '</span></li>
-            </div>
-            <div class="col-12">
-            <li class="list-group-item"><strong>Cualidad negativa B:</strong>
-              <span>' . $fila['cualidadNegativa_b'] . '</span></li>
-            </div>
-          </div> 
-          </div>  
-          </ul>                               
-          ';
-      }
+        while ($fila = mysqli_fetch_array($resultado)) {
+            $id_entrevistador = $fila['id_entrevistador'] ?? 'No ha sido asignado un entrevistador';
+?>
+
+            <form class="container p-4 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-info">
+                                <th>Sede:</th>
+                                <th>Cargo cual postula:</th>
+                                <th>Fecha:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input name="sede" id="sede" class="" value="<?php echo  $fila['sede'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input name="cargo" id="cargo" class="form-input" value="<?php echo  $fila['cargoPostulante'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input type="date" id="fecha-hoy" name="fecha_hoy" class="form-control" value="<?php echo  $fila['fecha'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table  table-bordered">
+                        <thead>
+                            <tr class="table-info">
+                                <th>Nombres</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event)" value="<?php echo  $fila['nombrePostulante'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event)" value="<?php echo  $fila['ApPaternoPostulante'] ?>" readonly>
+
+                                    </input>
+
+                                </td>
+                                <td>
+                                    <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event)" value="<?php echo  $fila['ApMaternoPostulante'] ?>" readonly>
+
+                                    </input>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-info">
+                                <th>N°<br>DNI/CEDULA:</th>
+                                <th>Nacionalidad:</th>
+                                <th>Fecha de <br>Nacimiento:</th>
+                                <th>Estado civil /<br>compromiso:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" name="dni" id="dni" placeholder="Ingresa tu DNI/Cédula" onkeypress="return soloNumeros(event)" value="<?php echo  $fila['nroDni_Cedula'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input name="nacionalidad" id="nacionalidad" value=" <?php echo  $fila['Nacionalidad'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" value="<?php echo  $fila['fechaNacimiento'] ?>" readonly>
+
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input name="estado_civil" id="estado_civil" value="<?php echo  $fila['EstadoCivil'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table  table-bordered">
+                        <thead>
+                            <tr class="table-info">
+                                <th>Celular:</th>
+                                <th>Correo:</th>
+                                <th>Edad:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input name="celular" id="celular" value="<?php echo  $fila['celular'] ?>" readonly></input>
+                                </td>
+                                <td>
+                                    <input name="correo" id="correo" value="<?php echo  $fila['correo'] ?>" readonly></input>
+                                </td>
+                                <td>
+                                    <input name="edad" id="edad" value="<?php echo  $fila['Edad'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-info">
+                                <th>Dirección exacta:</th>
+                                <th>Distrito:</th>
+                                <th>Ciudad:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" value="<?php echo $fila['direccion'] ?>" readonly></input>
+                                </td>
+                                <td>
+                                    <input name="distrito" id="distrito" value="<?php echo $fila['distrito'] ?>" readonly>
+
+                                    </input>
+                                </td>
+                                <td>
+                                    <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad" value="<?php echo $fila['ciudad'] ?>" readonly></input>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-info">
+                                <th>¿Tienes hijos?:</th>
+                                <th>¿Estas estudiando?:</th>
+                                <th>Donde viste el trabajo?:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input name="hijos" id="hijosinput" value="<?php echo  $fila['nroHijos'] ?>" readonly>
+
+                                </td>
+                                <td>
+                                    <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" value="<?php echo $fila['estudios'] ?>" readonly>
+                                    </input>
+                                </td>
+                                <td>
+                                    <input class="form-input" name="fuente_trabajo" id="fuente_trabajo" value="<?php echo $fila['fuente_trabajo'] ?>" readonly> </input>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="4" class="table-info">Indique ultima experiencia relevante a cargo</th>
+                            </tr>
+                            <tr>
+                                <th>Nombre de la empresa:</th>
+                                <th>Cargo:</th>
+                                <th>Desde:</th>
+                                <th>Hasta:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="ciudad" name="empresa" placeholder="Ingresa nombre de la empresa" readonly>
+
+                                </td>
+                                <td>
+                                    <input type="text" id="ciudad" name="cargo" placeholder="Ingresa el cargo" readonly>
+
+                                </td>
+                                <td>
+                                    <input class="fecha_cargo_desde" type="month" id="fecha_cargo_desde" name="fecha_cargo_desde" readonly>
+                                </td>
+                                <td>
+                                    <input class="fecha_cargo_hasta" type="month" id="fecha_cargo_hasta" name="fecha_cargo_hasta" readonly>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr class="separador" />
+
+                <div class="table-responsive">
+                    <table class="table table-bordered caption-top">
+                        <thead>
+                            <caption>Describre 2 cualidades positivas y negativas que tienes</caption>
+                            <tr class="table-info cualidades-title">
+                                <th>POSITIVAS:</th>
+                                <th>NEGATIVAS:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input class="cualidades" type="text" name="positivos_1" id="positivos_1" placeholder="1. " value="<?php echo $fila['cualidadPositiva_a'] ?>" readonly></input>
+
+                                </td>
+                                <td>
+                                    <input class="cualidades" type="text" name="negativos_1" id="negativos_1" placeholder="1. " value="<?php echo $fila['cualidadNegativa_a'] ?>" readonly></input>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="cualidades" type="text" name="positivos_2" id="positivos_2" placeholder="2. " value="<?php echo $fila['cualidadPositiva_b'] ?>" readonly></input>
+                                </td>
+                                <td>
+                                    <input class="cualidades" type="text" name="negativos_2" id="negativos_2" placeholder="2. " value="<?php echo $fila['cualidadNegativa_b'] ?>" readonly></input>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
+<?php
+
+
+        }
     }
-  }
+}
 ?>

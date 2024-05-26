@@ -1,5 +1,5 @@
 <div class="modal fade" id="ver_info_postulante" tabindex="-1" aria-labelledby="ver_info_postulanteLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content ">
       <div class="modal-header d-flex justify-content-center">
         <a href="#" class="btn btn-success" onclick="imprimirFicha()"><i class="fas fa-print"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -12,8 +12,8 @@
 
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
