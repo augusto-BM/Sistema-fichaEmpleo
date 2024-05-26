@@ -9,10 +9,10 @@ if (isset($_POST['click_btn_ver'])) {
     if (mysqli_num_rows($resultado) > 0) {
 
         while ($fila = mysqli_fetch_array($resultado)) {
-            $id_entrevistador = $fila['id_entrevistador'] ?? 'No ha sido asignado un entrevistador';
+            $id_entrevistador = $fila['id_entrevistador'] ?? 'No asignado';
 ?>
 
-            <form class="container p-4 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
+            <div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>

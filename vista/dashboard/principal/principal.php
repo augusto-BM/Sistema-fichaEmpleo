@@ -238,7 +238,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- ----------------------------------------------------------- -->
 
     <!-- SCRIPT AJAX - VER INFORMACION DE UN POSTULANTE SELECCIONADO -->
-    <script src="./js-principal/verInformacionTablaPrincipal.js"></script>
+    <script src="./js-principal/verInformacionPostulanteSeleccionadol.js"></script>
     <!-- ----------------------------------------------------------- -->
 
     <!-- SCRIPT AJAX - EDITAR INFORMACION DE UN POSTULANTE SELECCIONADO -->

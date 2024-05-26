@@ -92,6 +92,7 @@ $(document).ready(function() {
     $("#fechaInicio, #fechaFin").change(function() {
         TablaPostulantes.draw();
     });
+    
 
     $.fn.dataTable.ext.search.push(
         function(settings, data, dataIndex) {
@@ -122,8 +123,14 @@ $(document).ready(function() {
         }
     );
 
+    function getLocalDate() {
+        var now = new Date();
+        var localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+        return localDate;
+      }
+
     $('#filtroFecha').change(function() {
-        var hoy = new Date();
+        var hoy = getLocalDate();
         var fechaInicio;
         var fechaFin = hoy;
 
