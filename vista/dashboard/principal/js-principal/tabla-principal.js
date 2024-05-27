@@ -1,4 +1,4 @@
-const configurarDataTble = {
+const configurarDataTable = {
     //scrollX: "2000px", 
     dom: 'Blfrtip',
     buttons: [{
@@ -86,7 +86,7 @@ const configurarDataTble = {
 
 //FUNCION SE EJECUTA CUANDO CARGA LA PAGINA MUESTRA LA TABLA LISTADA
 $(document).ready(function() {
-    var TablaPostulantes = $('#myTable').DataTable(configurarDataTble);
+    var TablaPostulantes = $('#myTable').DataTable(configurarDataTable);
 
     // Función que se ejecuta para la búsqueda de información por fechas
     $("#fechaInicio, #fechaFin").change(function() {
@@ -164,9 +164,94 @@ $(document).ready(function() {
 
 });
 
+const configurarDataTableDesactivo = {
+    //scrollX: "2000px", 
+    dom: 'Blfrtip',
+    buttons: [{
+        extend: 'excelHtml5',
+        text: '<i class="fas fa-file-excel h4 text-success"></i>',
+        className: 'excelButton',
+        exportOptions: {
+            modifier: {
+                search: 'applied',
+                order: 'applied'
+            }
+        },
+        filename: function() {
+            var d = new Date();
+            var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
+            var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
+            return 'Administrador Principal - ' + fecha + ' - ' + hora;
+        }
+    }, {
+        extend: 'pdfHtml5',
+        text: '<i class="fas fa-file-pdf h4 text-danger"></i>',
+        className: 'pdfButton',
+        exportOptions: {
+            modifier: {
+                search: 'applied',
+                order: 'applied'
+            }
+        },
+        filename: function() {
+            var d = new Date();
+            var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
+            var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
+            return 'Administrador Principal - ' + fecha + ' - ' + hora;
+        },
+
+    }],
+    "order": [
+        [0, "desc"],
+        [4, "desc"]
+    ], // 0 es el índice de la columna del ID
+    lengthMenu: [
+        [3, 5, 10, 25, 50, -1],
+        [3, 5, 10, 25, 50, "All"]
+    ],
+    columnDefs: [{
+            className: "centrado",
+            targets: [0, 1, 2, 3, 4, 5, 6, 7]
+        },
+        {
+            orderable: false,
+            targets: [1, 2, 3, 5, 6, 7]
+        },
+        {
+            width: "15px",
+            targets: [8],
+
+            width: "35px",
+            targets: [7]
+        }
+        //{searchable: false, targets: [1]}
+    ],
+    pageLength: 50,
+    destroy: true,
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Ningun postulante encontrado",
+        "infoFiltered": "(Filtrados desde _MAX_ registros totales)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ registros por pagina",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar : ",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+};
 
 //FUNCION QUE SE EJECUTA SOLO CUANDO ABRIMOS EL MODAL VER POSTULANTE DESACTIVOS
 $('#ver_info_postulanteDesactivos').on('shown.bs.modal', function() {
-    var table = $('#myTable').DataTable(configurarDataTble); // Obtén la instancia de DataTables
+    var table = $('#mytablaDesacivos').DataTable(configurarDataTableDesactivo); // Obtén la instancia de DataTables
     table.draw(); // Fuerza un renderizado de la tabla
 });

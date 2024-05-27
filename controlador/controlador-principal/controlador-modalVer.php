@@ -11,7 +11,9 @@ if (isset($_POST['click_btn_ver'])) {
         while ($fila = mysqli_fetch_array($resultado)) {
             $id_entrevistador = $fila['id_entrevistador'] ?? 'No asignado';
 ?>
-            <a href="#" class="btn btn-success btn-imprimir" id="<?php echo $id; ?>" onclick="enviarId(this.id)"><i class="fas fa-print"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="d-flex justify-content-center align-items-center mb-3">
+                <a href="#" class="btn btn-success btn-imprimir" id="<?php echo $id; ?>" onclick="enviarId(this.id)"><i class="fas fa-print"></i> Imprimir</a>
+            </div>
 
             <script>
                 function enviarId(id) {
@@ -26,7 +28,7 @@ if (isset($_POST['click_btn_ver'])) {
                         }
                     };
                     // Enviar el ID al archivo PHP
-                    xhr.send('id=' + id); 
+                    xhr.send('id=' + id);
                 }
             </script>
 

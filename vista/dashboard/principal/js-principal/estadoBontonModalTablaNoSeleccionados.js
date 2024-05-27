@@ -14,11 +14,11 @@ function cambiarEstadoDesactivado(btn, nuevoEstado) {
         btn.classList.remove("btn-danger");
         btn.classList.add("btn-success");
         btn.textContent = "Seleccionado";
-    } else {
+    }/*  else {
         btn.classList.remove("btn-success");
         btn.classList.add("btn-danger");
         btn.textContent = "No seleccionado";
-    }
+    } */
 
     // Actualiza el atributo personalizado 'data-estado' del botón
     btn.setAttribute("data-estado", nuevoEstado);

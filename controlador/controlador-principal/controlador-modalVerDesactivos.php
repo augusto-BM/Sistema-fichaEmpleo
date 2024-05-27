@@ -9,13 +9,13 @@
         }
       </style>
       <tr class="align-middle"><!--  -->
-        <th class="centrado">ID</th>
+        <th class="centrado" style="display: none;">ID</th>
         <th class="centrado">Nombre</th>
+        <th class="centrado">Dni</th>
         <th class="centrado">Cargo</th>
         <th class="centrado">Fecha</th>
         <th class="centrado">Proceso</th>
         <th class="centrado">Entrevistador</th>
-        <th> </th>
         <th class="centrado">Estado</th>
       </tr>
     </thead>
@@ -47,15 +47,13 @@
             }
       ?>
             <tr class="bg-white align-middle">
-              <td class="user_id"><?php echo $fila['id']; ?></td>
+              <td class="user_id" style="display: none;"><?php echo $fila['id']; ?></td>
               <td class=""><?php echo $fila['nombrePostulante']; ?></td>
+              <td class=""><?php echo $fila['nroDni_Cedula']; ?></td>
               <td class=""><?php echo $fila['cargoPostulante']; ?></td>
               <td class=""><?php echo $fila['fecha']; ?></td>
               <td class=""><?php echo $fila['proceso']; ?></td>
               <td class=""><?php echo $entrevistador; ?></td>
-              <td class="">
-
-              </td>
               <td>
                 <?php
                 echo "<a onclick='activarDesdeModal(this)' data-id='" . $fila['id'] . "'><i class='fas fa-check' style='color: #44c426'></i></a>";

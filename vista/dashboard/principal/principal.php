@@ -4,7 +4,6 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
-
 ?>
 <!DOCTYPE html>
 
@@ -81,17 +80,23 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
                 <!-- BUSQUEDA POR RANGO DE FECHAS -->
                 <div class="alert alert-primary col-12 filtradoFecha" role="alert">
-                    <label for="filtroFecha">Selecciona filtro:</label>
-                    <select id="filtroFecha">
-                        <option value="">Ninguno</option>
-                        <option value="hoy">Hoy</option>
-                        <option value="semana">Esta semana</option>
-                        <option value="tresMeses">Últimos 3 meses</option>
-                    </select>
-                    <label for="fechaInicio">Desde:</label>
-                    <input type="date" id="fechaInicio">
-                    <label for="fechaFin">Hasta:</label>
-                    <input type="date" id="fechaFin">
+                    <div class="fecha_col">
+                        <label for="filtroFecha">Selecciona filtro:</label>
+                        <select id="filtroFecha">
+                            <option value="">Ninguno</option>
+                            <option value="hoy">Hoy</option>
+                            <option value="semana">Esta semana</option>
+                            <option value="tresMeses">Últimos 3 meses</option>
+                        </select>
+                    </div>
+                    <div class="fecha_col">
+                        <label for="fechaInicio">Desde:</label>
+                        <input type="date" id="fechaInicio">
+                    </div>
+                    <div class="fecha_col">
+                        <label for="fechaFin">Hasta:</label>
+                        <input type="date" id="fechaFin">
+                    </div>
                 </div>
                 <!-- ------------------------- -->
 
@@ -175,13 +180,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <script src="./script.js"></script>
 
-    <!-- SCRIPT PARA REDIRECCIONAR AL IMPRIMIR -->
-    <script>
-        function imprimirFicha() {
-            // Redireccionar a la página que contiene la ficha de empleo
-            window.location.href = "./php-principal/imprimirFicha.php";
-        }
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
