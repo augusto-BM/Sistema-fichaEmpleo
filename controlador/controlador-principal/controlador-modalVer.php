@@ -11,6 +11,25 @@ if (isset($_POST['click_btn_ver'])) {
         while ($fila = mysqli_fetch_array($resultado)) {
             $id_entrevistador = $fila['id_entrevistador'] ?? 'No asignado';
 ?>
+            <a href="#" class="btn btn-success btn-imprimir" id="<?php echo $id; ?>" onclick="enviarId(this.id)"><i class="fas fa-print"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <script>
+                function enviarId(id) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', './php-principal/imprimirFicha.php', true);
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // Manejar la respuesta del servidor si es necesario
+                            /* console.log(xhr.responseText); */
+                            window.open("./php-principal/imprimirFicha.php?user_id=" + id, "_blank");
+                        }
+                    };
+                    // Enviar el ID al archivo PHP
+                    xhr.send('id=' + id); 
+                }
+            </script>
+
 
             <div>
                 <div class="table-responsive">
@@ -264,12 +283,12 @@ if (isset($_POST['click_btn_ver'])) {
                         </tbody>
                     </table>
                 </div>
-            </form>
+                </form>
 
-<?php
+    <?php
 
 
         }
     }
 }
-?>
+    ?>

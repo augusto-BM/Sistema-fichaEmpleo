@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,10 +30,26 @@
       } */
   }
 </style>
-<br></br><br></br>
-
+<br></br>
 <body>
   <div class="contenedor-principal table-responsive col-sm-12 col-md-12 col-lg-12 col-xl-12">
+  <?php
+  @include '../../../../modelo/conexion.php';
+  // Verificar si se ha pasado un ID como parámetro en la URL
+  if (isset($_GET['user_id'])) {
+    // Recuperar el ID de la URL
+    $id = $_GET['user_id'];
+
+    $sql = "SELECT * FROM fichaEmpleo WHERE id = '$id'";
+    $resultado = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($resultado) > 0) {
+
+      while ($fila = mysqli_fetch_array($resultado)) {
+          $id_entrevistador = $fila['id_entrevistador'] ?? 'No asignado';
+  
+  ?>
+
     <div class="container">
       <div class="row"></div>
       <div class="col-md-6 ">
@@ -41,7 +58,7 @@
       <div class="col-md-6 ">
         <div class="form-group">
           <label for="cargo">Cargo al cual postula:</label>
-          <input type="text" name="cargo" id="cargo" required>
+          <input class="text-center" type="text" name="cargo" id="cargo" value="<?php echo  $fila['cargoPostulante'] ?>" readonly>
         </div>
       </div>
     </div>
@@ -61,10 +78,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row"></td>
-            <td></td>
-            <td></td>
+          <tr class="text-center">
+            <td ><?php echo  $fila['nombrePostulante'] ?></td>
+            <td ><?php echo  $fila['ApPaternoPostulante'] ?></td>
+            <td ><?php echo  $fila['ApMaternoPostulante'] ?></td>
           </tr>
         </tbody>
       </table>
@@ -74,8 +91,8 @@
             <th scope="col">Fecha</th>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row"></td>
+          <tr class="text-center">
+            <td scope="row"><?php echo  $fila['fecha'] ?></td>
           </tr>
         </tbody>
       </table>
@@ -88,15 +105,15 @@
             <th scope="col">N° DNI/CEDULA</th>
             <th scope="col">Nacionalidad</th>
             <th scope="col">Fecha de Nacimiento</th>
-            <th scope="col">Estado Civil/Compromiso</th>
+            <th scope="col">Estado Civil</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr class="text-center">
+            <td><?php echo  $fila['nroDni_Cedula'] ?></td>
+            <td><?php echo  $fila['Nacionalidad'] ?></td>
+            <td><?php echo  $fila['fechaNacimiento'] ?></td>
+            <td><?php echo  $fila['EstadoCivil'] ?></td>
 
           </tr>
         </tbody>
@@ -108,32 +125,19 @@
         <thead>
           <tr>
             <th scope="col">Edad</th>
-            <th scope="col">¿Tienes hijos? ¿Cuántos?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container mx-auto">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
+            <th scope="col">¿Tienes hijos?</th>
             <th scope="col">Direccion exacta</th>
             <th scope="col">Distrito</th>
             <th scope="col">Ciudad</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row"></td>
-            <td></td>
-            <td></td>
+          <tr class="text-center">
+            <td><?php echo  $fila['Edad'] ?></td>
+            <td><?php echo  $fila['nroHijos'] ?></td>
+            <td scope="row"><?php echo  $fila['direccion'] ?></td>
+            <td><?php echo  $fila['distrito'] ?>/td>
+            <td><?php echo  $fila['ciudad'] ?></td>
           </tr>
         </tbody>
       </table>
@@ -145,38 +149,18 @@
           <tr>
             <th scope="col">Celular</th>
             <th scope="col">Correo</th>
-            <th scope="col">¿Estas estudiando? ¿Que estudias?</th>
+            <th scope="col">¿Estas estudiando?</th>
+            <th scope="col">Fuente de trabajo</th>
+            <th scope="col">Sede</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <div class="container mx-auto">
-      <table class="table table-bordered">
-
-        <thead>
-          <tr>
-            <th scope="col">Bumeran</th>
-            <th scope="col">Facebook</th>
-            <th scope="col">Tik Tok</th>
-            <th scope="col">Instagram</th>
-            <th scope="col">Otros</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr class="text-center">
+            <td><?php echo  $fila['celular'] ?></td>
+            <td><?php echo  $fila['correo'] ?></td>
+            <td><?php echo  $fila['estudios'] ?></td>
+            <td><?php echo  $fila['fuente_trabajo'] ?></td>
+            <td><?php echo  $fila['sede'] ?></td>
           </tr>
         </tbody>
       </table>
@@ -192,7 +176,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="text-center">
             <td></td>
             <td></td>
             <td></td>
@@ -210,33 +194,41 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1. </td>
-            <td>2. </td>
+          <tr class="text-center">
+            <td>1. <?php echo  $fila['cualidadPositiva_a'] ?></td>
+            <td>1. <?php echo  $fila['cualidadNegativa_a'] ?></td>
           </tr>
-          <tr>
-            <td>1. </td>
-            <td>2. </td>
+          <tr class="text-center">
+            <td>2. <?php echo  $fila['cualidadPositiva_b'] ?></td>
+            <td>2. <?php echo  $fila['cualidadNegativa_b'] ?></td>
           </tr>
 
         </tbody>
       </table>
     </div>
+    <?php
+
+
+}
+}
+}
+?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- //SCRIPT PARA IMPRIMIR -->
-    <script>
+        <script>
       window.onload = function() {
         window.print();
       };
     </script>
 
     <!-- SCRIPT PARA REDIRECCIONAR SI SE CANCELA -->
-    <script>
+       <script>
       // Función para redireccionar cuando se cancela la impresión
       function redireccionarAlCancelar() {
-        window.location.href = '../principal.php'; // Reemplaza 'tu_pagina_destino.html' con la URL de la página a la que deseas redirigir
+        /* window.location.href = '../principal.php'; */ // Reemplaza 'tu_pagina_destino.html' con la URL de la página a la que deseas redirigir
+        window.close();
       }
 
       // Evento que se dispara antes de imprimir
