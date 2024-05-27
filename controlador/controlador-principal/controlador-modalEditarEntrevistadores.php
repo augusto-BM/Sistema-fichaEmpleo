@@ -34,7 +34,7 @@ if (isset($_POST['click_btn_editar_cambios'])) {
 
     // Preparar la consulta SQL para insertar los datos en la tabla
     $sql_editar = "UPDATE entrevistador SET nombre_entrevistador = '$nombre_entrevistador', apellido_paterno_entrevistador = '$apellido_paterno_entrevistador', apellido_materno_entrevistador = '$apellido_materno_entrevistador', sede = '$sede' WHERE id_entrevistador = '$id'";
-
+    
     $query = mysqli_query($conn, $sql_editar);
     if ($query) {
         $_SESSION['mensaje'] = "Datos actualizados correctamente";

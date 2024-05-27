@@ -30,16 +30,16 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
 
         <!-- MODAL PARA VER LA INFORMACION COMPLETA DEL ENTREVISTADOR -->
-        <!-- <div class="modal fade" id="ver_info_postulante" tabindex="-1" aria-labelledby="ver_info_postulanteLabel" aria-hidden="true">
+        <div class="modal fade" id="ver_info_entrevistador" tabindex="-1" aria-labelledby="ver_info_entrevistadorLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content ">
                     <div class="modal-header d-flex justify-content-center">
-                        <h1 class="modal-title fs-5" id="ver_info_postulante">Informacion del Postulante</h1>
+                        <h1 class="modal-title fs-5" id="ver_info_entrevistador">Informacion del Postulante</h1>
                         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <input type="hidden" id="user_id" name="id_postulante">
-                        <div class="ver_info_postulante">
+                        <div class="ver_info_entrevistador">
                         
                         </div>
                         ...
@@ -49,7 +49,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DEL ENTREVISTADOR  -->
         <div class="modal fade" id="editar_info_entrevistador" tabindex="-1" aria-labelledby="editar_info_entrevistadorLabel" aria-hidden="true">
@@ -335,16 +335,20 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 //console.log(user_id);
                 $.ajax({
                     method: "POST",
-                    url: '../../../controlador/controlador-principal/controlador-modalVer.php',
+                    url: '../../../controlador/controlador-entrevistador/controlador-modalVer.php',
                     data: {
                         'click_btn_ver': true,
                         'user_id': user_id,
                     },
                     success: function(response) {
                         console.log(response);
-                        $('.ver_info_postulante').html(response);
-                        $('#ver_info_postulante').modal('show');
+                        $('.ver_info_entrevistador').html(response);
+                        $('#ver_info_entrevistador').modal('show');
                     }
+                });
+                // Se limpia los valores del modal ver cuando se cierra el modal
+                $("#ver_info_entrevistador").on("hidden.bs.modal", function() {
+                    $(this).find(".ver_info_entrevistador").empty();
                 });
             });
         });
