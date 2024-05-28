@@ -27,10 +27,11 @@ if (!isset($_SESSION['nombre_sesion'])) {
       <div class="container-fluid">
         <p class="navbar-brand">Bienvenido - <?php echo $_SESSION['nombre_sesion']  ?></p>
         <div class="d-flex contenedor-logout dropdown show">
-          <i class="nav-link text-nowrap fa-regular fa-user fa-2xl dropdown-toggle mt-2 ms-3" data-toggle="dropdown" aria-haspopup="true" type="button" aria-expanded="false"></i></a>
+          <!-- <i class="nav-link text-nowrap fa-regular fa-user fa-2xl dropdown-toggle mt-2 ms-3" data-toggle="dropdown" aria-haspopup="true" type="button" aria-expanded="false"></i></a>
           <ul class="icono-logout dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li><a class="dropdown-item" href="../login/cerrar-sesion.php">Cerrar Sesión</a></li>
-          </ul>
+          </ul> -->
+          <a class="dropdown-item" href="../login/cerrar-sesion.php">Cerrar Sesión</a>
         </div>
       </div>
     </nav>

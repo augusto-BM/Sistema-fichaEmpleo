@@ -68,7 +68,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+/*   filter: blur(5px);
+ */}
+
 .admin-color {
   color: #04b7ee;
   font-size: larger;
