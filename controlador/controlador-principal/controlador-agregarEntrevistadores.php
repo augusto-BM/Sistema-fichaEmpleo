@@ -14,7 +14,7 @@ session_start();
         $apellido_paterno_entrevistador = $_POST["apellido_paterno_entrevistador"];
         $apellido_materno_entrevistador	 = $_POST["apellido_materno_entrevistador"];
         $sede = $_POST["sede"];
-        $estado = "inactivo";
+        $estado = "activo";
         
         // Preparar la consulta SQL para insertar los datos en la tabla
         $sql_entrevistadores = "INSERT INTO entrevistador (nombre_entrevistador, apellido_paterno_entrevistador, apellido_materno_entrevistador, sede, estado) 
@@ -24,10 +24,10 @@ session_start();
         
         // Ejecutar la consulta y verificar si fue exitosa
         if ($query) {
-            $_SESSION['mensaje'] = "Datos actualizados correctamente";
+            $_SESSION['mensaje'] = "Entrevistador registrado exitosamente";
             header("Location: ../../vista/dashboard/principal/entrevistadores.php");
         } else {
-            $_SESSION['mensaje'] = "Error al actualizar los datos";
+            $_SESSION['mensaje'] = "Error al registrar entrevistador";
             header("Location: ../../vista/dashboard/principal/entrevistadores.php");
         }
         

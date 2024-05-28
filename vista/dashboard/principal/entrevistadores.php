@@ -27,25 +27,42 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <main class="dashboard d-flex">
 
+        <!-- MODAL PARA VER LA TABLA COMPLETA DE LOS ENTREVISTADORES DESACTIVOS -->
+        <div class="modal fade" id="ver_info_entrevistadoresDesactivos" tabindex="-1" aria-labelledby="ver_info_entrevistadoresDesactivosLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content ">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h1 class="modal-title fs-5" id="ver_info_entrevistadoresDesactivos">Entrevistadores Inactivos</h1>
+                        <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ver_info_entrevistadoresDesactivos">
 
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="location.reload()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- MODAL PARA VER LA INFORMACION COMPLETA DEL ENTREVISTADOR -->
+        <!-- MODAL PARA VER LA INFORMACION COMPLETA DEL ENTREVISTADOR SELECCIONADO -->
         <div class="modal fade" id="ver_info_entrevistador" tabindex="-1" aria-labelledby="ver_info_entrevistadorLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content ">
                     <div class="modal-header d-flex justify-content-center">
-                        <h1 class="modal-title fs-5" id="ver_info_entrevistador">Informacion del Postulante</h1>
+                        <h5 class="modal-title fs-5" id="ver_info_entrevistador">Informacion del Entrevistador</h5>
                         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <input type="hidden" id="user_id" name="id_postulante">
+                        <input type="hidden" id="user_id" name="id_postulante">
                         <div class="ver_info_entrevistador">
-                        
+
                         </div>
-                        ...
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -55,14 +72,15 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <div class="modal fade" id="editar_info_entrevistador" tabindex="-1" aria-labelledby="editar_info_entrevistadorLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-center >
-                            <h5 class=" modal-title " id=" editar_info_entrevistadorLabel">Editar Información del Entrevistador</h5>
+                    <div class="modal-header d-flex justify-content-center>
+                            <h5 class=" modal-title" id="editar_info_entrevistadorLabel">Editar Información del Entrevistador</h5>
+
                         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <form method="POST" action="../../../controlador/controlador-principal/controlador-modalEditarEntrevistadores.php">
                         <div class="modal-body">
-                            <input type="hidden" id="user_id" name="id_postulante">
+                            <input type="hidden" id="entrevistador_id" name="id_entrevistador">
                             <div class="">
                                 <label for="recipient-name" class="col-form-label">Nombre:</label>
                                 <input type="text" class="form-control" id="nombre_entrevistador" name="nombre_entrevistador">
@@ -94,6 +112,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </div>
             </div>
         </div>
+
         <!-- EMPIEZA sidebar -->
         <?php @include './php-principal/sidebar.php' ?>
         <!-- FINALIZA sidebar -->
@@ -110,51 +129,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     </div>
                 </nav>
             </header>
-
-            <!-- <div class="cards row gap-3 justify-content-center mt-5">
-                <div class=" card__items card__items--blue col-md-3 position-relative">
-                    <div class="card__students d-flex flex-column gap-2 mt-3">
-                        <i class="far fa-graduation-cap h3"></i>
-                        <span>Students</span>
-                    </div>
-                    <div class="card__nbr-students">
-                        <span class="h5 fw-bold nbr">13</span>
-                    </div>
-                </div>
-
-                <div class=" card__items card__items--rose col-md-3 position-relative">
-                    <div class="card__Course d-flex flex-column gap-2 mt-3">
-                        <i class="fal fa-bookmark h3"></i>
-                        <span>Course</span>
-
-                    </div>
-                    <div class="card__nbr-course">
-                        <span class="h5 fw-bold nbr">5</span>
-                    </div>
-                </div>
-
-                <div class=" card__items card__items--yellow col-md-3 position-relative">
-                    <div class="card__payments d-flex flex-column gap-2 mt-3">
-                        <i class="fal fa-usd-square h3"></i>
-                        <span>Payments</span>
-
-                    </div>
-                    <div class="card__payments">
-                        <span class="h5 fw-bold nbr">DHS 556,000</span>
-                    </div>
-
-                </div>
-
-                <div class="card__items card__items--gradient col-md-3 position-relative">
-                    <div class="card__users d-flex flex-column gap-2 mt-3">
-                        <i class="fal fa-user h3"></i>
-                        <span>Users</span>
-                        <i class="fal fa-usd-square h3"></i>
-                        <span>Payments</span>
-                    </div>
-                    <span class="h5 fw-bold nbr">3</span>
-                </div>
-            </div> -->
 
             <!-- *********** ALERTA DE EXITO MENSAJE DE SESION *********-->
             <?php
@@ -175,14 +149,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
             ?>
             <!-- ************************************************** -->
 
-            <!-- start student list table -->
+            <!-- EMPEZAR TABLA DE DLISTA DE ENTREVISTADORES -->
             <div class="student-list-header d-flex justify-content-between align-items-center py-2">
                 <div class="title h6 fw-bold">Lista de Entrevistadores</div>
                 <div class="btn-add d-flex gap-3 align-items-center">
 
                     <!-- *** MODAL PARA CREAR ENTREVISTADORES ***-->
                     <div class="button-add-student">
-                        <button type="button" class="btn btn-success me-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">➕ Registrar <i class="fa-solid fa-square-plus"></i></button>
+                        <button type="button" class="btn btn-success me-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fas fa-user-plus" style='color:#fff;'></i> Registrar <i class="fa-solid fa-square-plus"></i></button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -224,14 +198,25 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         </div>
                     </div>
                     <!-- *************************************** -->
+                    <div class="btn-postulantes-desactivos">
+                        <a href="" class="btn-verDesactivo"><i class="fas fa-user-slash me-5 h4"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="table-responsive">
+
+            <div class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!-- Necesario Clase busqueda: tabla -->
                 <table class="table student_list table-borderless tabla table-striped tabla w-100" id="myTable">
                     <thead class="table-dark ">
-                        <tr class="align-middle"><!--  -->
-                            <th>ID</th>
+                        <style>
+                            .centrado {
+                                text-align: center !important;
+                                vertical-align: middle !important;
+                            }
+                        </style>
+
+                        <tr class="align-middle centrado"><!--  -->
+                            <th style="display: none;">ID</th>
                             <th>Nombre</th>
                             <th>Apellido paterno</th>
                             <th>Apellido materno</th>
@@ -243,7 +228,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <tbody>
                         <?php
                         include '../../../modelo/conexion.php';
-                        $sql = "SELECT * FROM entrevistador ORDER BY id_entrevistador DESC";
+                        $sql = "SELECT * FROM entrevistador WHERE estado = 'activo'/* ORDER BY id_entrevistador DESC */";
                         $resultado = mysqli_query($conn, $sql);
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -251,7 +236,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
 
                                 <tr class="bg-white align-middle">
-                                    <td class="user_id"><?php echo $fila['id_entrevistador']; ?></td>
+                                    <td class="user_id" style="display: none;"><?php echo $fila['id_entrevistador']; ?></td>
                                     <td class=""><?php echo $fila['nombre_entrevistador']; ?></td>
                                     <td class=""><?php echo $fila['apellido_paterno_entrevistador']; ?></td>
                                     <td class=""><?php echo $fila['apellido_materno_entrevistador']; ?></td>
@@ -287,11 +272,215 @@ if (!isset($_SESSION['nombre_sesion'])) {
         </div>
         <!-- end contentpage -->
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- DATA TABLES -->
+    <!--     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>-->
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.js"></script>
+
+    <!-- JSZip (necesario para Buttons) -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <!-- DataTables Buttons extension -->
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+
+    <!-- jsPDF and pdfmake for PDF export -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
+    <!-- SCRIPT AJAX TABLA ENTREVISTADORES -->
+    <script>
+        const configurarDataTable = {
+            //scrollX: "2000px", 
+            dom: 'Blfrtip',
+            buttons: [{
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel h4 text-success"></i>',
+                className: 'excelButton',
+                exportOptions: {
+                    modifier: {
+                        search: 'applied',
+                        order: 'applied'
+                    }
+                },
+                filename: function() {
+                    var d = new Date();
+                    var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
+                    var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
+                    return 'Administrador Principal - ' + fecha + ' - ' + hora;
+                }
+            }, {
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf h4 text-danger"></i>',
+                className: 'pdfButton',
+                exportOptions: {
+                    modifier: {
+                        search: 'applied',
+                        order: 'applied'
+                    }
+                },
+                filename: function() {
+                    var d = new Date();
+                    var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
+                    var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
+                    return 'Administrador Principal - ' + fecha + ' - ' + hora;
+                },
+
+            }],
+            "order": [
+                [0, "desc"]
+            ], // 0 es el índice de la columna del ID
+            lengthMenu: [
+                [3, 5, 10, 25, 50, -1],
+                [3, 5, 10, 25, 50, "All"]
+            ],
+            columnDefs: [{
+                    className: "centrado",
+                    targets: [0, 1, 2, 3, 4, 5, 6]
+                },
+                {
+                    orderable: false,
+                    targets: [1, 2, 3, 4, 5, 6]
+                },
+                {
+                    width: "15px",
+                    targets: [6],
+
+                    width: "35px",
+                    targets: [5]
+                }
+                //{searchable: false, targets: [1]}
+            ],
+            pageLength: 50,
+            destroy: true,
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Ningun entrevistador encontrado",
+                "infoFiltered": "(Filtrados desde _MAX_ registros totales)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar : ",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+        };
+
+        //FUNCION SE EJECUTA CUANDO CARGA LA PAGINA MUESTRA LA TABLA LISTADA
+        $(document).ready(function() {
+            var TablaPostulantes = $('#myTable').DataTable(configurarDataTable);
+        });
+
+        const configurarDataTableDesactivo = {
+            //scrollX: "2000px", 
+            dom: 'Blfrtip',
+            buttons: [{
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel h4 text-success"></i>',
+                className: 'excelButton',
+                exportOptions: {
+                    modifier: {
+                        search: 'applied',
+                        order: 'applied'
+                    }
+                },
+                filename: function() {
+                    var d = new Date();
+                    var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
+                    var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
+                    return 'Administrador Principal - ' + fecha + ' - ' + hora;
+                }
+            }, {
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf h4 text-danger"></i>',
+                className: 'pdfButton',
+                exportOptions: {
+                    modifier: {
+                        search: 'applied',
+                        order: 'applied'
+                    }
+                },
+                filename: function() {
+                    var d = new Date();
+                    var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
+                    var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
+                    return 'Administrador Principal - ' + fecha + ' - ' + hora;
+                },
+
+            }],
+            "order": [
+                [0, "desc"]
+            ], // 0 es el índice de la columna del ID
+            lengthMenu: [
+                [3, 5, 10, 25, 50, -1],
+                [3, 5, 10, 25, 50, "All"]
+            ],
+            columnDefs: [{
+                    className: "centrado",
+                    targets: [0, 1, 2, 3, 4, 5, 6]
+                },
+                {
+                    orderable: false,
+                    targets: [1, 2, 3, 4, 5, 6]
+                },
+                {
+                    width: "15px",
+                    targets: [6],
+
+                    width: "35px",
+                    targets: [5]
+                }
+                //{searchable: false, targets: [1]}
+            ],
+            pageLength: 50,
+            destroy: true,
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Ningun entrevistador encontrado",
+                "infoFiltered": "(Filtrados desde _MAX_ registros totales)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar : ",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+        };
+        //FUNCION QUE SE EJECUTA SOLO CUANDO ABRIMOS EL MODAL VER POSTULANTE DESACTIVOS
+        $('#ver_info_entrevistadoresDesactivos').on('shown.bs.modal', function() {
+            var table = $('#myTable2').DataTable(configurarDataTableDesactivo);
+            // Fuerza un renderizado de la tabla para que se ajuste al contenedor
+            table.draw();
+        });
+    </script>
 
     <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL ENTREVISTADOR -->
     <script>
@@ -317,14 +506,37 @@ if (!isset($_SESSION['nombre_sesion'])) {
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     console.log(xhr.responseText); // puedes mostrar alguna respuesta del servidor en la consola para depurar
+                    // Si el nuevo estado es 'inactivo', elimina la fila de la tabla
+                    if (nuevoEstado === 'inactivo') {
+                        var table = $('#myTable').DataTable();
+                        var row = $(btn).closest('tr');
+                        table.row(row).remove().draw();
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Entrevistador ha sido desactivado",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    } else if (nuevoEstado === 'activo') {
+                        var table1 = $('#myTable2').DataTable();
+                        var row = $(btn).closest('tr');
+                        table1.row(row).remove().draw();
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Entrevistador ha sido activado",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
                 }
             };
             xhr.send("id=" + id + "&estado=" + nuevoEstado);
         }
     </script>
 
-
-    <!-- SCRIPT AJAX - VER INFORMACION -->
+    <!-- SCRIPT AJAX - VER INFORMACION ENTREVISATDOR SELECCIONADO-->
     <script>
         $(document).ready(function() {
             $('.btn-ver').click(function(e) {
@@ -335,13 +547,13 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 //console.log(user_id);
                 $.ajax({
                     method: "POST",
-                    url: '../../../controlador/controlador-entrevistador/controlador-modalVer.php',
+                    url: '../../../controlador/controlador-principal/controlador-modalVerEntrevistadores.php',
                     data: {
                         'click_btn_ver': true,
                         'user_id': user_id,
                     },
                     success: function(response) {
-                        console.log(response);
+                        /* console.log(response); */
                         $('.ver_info_entrevistador').html(response);
                         $('#ver_info_entrevistador').modal('show');
                     }
@@ -354,7 +566,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         });
     </script>
 
-    <!-- SCRIPT AJAX - EDITAR INFORMACION -->
+    <!-- SCRIPT AJAX - EDITAR INFORMACION ENTREVISTADOR SELECCIONADO-->
     <script>
         $(document).ready(function() {
             $('.btn-editar').click(function(e) {
@@ -374,7 +586,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         $.each(response, function(key, value) {
                             //console.log(value['nombrePostulante']);
 
-                            $('#user_id').val(value['id_entrevistador']);
+                            $('#entrevistador_id').val(value['id_entrevistador']);
                             $('#nombre_entrevistador').val(value['nombre_entrevistador']);
                             $('#apellido_paterno_entrevistador').val(value['apellido_paterno_entrevistador']);
                             $('#apellido_materno_entrevistador').val(value['apellido_materno_entrevistador']);
@@ -387,6 +599,31 @@ if (!isset($_SESSION['nombre_sesion'])) {
         });
     </script>
 
+    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS ENTREVISTADORES DESACTIVOS -->
+    <script>
+        $(document).ready(function() {
+            $('.btn-verDesactivo').click(function(e) {
+                e.preventDefault();
+                //console.log('Ver');
+
+                var user_id = $(this).closest('tr').find('.user_id').text();
+                //console.log(user_id);
+                $.ajax({
+                    method: "POST",
+                    url: '../../../controlador/controlador-principal/controlador-modalVerEntrevistadoresDesactivos.php',
+                    data: {
+                        'click_btn_verDesactivo': true,
+                        'user_id': user_id,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('.ver_info_entrevistadoresDesactivos').html(response);
+                        $('#ver_info_entrevistadoresDesactivos').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

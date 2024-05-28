@@ -93,7 +93,6 @@ $(document).ready(function() {
         TablaPostulantes.draw();
     });
     
-
     $.fn.dataTable.ext.search.push(
         function(settings, data, dataIndex) {
             var fechaInicio = new Date($('#fechaInicio').val());
@@ -252,6 +251,6 @@ const configurarDataTableDesactivo = {
 
 //FUNCION QUE SE EJECUTA SOLO CUANDO ABRIMOS EL MODAL VER POSTULANTE DESACTIVOS
 $('#ver_info_postulanteDesactivos').on('shown.bs.modal', function() {
-    var table = $('#mytablaDesacivos').DataTable(configurarDataTableDesactivo); // Obtén la instancia de DataTables
+    var table = $('#mytablaDesacivos').DataTable(configurarDataTableDesactivo); 
     table.draw(); // Fuerza un renderizado de la tabla
 });

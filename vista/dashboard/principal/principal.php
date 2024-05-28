@@ -35,7 +35,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <main class="dashboard d-flex">
 
-        <!-- ------- MODAL PARA VER LA INFORMACION DE POSTULANTES DESACTIVOS --------->
+        <!-- ------- MODAL PARA VER LISTADO DE LA TABLA DE POSTULANTES DESACTIVOS --------->
         <?php @include './php-principal/modal_ver_postulantes_inactivos.php' ?>
         <!-- ---------------------------------------------------------------------- -->
 
@@ -243,7 +243,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <script src="./js-principal/editarInformacionTablaPrincipal.js"></script>
     <!-- -------------------------------------------------------------- -->
 
-    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS POSTULANTES DESACTIVOS -->
+    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS POSTULANTES NO SELECCIONADOS -->
     <script src="./js-principal/verInformacionTablaModalNoSeleccionados.js"></script>
     <!-- ------------------------------------------------------------------ -->
 </body>

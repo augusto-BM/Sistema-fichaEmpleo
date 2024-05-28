@@ -24,7 +24,7 @@ if (isset($_POST['click_btn_editar'])) {
 //AL APRETAR EL BOTON DE GUARDAR CAMBIOS EN EL MODAL EDITAR
 if (isset($_POST['click_btn_editar_cambios'])) {
 
-    $id = $_POST["id_postulante"]; //Este es el input invisible que contiene el id del usuario en el modal editar
+    $id = $_POST["id_entrevistador"]; //Este es el input invisible que contiene el id del usuario en el modal editar
     echo $id;
     $nombre_entrevistador = $_POST["nombre_entrevistador"];
     $apellido_paterno_entrevistador = $_POST["apellido_paterno_entrevistador"];
