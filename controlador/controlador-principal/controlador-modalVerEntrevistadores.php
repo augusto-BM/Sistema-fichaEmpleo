@@ -12,29 +12,39 @@ if (isset($_POST['click_btn_ver'])) {
 ?>
             <div>
                 <div class="modal-body">
-                    <input type="hidden" id="entrevistador_id" name="id_entrevistador">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Nombre:</label>
-                        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event)" value="<?php echo  $fila['nombre_entrevistador'] ?>" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Apellido paterno:</label>
-                        <input type="text" class="form-control" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event)" value="<?php echo  $fila['apellido_paterno_entrevistador'] ?>" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Apellido Materno:</label>
-                        <input type="text" class="form-control" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event)" value="<?php echo  $fila['apellido_materno_entrevistador'] ?>" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Sede</label>
-                        <input type="text" class="form-control" name="sede" id="sede" value="<?php echo  $fila['sede'] ?>" readonly>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="">
+                                    <input type="hidden" id="entrevistador_id" name="id_entrevistador">
+                                    <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;" ><label for="nombres" class="col-form-label">Nombre:</label></div>
+                                    <div class="input-nombreEnt" ;"><input style="margin-bottom: 5px" class="form-control" type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event)" value="<?php echo $fila['nombre_entrevistador'] ?>" readonly>
+                                    </div>
+                                    </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="apelliPaterno-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;" ><label for="apellido-paterno" class="col-form-label">Apellido paterno:</label></div>
+                                    <div class="input-apellPaternoEnt"><input style="margin-bottom: 5px"  class="form-control"  type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event)" value="<?php echo $fila['apellido_paterno_entrevistador'] ?>" readonly></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="apelliMaterno-entrevistador" style="text-align:center; background-color:#CFE2FF;border: 1px solid #9ec5fe;margin-bottom: 5px;" ><label for=" apellido-materno" class="col-form-label">Apellido Materno:</label></div>
+                                    <div class="input-apellMaternoEnt"><input style="margin-bottom: 5px" class="form-control" type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event)" value="<?php echo $fila['apellido_materno_entrevistador'] ?>" readonly></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="sede-entrevistador" style="text-align:center; background-color:#CFE2FF;border: 1px solid #9ec5fe ; margin-bottom: 5px;" ><label for=" sede" class="col-form-label">Sede:</label></div>
+                                    <div class="input-sedeEnt"><input style="margin-bottom: 5px" class="form-control" type="text" name="sede" id="sede" value="<?php echo $fila['sede'] ?>" readonly></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-
 <?php
-
 
         }
     }
