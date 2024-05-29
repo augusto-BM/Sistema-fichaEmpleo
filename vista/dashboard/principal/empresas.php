@@ -32,10 +32,10 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
 
         <!-- MODAL PARA VER LA INFORMACION COMPLETA DE LA EMPRESA SELECCIONADO -->
-        <?php @include './php-principal/modal_ver_entrevistador_seleccionado.php' ?>
+        <?php @include './php-principal/modal_ver_empresa_seleccionado.php' ?>
 
         <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DE LA EMPRESA SELECCIONADO  -->
-        <?php @include './php-principal/modal_editar_entrevistador_seleccionado.php' ?>
+        <?php @include './php-principal/modal_editar_empresa_seleccionado.php' ?>
 
 
         <!-- EMPIEZA sidebar -->
@@ -68,7 +68,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <!-- *************************************** -->
 
                     <div class="btn-postulantes-desactivos">
-                        <a href="" class="btn-verDesactivo"><i class="fas fa-user-slash me-5 h4"></i></a>
+                        <a href="" class="btn-verDesactivo"><i class="fas fa-eye-slash me-5 h4"></i></a>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <tbody>
                         <?php
                         include '../../../modelo/conexion.php';
-                        $sql = "SELECT * FROM sede WHERE estado = 'activo' AND id_Sede > 2/* ORDER BY id_entrevistador DESC */";
+                        $sql = "SELECT * FROM sede WHERE estado = 'activo' AND id_Sede > 2";
                         $resultado = mysqli_query($conn, $sql);
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -154,19 +154,19 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
 
     <!-- SCRIPT AJAX TABLA EMPRESAS -->
-    <script src="./js-principal/tabla-entrevistadores.js"></script>
+    <script src="./js-principal/tabla-empresas.js"></script>
 
     <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL EMPRESAS -->
-    <script src="./js-principal/estadoBotonEntrevistadores.js"></script>
+    <script src="./js-principal/estadoBotonEmpresas.js"></script>
 
     <!-- SCRIPT AJAX - VER INFORMACION EMPRESAS SELECCIONADO-->
-    <script src="./js-principal/verInformacionEntrevistadorSeleccionado.js"></script>
+    <script src="./js-principal/verInformacionEmpresaSeleccionado.js"></script>
 
     <!-- SCRIPT AJAX - EDITAR INFORMACION EMPRESAS SELECCIONADO-->
-    <script src="./js-principal/editarInformacionEntrevistadorSeleccionado.js"></script>
+    <script src="./js-principal/editarInformacionEmpresaSeleccionado.js"></script>
 
     <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LAS EMPRESAS DESACTIVOS -->
-    <script src="./js-principal/verInformacionTablaModalEntrevistadoresNoSeleccionado.js"></script>
+    <script src="./js-principal/verInformacionTablaModalEmpresasNoSeleccionado.js"></script>
 
 </body>
 

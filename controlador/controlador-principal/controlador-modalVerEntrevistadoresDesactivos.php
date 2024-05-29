@@ -9,7 +9,7 @@
         <th>Apellido paterno</th>
         <th>Apellido materno</th>
         <th>Sede</th>
-        <th> </th>
+        <th style="display: none;"> </th>
         <th>Estado</th>
       </tr>
     </thead>
@@ -27,12 +27,11 @@
             <td class=""><?php echo $fila['apellido_paterno_entrevistador']; ?></td>
             <td class=""><?php echo $fila['apellido_materno_entrevistador']; ?></td>
             <td class=""><?php echo $fila['sede']; ?></td>
-            <td class="">
+            <td style="display: none;">
               <a href="" class=" btn-ver me-0"><i class="far fa-eye" style="color: #2E59EA;"></i></a>
               <a href="" class="btn-editar ms-0"><i class="far fa-pen" style="color: #EAD42E;"></i></a>
             </td>
             <td>
-              <!-- <button style="width: 100px;" class="btn btn-success estadoBtn" onclick="cambiarEstado(this)" data-id="<?php echo $fila['id_entrevistador']; ?>">Activo</button> -->
               <button style="width: 100px;" class="btn <?php echo ($fila['estado'] == 'activo') ? 'btn-success' : 'btn-danger'; ?> estadoBtn" onclick="cambiarEstado(this)" data-id="<?php echo $fila['id_entrevistador']; ?>">
                 <?php echo ($fila['estado'] == 'activo') ? 'Activo' : 'Inactivo'; ?>
               </button>

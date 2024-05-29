@@ -59,15 +59,15 @@
 
 /* start cards */
 .cards {
-  justify-content: center;
+  /* justify-content: center;
   align-items: center;
-  min-height: 300px;
+  min-height: 300px; */
   
-  background-image: linear-gradient(rgba(0, 184, 156, 0),
+  /* background-image: linear-gradient(rgba(0, 184, 156, 0),
       rgba(0, 184, 156, 0)), url("../../../vista/login/fondo-login.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 /*   filter: blur(5px);
  */}
 
