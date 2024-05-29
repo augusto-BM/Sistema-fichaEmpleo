@@ -6,7 +6,7 @@ $contrasena = ''; // Contraseña de MySQL
 $base_de_datos = 'sis_fichaempleo'; // Nombre de la base de datos
 
 //La variable "conn" permitirá crear una conexión con nnuestra BD.
-$conn = mysqli_connect('localhost','root','','sis_fichaempleo');
+$conn = mysqli_connect($host,$usuario,$contrasena,$base_de_datos);
 
 // Verificar si la conexión fue exitosa
 if (!$conn) {

@@ -121,7 +121,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         <tbody>
                             <?php
                             include '../../../modelo/conexion.php';
-                            $sql = "SELECT * FROM fichaEmpleo WHERE proceso = 'Seleccionado' OR proceso = 'Postulante'/* ORDER BY fecha DESC, id DESC */";
+                            $sql = "SELECT * FROM fichaempleo WHERE proceso = 'Seleccionado' OR proceso = 'Postulante'/* ORDER BY fecha DESC, id DESC */";
                             $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador";
 
                             $resultado = mysqli_query($conn, $sql);

@@ -10,8 +10,8 @@
   </div>
   <div class=" bg-list d-flex flex-column align-items-center fw-bold gap-2 mt-4 ">
     <ul class="d-flex flex-column list-unstyled sidebar-opciones">
-      <li class="h7"><a class="nav-link text-dark" href="./principal.php"><i class="fal fa-home-lg-alt me-2"></i> <span>Inicio</span></a></li>
-      <li class="h7"><a class=" nav-link text-dark" href="./Entrevistadores.php"><i class="fal fa-bookmark me-2"></i> <span>Entrevistadores</span></a></li>
+      <li class="h7"><a class="nav-link text-dark" href="principal.php"><i class="fal fa-home-lg-alt me-2"></i> <span>Inicio</span></a></li>
+      <li class="h7"><a class=" nav-link text-dark" href="entrevistadores.php"><i class="fal fa-bookmark me-2"></i> <span>Entrevistadores</span></a></li>
 
       <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fal fa-usd-square me-2"></i> <span>Estadistica</span></a></li>
       <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fal fa-file-chart-line me-2"></i> <span>Graficos</span></a></li>

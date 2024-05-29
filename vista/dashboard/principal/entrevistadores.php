@@ -242,8 +242,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             while ($fila = mysqli_fetch_assoc($resultado)) {
                         ?>
-
-
                                 <tr class="bg-white align-middle">
                                     <td class="user_id" style="display: none;"><?php echo $fila['id_entrevistador']; ?></td>
                                     <td class=""><?php echo $fila['nombre_entrevistador']; ?></td>

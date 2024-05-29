@@ -9,7 +9,7 @@ if (isset($_POST['click_btn_editar'])) {
     $id = $_POST['user_id']; // Obtener el id del usuario mediante ajax    
     $array_datos_obtenidos = []; // Array para almacenar los datos obtenidos de la base de datos  
 
-    $sql = "SELECT * FROM fichaEmpleo WHERE id = '$id'";
+    $sql = "SELECT * FROM fichaempleo WHERE id = '$id'";
     $resultado = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {

@@ -3,7 +3,7 @@
 
 if (isset($_POST['click_btn_ver'])) {
     $id = $_POST['user_id'];
-    $sql = "SELECT * FROM fichaEmpleo WHERE id = '$id'";
+    $sql = "SELECT * FROM fichaempleo WHERE id = '$id'";
     $resultado = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {
