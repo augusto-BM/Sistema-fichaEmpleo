@@ -16,7 +16,7 @@
     <tbody>
       <?php
       include '../../modelo/conexion.php';
-      $sql = "SELECT * FROM entrevistador WHERE estado='inactivo'/* ORDER BY id_entrevistador DESC */";
+      $sql = "SELECT * FROM entrevistador WHERE estado='inactivo'";
       $resultado = mysqli_query($conn, $sql);
       if ($resultado && mysqli_num_rows($resultado) > 0) {
         while ($fila = mysqli_fetch_assoc($resultado)) {

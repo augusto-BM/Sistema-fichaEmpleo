@@ -15,7 +15,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrevistadores</title>
+    <title>Empresas</title>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -27,14 +27,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <main class="dashboard d-flex">
 
-        <!-- MODAL PARA VER LA TABLA COMPLETA DE LOS ENTREVISTADORES DESACTIVOS -->
+        <!-- MODAL PARA VER LA TABLA COMPLETA DE LAS EMPRESAS DESACTIVOS -->
         <?php @include './php-principal/modal_ver_entrevistadores_desactivos.php' ?>
 
 
-        <!-- MODAL PARA VER LA INFORMACION COMPLETA DEL ENTREVISTADOR SELECCIONADO -->
+        <!-- MODAL PARA VER LA INFORMACION COMPLETA DE LA EMPRESA SELECCIONADO -->
         <?php @include './php-principal/modal_ver_entrevistador_seleccionado.php' ?>
 
-        <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DEL ENTREVISTADOR  -->
+        <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DE LA EMPRESA SELECCIONADO  -->
         <?php @include './php-principal/modal_editar_entrevistador_seleccionado.php' ?>
 
 
@@ -57,14 +57,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
             <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
             <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>
 
-            <!-- EMPEZAR TABLA DE DLISTA DE ENTREVISTADORES -->
+            <!-- EMPEZAR TABLA DE LISTA DE EMPRESAS -->
             <div class="student-list-header d-flex justify-content-between align-items-center py-2">
-                <div class="title h6 fw-bold">Lista de Entrevistadores</div>
+                <div class="title h6 fw-bold">Lista de Empresas</div>
 
                 <div class="btn-add d-flex gap-3 align-items-center">
 
-                    <!-- *** MODAL PARA CREAR ENTREVISTADORES ***-->
-                    <?php @include './php-principal/modal_crear_entrevistadores.php' ?>
+                    <!-- *** MODAL PARA CREAR EMPRESAS ***-->
+                    <?php @include './php-principal/modal_crear_empresas.php' ?>
                     <!-- *************************************** -->
 
                     <div class="btn-postulantes-desactivos">
@@ -86,10 +86,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
                         <tr class="align-middle centrado"><!--  -->
                             <th style="display: none;">ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido paterno</th>
-                            <th>Apellido materno</th>
                             <th>Sede</th>
+                            <th>Lugar</th>
                             <th> </th>
                             <th>Estado</th>
                         </tr>
@@ -97,34 +95,27 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <tbody>
                         <?php
                         include '../../../modelo/conexion.php';
-                        $sql = "SELECT * FROM entrevistador WHERE estado = 'activo'/* ORDER BY id_entrevistador DESC */";
+                        $sql = "SELECT * FROM sede WHERE estado = 'activo' AND id_Sede > 2/* ORDER BY id_entrevistador DESC */";
                         $resultado = mysqli_query($conn, $sql);
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             while ($fila = mysqli_fetch_assoc($resultado)) {
                         ?>
-                                <tr class="bg-white align-middle">
-                                    <td class="user_id" style="display: none;"><?php echo $fila['id_entrevistador']; ?></td>
-                                    <td class=""><?php echo $fila['nombre_entrevistador']; ?></td>
-                                    <td class=""><?php echo $fila['apellido_paterno_entrevistador']; ?></td>
-                                    <td class=""><?php echo $fila['apellido_materno_entrevistador']; ?></td>
-                                    <td class=""><?php echo $fila['sede']; ?></td>
+                                <tr class="bg-white align-middle centrado">
+                                    <td class="user_id" style="display: none;"><?php echo $fila['id_sede']; ?></td>
+                                    <td class=""><?php echo $fila['nombre_sede']; ?></td>
+                                    <td class=""><?php echo $fila['lugar_sede']; ?></td>
                                     <td class="">
                                         <a href="" class=" btn-ver me-0"><i class="far fa-eye" style="color: #2E59EA;"></i></a>
                                         <a href="" class="btn-editar ms-0"><i class="far fa-pen" style="color: #EAD42E;"></i></a>
                                     </td>
                                     <td>
-                                        <button style="width: 100px;" class="btn <?php echo ($fila['estado'] == 'activo') ? 'btn-success' : 'btn-danger'; ?> estadoBtn" onclick="cambiarEstado(this)" data-id="<?php echo $fila['id_entrevistador']; ?>">
+                                        <button style="width: 100px;" class="btn <?php echo ($fila['estado'] == 'activo') ? 'btn-success' : 'btn-danger'; ?> estadoBtn" onclick="cambiarEstado(this)" data-id="<?php echo $fila['id_sede']; ?>">
                                             <?php echo ($fila['estado'] == 'activo') ? 'Activo' : 'Inactivo'; ?>
                                         </button>
                                     </td>
                                 </tr>
                         <?php
                             }
-                        } else {
-                            // Si no hay resultados, imprimir una fila indicando que no hay datos
-                            echo '<tr>';
-                            echo '<td colspan="6">No hay datos disponibles</td>'; // Ajusta el colspan según el número de columnas en tu tabla
-                            echo '</tr>';
                         }
                         mysqli_free_result($resultado);
                         mysqli_close($conn);
@@ -162,19 +153,19 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
 
-    <!-- SCRIPT AJAX TABLA ENTREVISTADORES -->
+    <!-- SCRIPT AJAX TABLA EMPRESAS -->
     <script src="./js-principal/tabla-entrevistadores.js"></script>
 
-    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL ENTREVISTADOR -->
+    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL EMPRESAS -->
     <script src="./js-principal/estadoBotonEntrevistadores.js"></script>
 
-    <!-- SCRIPT AJAX - VER INFORMACION ENTREVISATDOR SELECCIONADO-->
+    <!-- SCRIPT AJAX - VER INFORMACION EMPRESAS SELECCIONADO-->
     <script src="./js-principal/verInformacionEntrevistadorSeleccionado.js"></script>
 
-    <!-- SCRIPT AJAX - EDITAR INFORMACION ENTREVISTADOR SELECCIONADO-->
+    <!-- SCRIPT AJAX - EDITAR INFORMACION EMPRESAS SELECCIONADO-->
     <script src="./js-principal/editarInformacionEntrevistadorSeleccionado.js"></script>
 
-    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS ENTREVISTADORES DESACTIVOS -->
+    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LAS EMPRESAS DESACTIVOS -->
     <script src="./js-principal/verInformacionTablaModalEntrevistadoresNoSeleccionado.js"></script>
 
 </body>
