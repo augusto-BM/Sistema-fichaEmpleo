@@ -84,7 +84,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                                 <div class="card-body">
                             <input type="hidden" id="entrevistador_id" name="id_entrevistador">
                             <div class="">
-                            <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;" ><label for="recipient-name" class="col-form-label">Nombre:</label></div>
+                            <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px; " ><label for="recipient-name" class="col-form-label">Nombre:</label></div>
                                 <input type="text" class="form-control" style="margin-bottom: 5px;" id="nombre_entrevistador" name="nombre_entrevistador">
                             </div>
                             <div class="">
