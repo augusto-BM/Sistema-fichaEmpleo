@@ -13,7 +13,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adminitrador Principal</title>
+    <title>Adminitrador Principal - Imfca Contacto</title>
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
@@ -63,9 +63,21 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </nav>
             </header>
 
-            <!-- --------- CARDS DE LAS INFO DE LAS EMPRESAS -------->
-            <?php @include './php-principal/cards_empresas.php' ?>
+            <!--CARDS DE INFO DE POSTULANTES DE IMFCA CONTACTO HOY -->
+            <?php @include '../../../controlador/controlador-principal/controlador-contarPostulantes.php' ?>
+            <div class="cards row gap-3 justify-content-center mt-2">
+                <div class=" card__items card__items--imfca position-relative col-sm-12 col-md-6 col-lg-6 col-xl-6" id="card-imfcaContacto">
+                    <div class="card__students d-flex flex-column gap-2 mt-3 ">
+                        <span>Imfca Contanto</span>
+                        <p class="pasaron"><?php echo  $row_imfca_seleccionados['total'] ?> <i class="pasaron fas fa-user-check h3"></i></p>
+                        <p class="asistieron">Hoy: <b> &nbsp;<?php echo  $row_imfca['total'] ?></b> postulantes</p>
+
+                    </div>
+                </div>
+
+            </div>
             <!--  ------------------------------------------------ -->
+
             <div class="principal-contenedor">
                 <div class="student-list-header d-flex justify-content-between align-items-center py-2">
                     <div class="title h6 fw-bold">Dashboard - <?php echo $_SESSION['nombre_sede']; ?></div>
@@ -104,8 +116,13 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <!-- Necesario Clase busqueda: tabla -->
                     <table class="table student_list table-borderless table-striped tabla w-100" id="myTable">
                         <thead class="table-dark">
-                            <style>.centrado { text-align: center !important; vertical-align: middle !important;}</style>
-                            
+                            <style>
+                                .centrado {
+                                    text-align: center !important;
+                                    vertical-align: middle !important;
+                                }
+                            </style>
+
                             <tr class="align-middle"><!--  -->
                                 <th class="centrado" style="display: none;">ID</th>
                                 <th class="centrado">Nombre</th>
@@ -121,7 +138,12 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         <tbody>
                             <?php
                             include '../../../modelo/conexion.php';
-                            $sql = "SELECT * FROM fichaempleo WHERE proceso = 'Seleccionado' OR proceso = 'Postulante'/* ORDER BY fecha DESC, id DESC */";
+                            if (isset($_GET['nombre_empresa'])) {
+                                $nombre_empresa = $_GET['nombre_empresa'];
+
+                                $sql = "SELECT * FROM fichaempleo WHERE sede = '$nombre_empresa AND (proceso = 'Seleccionado' OR proceso = 'Postulante')";
+
+                            }
                             
                             $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador";
 
@@ -207,22 +229,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
 
-
-    <!-- DIRIGIR LAS PAGINAS CORRESPONDIENTES DE CADA EMPRESA -->
-    <!-- <script>
-        document.getElementById("card-imfcaContacto").addEventListener("click", function() {
-            window.location.href = "./principal-imfcaContacto.php";
-
-        });
-        document.getElementById("card-jbgOperator").addEventListener("click", function() {
-            window.location.href = "./principal-jbgOperator.php";
-
-        });
-        document.getElementById("card-bkn").addEventListener("click", function() {
-            window.location.href = "./principal-bkn.php";
-
-        });
-    </script> -->
 
     <!-- SCRIPT AJAX LIBRERIA DATATABLES - TABLA PRINCIPAL-->
     <script src="./js-principal/tabla-principal.js"></script>
