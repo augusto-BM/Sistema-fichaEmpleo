@@ -64,7 +64,7 @@
 <script>
   function redirectToEmpresa(idEmpresa) {
     // Redirigir a la página deseada pasando el ID de la empresa como parámetro
-    window.location.href = 'prueba.php?id_empresa=' + idEmpresa;
+    window.location.href = 'empresaSeleccionada.php?id_empresa=' + idEmpresa;
   }
 </script>
 

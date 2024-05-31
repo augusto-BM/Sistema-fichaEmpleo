@@ -5,6 +5,10 @@
         <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante</h5>
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <?php
+      $sql_cedes = "SELECT nombre_sede FROM sede WHERE estado = 'activo' AND id_Sede > 2";
+      $result = $conn->query($sql_cedes);
+      ?>
 
       <form class="container p-5 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
         <input type="hidden" id="user_id" name="id_postulante">
@@ -44,9 +48,16 @@
                 </td>
                 <td>
                   <select name="sede" id="sede" class="">
-                    <option value="Imfca Contacto">Imfca Contacto</option>
-                    <option value="JBG Operator">JBG Operator</option>
-                    <option value="BKN">BKN</option>
+                    <?php
+                    // Verificar si se encontraron resultados
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['nombre_sede'] . "'>" . $row['nombre_sede'] . "</option>";
+                      }
+                    } else {
+                      echo "<option value=''>No hay sedes activas</option>";
+                    }
+                    ?>
                   </select>
                 </td>
                 <td>

@@ -6,7 +6,10 @@
 
                 <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
+            <?php
+            $sql_cedes = "SELECT nombre_sede FROM sede WHERE estado = 'activo' AND id_Sede > 2";
+            $result = $conn->query($sql_cedes);
+            ?>
             <form method="POST" action="../../../controlador/controlador-principal/controlador-modalEditarEntrevistadores.php">
                 <div class="modal-body">
                     <div class="card">
@@ -28,9 +31,16 @@
                             <div class="">
                                 <div class="sede-entrevistador" style="text-align:center; background-color:#CFE2FF;border: 1px solid #9ec5fe"><label for="recipient-name" class="col-form-label">Sede</label></div>
                                 <select style="margin-bottom: 5px;" name="sede" id="sede" class="form-select">
-                                    <option value="Imfca Contacto">Imfca Contacto</option>
-                                    <option value="JBG Operator">JBG Operator</option>
-                                    <option value="BKN">BKN</option>
+                                    <?php
+                                    // Verificar si se encontraron resultados
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row['nombre_sede'] . "'>" . $row['nombre_sede'] . "</option>";
+                                        }
+                                    } else {
+                                        echo "<option value=''>No hay sedes activas</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>

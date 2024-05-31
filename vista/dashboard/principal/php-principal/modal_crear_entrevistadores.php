@@ -9,6 +9,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="card">
+                        <?php
+                        $sql_cedes = "SELECT nombre_sede FROM sede WHERE estado = 'activo' AND id_Sede > 2";
+                        $result = $conn->query($sql_cedes);
+
+                        ?>
                         <div class="card-body">
                             <form method="POST" action="../../../controlador/controlador-principal/controlador-agregarEntrevistadores.php" enctype="multipart/form-data">
                                 <div class="">
@@ -26,9 +31,16 @@
                                 <div class="">
                                     <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Sede</label></div>
                                     <select name="sede" id="sede" class="form-select" style="margin-bottom: 5px;">
-                                        <option value="Imfca Contacto">Imfca Contacto</option>
-                                        <option value="JBG Operator">JBG Operator</option>
-                                        <option value="BKN">BKN</option>
+                                        <?php
+                                        // Verificar si se encontraron resultados
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['nombre_sede'] . "'>" . $row['nombre_sede'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option value=''>No hay sedes activas</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
 

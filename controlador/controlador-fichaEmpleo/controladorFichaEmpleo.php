@@ -34,11 +34,15 @@
         $positivos_2 = $_POST["positivos_2"];
         $negativos_1 = $_POST["negativos_1"];
         $negativos_2 = $_POST["negativos_2"];
+        $empresa_experiencia = $_POST["empresa_experiencia"];
+        $cargo_experiencia = $_POST["cargo_experiencia"];
+        $fecha_cargo_desde = $_POST["fecha_cargo_desde"];
+        $fecha_cargo_hasta = $_POST["fecha_cargo_hasta"];
 
         
         // Preparar la consulta SQL para insertar los datos en la tabla
-        $sql = "INSERT INTO fichaempleo (id_postulante, sede, cargoPostulante, nombrePostulante, ApPaternoPostulante, ApMaternoPostulante, fecha, nroDni_Cedula, Nacionalidad, fechaNacimiento, EstadoCivil, Edad, nroHijos, direccion, distrito, ciudad, celular, correo, estudios, fuente_trabajo, cualidadPositiva_a, cualidadPositiva_b, cualidadNegativa_a, cualidadNegativa_b, proceso, estado) 
-                VALUES ('$id_postulante','$sede','$cargo', '$nombres', '$apellido_paterno', '$apellido_materno', '$fecha_hoy', '$dni', '$nacionalidad', '$fecha_nacimiento', '$estado_civil', '$edad', '$hijos', '$direccion', '$distrito', '$ciudad', '$celular', '$correo', '$estudios', '$fuente_trabajo', '$positivos_1', '$positivos_2', '$negativos_1', '$negativos_2', '$proceso', '$estado')";
+        $sql = "INSERT INTO fichaempleo (id_postulante, sede, cargoPostulante, nombrePostulante, ApPaternoPostulante, ApMaternoPostulante, fecha, nroDni_Cedula, Nacionalidad, fechaNacimiento, EstadoCivil, Edad, nroHijos, direccion, distrito, ciudad, celular, correo, estudios, fuente_trabajo, cualidadPositiva_a, cualidadPositiva_b, cualidadNegativa_a, cualidadNegativa_b, empresa_que_trabajo, cargo_que_trabajo, desde, hasta, proceso, estado) 
+                VALUES ('$id_postulante','$sede','$cargo', '$nombres', '$apellido_paterno', '$apellido_materno', '$fecha_hoy', '$dni', '$nacionalidad', '$fecha_nacimiento', '$estado_civil', '$edad', '$hijos', '$direccion', '$distrito', '$ciudad', '$celular', '$correo', '$estudios', '$fuente_trabajo', '$positivos_1', '$positivos_2', '$negativos_1', '$negativos_2', '$empresa_experiencia', '$cargo_experiencia', '$fecha_cargo_desde', '$fecha_cargo_hasta','$proceso', '$estado')";
         $query = mysqli_query($conn, $sql);
 
         

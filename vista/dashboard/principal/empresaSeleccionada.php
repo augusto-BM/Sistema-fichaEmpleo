@@ -13,7 +13,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adminitrador Principal - JBG Operator</title>
+    <title>Adminitrador Principal - Imfca Contacto</title>
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
@@ -63,14 +63,55 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </nav>
             </header>
 
-            <!--CARDS DE INFO DE POSTULANTES DE JBG OPERATOR HOY -->
-            <?php @include '../../../controlador/controlador-principal/controlador-contarPostulantes.php' ?>
+            <!--CARDS DE INFO DE POSTULANTES DE CADA EMPRESA HOY -->
+            <?php
+            // Obtener el valor enviado "id_empresa" de cards_empresas.php
+            if (isset($_GET['id_empresa'])) {
+
+                //GUARDAMOS EL VALOR DEL ID EN UNA VARIABLE
+                $idEmpresa = $_GET['id_empresa'];
+
+                //BUSCAMOS EL NOMBRE DE LA EMPRESA SEGUN SU ID
+                $sql_nombreEmpresas = "SELECT nombre_sede FROM sede WHERE id_sede = $idEmpresa";
+
+                $result_nombreEmpresas = mysqli_query($conn, $sql_nombreEmpresas);
+
+                if ($result_nombreEmpresas) {
+
+                    $row_nombreEmpresas = mysqli_fetch_assoc($result_nombreEmpresas);
+
+                    //OBTIENE EL VALOR DEL NOMBRE DE LA EMPRESA
+                    $nombreEmpresas = $row_nombreEmpresas['nombre_sede'];
+                    $_SESSION['nombre_empresas'] = $nombreEmpresas;
+
+
+                    $contar_empresas  = "SELECT COUNT(id) as total FROM fichaempleo WHERE sede = '$nombreEmpresas' AND fecha = CURDATE()";
+                    $contar_empresas_seleccionados  = "SELECT COUNT(id) as total FROM fichaempleo WHERE sede = '$nombreEmpresas' AND fecha = CURDATE() AND proceso = 'Seleccionado'";
+
+                    $result_empresas = mysqli_query($conn, $contar_empresas);
+                    $result_empresas_seleccionados = mysqli_query($conn, $contar_empresas_seleccionados);
+
+                    if ($result_empresas && $result_empresas_seleccionados) {
+
+                        $row_empresas = mysqli_fetch_assoc($result_empresas);
+                        $row_empresas_seleccionados = mysqli_fetch_assoc($result_empresas_seleccionados);
+                    } else {
+                        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
+                    }
+                } else {
+                    echo "Error al ejecutar la consulta: para obtener el nombre de la mepresa " . mysqli_error($conn);
+                }
+            } else {
+                echo "No se ha proporcionado el ID de la empresa.";
+            }
+            ?>
+
             <div class="cards row gap-3 justify-content-center mt-2">
-                <div class=" card__items card__items--jbg position-relative col-sm-12 col-md-6 col-lg-6 col-xl-6" id="card-jbgOperator">
+                <div class=" card__items position-relative col-sm-12 col-md-6 col-lg-6 col-xl-6" id="card-imfcaContacto" style="background-color: #48344E;">
                     <div class="card__students d-flex flex-column gap-2 mt-3 ">
-                        <span>JBG Operator</span>
-                        <p class="pasaron"><?php echo  $row_jbg_seleccionados['total'] ?> <i class="pasaron fas fa-user-check h3"></i></p>
-                        <p class="asistieron">Hoy: <b> &nbsp;<?php echo  $row_jbg['total'] ?> </b> postulantes</p>
+                        <span><?php echo  $row_nombreEmpresas['nombre_sede'] ?></span>
+                        <p class="pasaron"><?php echo  $row_empresas_seleccionados['total'] ?> <i class="pasaron fas fa-user-check h3"></i></p>
+                        <p class="asistieron">Hoy: <b> &nbsp;<?php echo  $row_empresas['total'] ?></b> postulantes</p>
 
                     </div>
                 </div>
@@ -138,7 +179,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         <tbody>
                             <?php
                             include '../../../modelo/conexion.php';
-                            $sql = "SELECT * FROM fichaempleo WHERE sede = 'JBG Operator' AND (proceso = 'Seleccionado' OR proceso = 'Postulante')";
+                            $sql = "SELECT * FROM fichaempleo WHERE sede = '$nombreEmpresas' AND (proceso = 'Seleccionado' OR proceso = 'Postulante')";
                             $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador";
 
                             $resultado = mysqli_query($conn, $sql);
@@ -224,22 +265,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
 
 
-    <!-- DIRIGIR LAS PAGINAS CORRESPONDIENTES DE CADA EMPRESA -->
-    <script>
-        document.getElementById("card-imfcaContacto").addEventListener("click", function() {
-            window.location.href = "./principal-imfcaContacto.php";
-
-        });
-        document.getElementById("card-jbgOperator").addEventListener("click", function() {
-            window.location.href = "./principal-jbgOperator.php";
-
-        });
-        document.getElementById("card-bkn").addEventListener("click", function() {
-            window.location.href = "./principal-bkn.php";
-
-        });
-    </script>
-
     <!-- SCRIPT AJAX LIBRERIA DATATABLES - TABLA PRINCIPAL-->
     <script src="./js-principal/tabla-principal.js"></script>
     <!-- -------------------------- -->
@@ -261,7 +286,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- -------------------------------------------------------------- -->
 
     <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS POSTULANTES NO SELECCIONADOS -->
-    <script src="./js-principal/verInformacionTablaModalNoSeleccionados.js"></script>
+    <script src="./js-principal/verInformacionTablaModalNoSeleccionadoEmpresaEscogida.js"></script>
+
     <!-- ------------------------------------------------------------------ -->
 </body>
 

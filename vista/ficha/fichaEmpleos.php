@@ -43,6 +43,12 @@ if (!isset($_SESSION['nombre_sesion'])) {
   </div>
   <hr />
   <form class="container py-2 contenedor-formulario formulario" action="" method="post" id="formulario">
+
+    <?php
+    $sql_cedes = "SELECT nombre_sede FROM sede WHERE estado = 'activo' AND id_Sede > 2";
+    $result = $conn->query($sql_cedes);
+    ?>
+    
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
@@ -56,9 +62,16 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tr>
             <td>
               <select name="sede" class="sede">
-                <option value="Imfca Contacto">Imfca Contacto</option>
-                <option value="JBG Operator">JBG Operator</option>
-                <option value="BKN">BKN</option>
+                <?php
+                // Verificar si se encontraron resultados
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['nombre_sede'] . "'>" . $row['nombre_sede'] . "</option>";
+                  }
+                } else {
+                  echo "<option value=''>No hay sedes activas</option>";
+                }
+                ?>
               </select>
             </td>
             <td>
@@ -209,7 +222,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         </tbody>
       </table>
     </div>
-    
+
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
