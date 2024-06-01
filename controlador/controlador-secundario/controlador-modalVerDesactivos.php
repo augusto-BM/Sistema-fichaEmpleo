@@ -1,8 +1,11 @@
-<?php 
-@include '../../modelo/conexion.php';
-session_start();
-$EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
+<?php
+  @include "../../modelo/conexion.php";
+  session_start();
+
+    $NOMBRE_EPRESA = $_SESSION['nombre_sesion']; 
 ?>
+
+<h5 style="text-align: center;"><?php echo $NOMBRE_EPRESA; ?><br><br></h5>
 <div class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xl-12">
   <!-- Necesario Clase busqueda: tabla -->
   <table class="table student_list table-borderless table-striped tabla" id="mytablaDesacivos">
@@ -13,8 +16,6 @@ $EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
           vertical-align: middle !important;
         }
       </style>
-    <h5 style="text-align: center;"><?php echo $EMPRESA_SELECCIONADA ?><br><br></h5>
-
       <tr class="align-middle"><!--  -->
         <th class="centrado" style="display: none;">ID</th>
         <th class="centrado">Nombre</th>
@@ -27,10 +28,9 @@ $EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
       </tr>
     </thead>
     <tbody>
-
       <?php
-      $EMPRESA_SELECCIONADA;
-      $sql = "SELECT * FROM fichaempleo WHERE sede = '$EMPRESA_SELECCIONADA' AND proceso = 'No seleccionado'";
+      @include '../../modelo/conexion.php';
+      $sql = "SELECT * FROM fichaempleo WHERE sede = '$NOMBRE_EPRESA'AND proceso = 'No seleccionado'";
       $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador";
 
       $resultado = mysqli_query($conn, $sql);

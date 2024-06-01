@@ -1,52 +1,19 @@
-
+/* body {
+    background: #d3cce3;
+}
+.container my-4{
+    padding-right: 5rem;
+}
+.centered {
+    text-align: center !important;
+    vertical-align: middle !important;
+} */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-.navbar {
-  background-color: #cff4fc !important;
-  position: fixed;
-  width: 100%;
-  padding: 5px 0;
-  margin-top: -100px;
-  z-index: 100;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-
-.bienvenido {
-  color: #0f3eaa;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.contenedor-logout {
-  align-self: center;
-  /* Centra verticalmente el div */
-  margin-top: 10px;
-}
-
-.cerrarSesion {
-  background-color: #c44440;
-  padding: 10px;
-  border-radius: 20px;
-  color: white;
-}
-
-.cerrarSesion:hover {
-  background-color: #0a9099;
-  border-radius: 20px;
-  color: white;
-}
-
-main {
-  margin-top: 100px;
 }
 /* ********************************** IMPORTANTE ****************************** */
 .importante{
@@ -55,23 +22,6 @@ main {
     padding: 10px;
     font-family: "Lato", sans-serif;
     margin-bottom: 20px;
-}
-.terminos {
-  display: flex;
-  /* Utilizamos flexbox para alinear los elementos en una fila */
-  align-items: center;
-  /* Alineamos verticalmente los elementos en el centro */
-  margin-left: 10px;
-}
-
-.terminos p {
-  font-size: 15px;
-  margin-right: 10px;
-  margin-bottom: 0;
-}
-
-.terminos input[type="checkbox"] {
-  transform: scale(1.5);
 }
 /* ****************************************************************************** */
 
@@ -112,8 +62,8 @@ th {
   font-size: 26px;
 }
 
-select,
-input {
+table select,
+table input {
   border: none;
   width: 100%;
   text-align: center;
@@ -122,9 +72,6 @@ input {
   font-style: italic;
 }
 
-th {
-  color: #091D58 !important;
-}
 caption {
   margin-left: 80px;
   color: black;
@@ -183,7 +130,7 @@ caption {
 
 /* TAMAÑO ESCRITORIO MAYORE O IGUAL A 1200 px */
 @media screen and (min-width: 1200px) {
-  .container {
+  #formulario {
     width: 70%;
   }
 }
@@ -223,32 +170,15 @@ caption {
   .titulo-tercera-seccion, .titulo-sexta-seccion, .titulo-septima-seccion {
     font-size: 15px;
     margin-bottom: 1px;
-  }
-  .form-check-label {
-    font-size: 10px;
-  }
-
-}
-@media screen and (max-width: 420px) {
-  .navbar{
-    font-size: 16px;
-  }
-  .bienvenido{
-    font-size: 18px;
-  }
+    }
+    .form-check-label {
+        font-size: 10px;
+    }
 }
 
 @media screen and (max-width: 400px) {
-  caption {
-    font-size: 10px;
-    text-align: center;
-  }
-  .contenedor-logout{
-    margin: 0 auto;
-  }
-  .bienvenido{
-    margin: 0 auto;
-  }
-}
-
-    
+    caption {
+        font-size: 10px;
+        text-align: center;
+      }
+    }

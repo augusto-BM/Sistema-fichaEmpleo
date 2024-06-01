@@ -1,185 +1,325 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@200&display=swap');
-*{
-    font-family: 'Montserrat',sans-serif;
-    font-style: normal;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@200&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
 }
-.alert{
-    height: 30px !important;
-    padding: 3px 3px;
-    font-size: 15px;
+.container {
+  padding: 0;
 }
-.bg-sign-in{
-    background:linear-gradient(69.66deg, #00C1FE 19.39%, #FAFFC1 96.69%);
-    height:100vh;
-}
-.form-sign-in,.sign-up{
-    border-radius: 10px;
-    width: 380px;
+.principal-contenedor {
+  margin: 10px;
 }
 
-.bg-show{
-    display: block !important;
-    z-index: 0;
-}
-.bg{
-    background-color: rgba(0, 0, 0, 0.575);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    cursor: pointer;
-    display: none;
-}
-.register{
-    background: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -1000px;
-    transform: translate(-190px,-260px);
-    transition: 1s ease-out;
-}
-.register-active{
-    margin-top:0;
-    transition: 1s ease-out;
-}
-button[type="submit"]{
-    background-color: #00C1FE;
-}
-.E-classe {
-    border-left:solid 6px #00C1FE;
-}
-.bg-sign-in p,.bg-sign-in label{
-    font-size: 14px;
-    line-height:17,07px;
-    font-weight: 400;
-    color:#6C6C6C;
-}
-input[type="email"]::placeholder,input[type="password"]::placeholder{
-    font-size: 12px;
-    line-height: 15px;
-    color: #CDCDCD;
-}
-.sign-in{
-    font-size: 22px;
-    line-height: 27px;
-    font-weight: 600;
-}
 /* start dashboard */
 /* start sidebar */
-.bg-sidebar{
-    background-color: #FAFFC1;
-    transition: margin 0.6s ease-in-out;
-    z-index: 1;
+.bg-sidebar {
+  background-color: #020e39;
+  transition: margin 0.6s ease-in-out;
+  z-index: 1000;
+  color: white;
 }
-.bg-content{
-    background:#F8F8F8;
+.bg-content {
+  background: #f8f8f8;
 }
-.h7{
-    font-size: 14px;
+.h7 {
+  font-size: 14px;
+}
+.icono-contraer {
+  margin-left: 10px;
+  font-size: 35px;
+  color: #020e39;
+}
+.icono-contraer:hover {
+  color: #3d1fff;
+  cursor: pointer;
+}
+.sidebar-opciones i,
+.sidebar-opciones span {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+.sidebar-cerrar-sesion {
+  background-color: #c44440;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+}
+.sidebar-cerrar-sesion span:hover {
+  border-radius: 20px;
+  margin: 3px;
+}
+
+.sidebar-opciones span:hover {
+  background-color: #0a9099;
+  border-radius: 20px;
 }
 /* end sidebar */
+
 /* start cards */
-.admin-color{
-    color: #04b7ee ;
+.cards {
+  background-image: url('../../../vista/login/fondo-login.jpg');
+  /* Ruta a tu imagen de fondo */
+  background-size: cover;
+  /* Ajustar el tamaño de la imagen para cubrir el contenedor */
+  background-position: center;
+  /* Centrar la imagen */
+  background-repeat: no-repeat;
+  /* Evitar que la imagen de fondo se repita */
+  min-height: 300px;
+  align-items: center;
 }
-.cards .card__items{
-    border-radius: 8px;
-    width: 220px;
-    height: 150px;
+
+.card__items {
+  text-align: center;
+  position: relative;/* Establecer posición relativa para poder superponer elementos */
+  margin-bottom: 10px;
+  color: white;
+
 }
-.card__items--blue{
-    background-color:#F0F9FF;
+
+.card__items:hover {
+  background-color: #020e39 !important;
+  cursor: pointer;
+  color: white;
 }
-.card__items--blue i{
-    color: #74C1ED;
+
+.card__background {
+  position: absolute;
+  /* Establecer posición absoluta para superponer la imagen sobre el contenido */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  /* Color de fondo con transparencia */
 }
-.card__items--rose{
-    background-color:#FEF6FB;
+
+.card__empresas {
+  margin: 0 auto;
+  /* Centrar horizontalmente los elementos hijos */
+  width: 80%;
+  /* Ajusta el ancho según tus necesidades */
+  position: relative;
+  /* Establecer posición relativa para que los elementos hijos se superpongan correctamente */
+  z-index: 1;
+  /* Establecer un índice z para que los elementos hijos estén sobre la imagen de fondo */
 }
-.card__items--rose i{
-    color:#EE95C5;
+/* .cards {
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  
+  background-image: linear-gradient(rgba(0, 184, 156, 0),
+      rgba(0, 184, 156, 0)), url("../../../vista/login/fondo-login.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.admin-color {
+  color: #04b7ee;
+  font-size: larger;
 }
-.card__items--yellow{
-    background-color:#FEFBEC;
+.cards .card__items {
+  border-radius: 10px;
+  width: 220px;
+  height: 140px;
 }
-.card__items--yellow i{
-    color:#00C1FE;
+
+.pasaron {
+  color: #b2ff98 !important;
+  font-size: 25px !important;
 }
-.card__items--gradient{
-    background: linear-gradient(110.42deg, #00C1FE 18.27%, #FAFFC1 91.84%);
+.asistieron {
+  font-size: 12px !important;
 }
-.card__items--gradient i{
-    color:#FFFFFF;
+.total {
+  margin-top: 15px !important;
 }
-.nbr{
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+
+
+/* 
+.card__items--imfca {
+  background-color: #af64f9;
 }
+.card__items--imfca:hover {
+  background-color: #020e39;
+  cursor: pointer;
+}
+.card__items--imfca i {
+  color: whitesmoke;
+  margin: 0 auto;
+}
+.card__items--imfca span {
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 10px;
+}
+.card__items--imfca p {
+  color: whitesmoke;
+  text-align: center;
+  font-style: italic;
+  margin: 0 !important;
+}
+
+
+.card__items--jbg {
+  background-color: #0081e3;
+}
+.card__items--jbg:hover {
+  background-color: #020e39;
+  cursor: pointer;
+}
+.card__items--jbg i {
+  color: whitesmoke;
+  margin: 0 auto;
+}
+.card__items--jbg span {
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+ border-radius: 10px;
+}
+.card__items--jbg p {
+  color: whitesmoke;
+  text-align: center;
+  font-style: italic;
+  margin: 0 !important;
+}
+
+.card__items--bkn {
+  background-color: #5a23a2;
+}
+.card__items--bkn:hover {
+  background-color: #020e39;
+  cursor: pointer;
+}
+.card__items--bkn i {
+  color: whitesmoke;
+  margin: 0 auto;
+}
+.card__items--bkn span {
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+   border-radius: 10px;
+}
+.card__items--bkn p {
+  color: whitesmoke;
+  text-align: center;
+  font-style: italic;
+  margin: 0 !important;
+}
+
+.nbr {
+  position: absolute;
+  right: 30px;
+  top: 18px;
+} 
+*/
 /* end cards */
+
+.btn-postulantes-desactivos i {
+  color: #c44440 !important;
+}
+.btn-postulantes-desactivos i:hover {
+  cursor: pointer;
+  color: #ff0000 !important;
+}
 /* end dashboard */
 
-
-/* start students list  */
-.student_list{
-    border-collapse: separate;
-    border-spacing: 0 15px;
-}
-.table th{
-    font-size: 12px;
-    color:#ACACAC;
-}
-table tbody{
-    font-size: 14px;
-}
-.table a{
-    color:#00C1FE;
-}
-.student-list-header{
-    border-bottom: 2px solid #E5E5E5;
-}
-.student-list-header i{
-    color:#00C1FE;
+/* ----- DIV FILTROS DE FECHAS ----- */
+.filtradoFecha {
+  width: 100%;
+  display: flex;
 }
 
-.btn-primary{
-    background-color: #00C1FE;
-  border-color: #00C1FE;
+.fecha_col {
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+/* ---------------------------------- */
+/* start listado de postulantes  */
+.student_list {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+.table th {
+  font-size: 12px;
+  color: #acacac;
+}
+table tbody {
+  font-size: 14px;
+}
+.table a {
+  color: #00c1fe;
+}
+.student-list-header {
+  border-bottom: 2px solid #e5e5e5;
+}
+.student-list-header i {
+  color: #00c1fe;
+}
+
+.btn-primary {
+  background-color: #00c1fe;
+  border-color: #00c1fe;
 }
 .btn-primary:hover {
-    background-color: #04a6d8;
+  background-color: #04a6d8;
   border-color: #04a6d8;
 }
-.btn-primary:focus{
-    background-color: none;
+.btn-primary:focus {
+  background-color: none;
 }
 /* end students list */
-.fa-search{
-    left:-30px;
+
+.fa-search {
+  left: -5px;
 }
-.bg-sidebar a:hover{
-    background-color: #00C1FE;
-    border-radius: 5px;
-    width: 130px;
+
+.valid {
+  color: red;
 }
-.valid{
-    color: red;
+@media screen and (min-width: 768px) {
+  .bg-sidebar {
+    position: sticky !important;
+    top: 0;
+    width: 25% !important;
+  }
+  .hidden-sidebar {
+    margin-left: -25%;
+  }
 }
-@media screen and (min-width:768px){
-    .bg-sidebar{
-        position: sticky !important;
-        top: 0;
-        width: 25% !important;
-    }
-    .hidden-sidebar{
-        margin-left: -25%;
-        
-    }
+@media screen and (max-width: 768px) {
+  .hidden-sidebar-mobile {
+    margin-left: -50%;
+  }
+  .card__items{
+    margin: 10px;
+  }
+  .fecha_col label {
+    font-size: 10px;
+  }
+  .hamburguesa{
+    margin-top: 10px !important;
+  }
 }
-@media screen and (max-width:768px){
-    .hidden-sidebar-mobile{
-        margin-left: -50%;
-    }
-    
+
+@media screen and (max-width: 575px) {
+  .hamburguesa{
+    margin: 10px 0 0 20px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+  .filtradoFecha {
+    flex-direction: column;
+  }
 }

@@ -306,8 +306,15 @@ table tbody {
   .fecha_col label {
     font-size: 10px;
   }
+  .hamburguesa{
+    margin-top: 10px !important;
+  }
 }
-
+@media screen and (max-width: 575px) {
+  .hamburguesa{
+    margin: 10px 0 0 20px !important;
+  }
+}
 @media screen and (max-width: 400px) {
 
   .filtradoFecha {

@@ -14,6 +14,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adminitrador Principal</title>
+    <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
@@ -22,8 +23,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- 
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"> -->
 
     <link rel="stylesheet" href="./css-principal/modal_ver_y_editar.css"> <!-- Archivo CSS externo -->
 
@@ -58,7 +57,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
             <header>
                 <nav class="navbar container navbar-light bg-white position-sticky top-0">
                     <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none"></i>
+                        <i class="fas fa-bars h4  d-md-none hamburguesa"></i>
                     </div>
                 </nav>
             </header>
@@ -207,22 +206,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
 
-
-    <!-- DIRIGIR LAS PAGINAS CORRESPONDIENTES DE CADA EMPRESA -->
-    <!-- <script>
-        document.getElementById("card-imfcaContacto").addEventListener("click", function() {
-            window.location.href = "./principal-imfcaContacto.php";
-
-        });
-        document.getElementById("card-jbgOperator").addEventListener("click", function() {
-            window.location.href = "./principal-jbgOperator.php";
-
-        });
-        document.getElementById("card-bkn").addEventListener("click", function() {
-            window.location.href = "./principal-bkn.php";
-
-        });
-    </script> -->
 
     <!-- SCRIPT AJAX LIBRERIA DATATABLES - TABLA PRINCIPAL-->
     <script src="./js-principal/tabla-principal.js"></script>

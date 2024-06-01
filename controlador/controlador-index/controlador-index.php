@@ -1,9 +1,5 @@
 <?php
 @include './modelo/conexion.php';
-if (!$conn) {
-    echo "Error al incluir el archivo de conexión.";
-    exit();
-}
 
 session_start();
 
@@ -53,10 +49,15 @@ if(isset($_POST['submit'])){
          $_SESSION['nombre_sede'] = $row['lugar_sede'];
         header('location:./vista/dashboard/principal/principal.php');
 
-      } else if($row['rol'] == $rol_usuario){
+      } else if($row['rol'] == $rol_intermediario){
         $_SESSION['nombre_sesion'] = $row['sede'];
-        //$_SESSION['id_login_postulante'] = $row['id'];
-        header('location:./vista/ficha/fichaEmpleos.php');
+        $_SESSION['nombre_sede'] = $row['lugar_sede'];
+        header('location:./vista/dashboard/secundario/secundario.php');
+        
+      } else if ($row['rol'] == $rol_usuario) {
+         $_SESSION['nombre_sesion'] = $row['sede'];
+         //$_SESSION['id_login_postulante'] = $row['id'];
+         header('location:./vista/ficha/fichaEmpleos.php');
       }
 
    } else{

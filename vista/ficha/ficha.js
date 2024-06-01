@@ -67,6 +67,8 @@
             event.preventDefault();
             return;
         }
+        
+
 
         // Validación del campo de correo electrónico
         var correoInput = document.getElementById("correo").value;
@@ -191,3 +193,18 @@
         return true;
     }
 /* ******************************************************************************** */
+
+/* *********** FUNCION PARA VALIDAR EL RADIO DE TERMINOS Y CONDICIONES ***********/
+    const checkbox = document.getElementById('checkImportante');
+    const botonEnviar = document.getElementById('enviar');
+
+    checkbox.addEventListener('change', function() {
+
+        if (this.checked) {
+            botonEnviar.disabled = false;
+        } else {
+            botonEnviar.disabled = true;
+        }
+    });
+/* ******************************************************************************** */
+
