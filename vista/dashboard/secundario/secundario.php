@@ -23,10 +23,60 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="./css-principal/modal_ver_y_editar.css"> <!-- Archivo CSS externo -->
-
-
+    <link rel="stylesheet" href="./css-principal/modal_ver_y_editar.css">
     <link rel="stylesheet" href="./style.css">
+
+
+    <script src="./script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.js"></script>
+
+    <!-- JSZip (necesario para Buttons) -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <!-- DataTables Buttons extension -->
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+
+    <!-- jsPDF and pdfmake for PDF export -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
+
+
+    <!-- SCRIPT AJAX LIBRERIA DATATABLES - TABLA PRINCIPAL-->
+    <script src="./js-principal/tabla-principal.js"></script>
+    <!-- -------------------------- -->
+
+    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL POSTULANTE -->
+    <script src="./js-principal/estadoBontonTablaPrincipal.js"></script>
+    <!-- ----------------------------------------------------------- -->
+
+    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL POSTULANTE DESDE MODAL NO SELECCIONADOS-->
+    <script src="./js-principal/estadoBontonModalTablaNoSeleccionados.js"></script>
+    <!-- ----------------------------------------------------------- -->
+
+    <!-- SCRIPT AJAX - VER INFORMACION DE UN POSTULANTE SELECCIONADO -->
+    <script src="./js-principal/verInformacionPostulanteSeleccionadol.js"></script>
+    <!-- ----------------------------------------------------------- -->
+
+    <!-- SCRIPT AJAX - EDITAR INFORMACION DE UN POSTULANTE SELECCIONADO -->
+    <script src="./js-principal/editarInformacionTablaPrincipal.js"></script>
+    <!-- -------------------------------------------------------------- -->
+
+    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS POSTULANTES NO SELECCIONADOS -->
+    <script src="./js-principal/verInformacionTablaModalNoSeleccionados.js"></script>
+    <!-- ------------------------------------------------------------------ -->
+
+
 </head>
 
 <body class="bg-content">
@@ -177,58 +227,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!-- TERMINA EL CONTENIDO PRINCIPAL  -->
     </main>
 
-    <script src="./script.js"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
-    <!-- DATA TABLES -->
-    <!--     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>-->
-
-    <!-- DataTables JavaScript -->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.js"></script>
-
-    <!-- JSZip (necesario para Buttons) -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-
-    <!-- DataTables Buttons extension -->
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-
-    <!-- jsPDF and pdfmake for PDF export -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
-
-
-    <!-- SCRIPT AJAX LIBRERIA DATATABLES - TABLA PRINCIPAL-->
-    <script src="./js-principal/tabla-principal.js"></script>
-    <!-- -------------------------- -->
-
-    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL POSTULANTE -->
-    <script src="./js-principal/estadoBontonTablaPrincipal.js"></script>
-    <!-- ----------------------------------------------------------- -->
-
-    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL POSTULANTE DESDE MODAL NO SELECCIONADOS-->
-    <script src="./js-principal/estadoBontonModalTablaNoSeleccionados.js"></script>
-    <!-- ----------------------------------------------------------- -->
-
-    <!-- SCRIPT AJAX - VER INFORMACION DE UN POSTULANTE SELECCIONADO -->
-    <script src="./js-principal/verInformacionPostulanteSeleccionadol.js"></script>
-    <!-- ----------------------------------------------------------- -->
-
-    <!-- SCRIPT AJAX - EDITAR INFORMACION DE UN POSTULANTE SELECCIONADO -->
-    <script src="./js-principal/editarInformacionTablaPrincipal.js"></script>
-    <!-- -------------------------------------------------------------- -->
-
-    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS POSTULANTES NO SELECCIONADOS -->
-    <script src="./js-principal/verInformacionTablaModalNoSeleccionados.js"></script>
-    <!-- ------------------------------------------------------------------ -->
+    
 </body>
 
 </html>
