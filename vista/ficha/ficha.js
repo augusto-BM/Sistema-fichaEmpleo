@@ -18,8 +18,8 @@
         // Validación del campo de apellido paterno
         var apellidoPaternoInput = document.getElementById("apellido-paterno").value;
         // Expresión regular para apellido paterno válido
-        var apellidoPaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; 
-        if (!apellidoPaternoRegex.test(apellidoPaternoInput)) {
+        var apellidoPaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido paterno válido
+        if (apellidoPaternoInput.length<2 || !apellidoPaternoRegex.test(apellidoPaternoInput)) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -32,7 +32,7 @@
         // Validación del campo de apellido materno
         var apellidoMaternoInput = document.getElementById("apellido-materno").value;
         var apellidoMaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido materno válido
-        if (!apellidoMaternoRegex.test(apellidoMaternoInput)) {
+        if (apellidoMaternoInput.length<2 || !apellidoMaternoRegex.test(apellidoMaternoInput)) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
