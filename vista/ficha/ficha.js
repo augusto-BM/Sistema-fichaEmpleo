@@ -55,6 +55,59 @@
             return;
         }
 
+        //VALIDACIÓN DEL CAMPO DE FECHA DE NACIMIENTO
+        /* ******************************************************************************** */
+        var fechaNacimientoInput = document.getElementById("fecha-nacimiento").value;
+
+        // Verificar si el campo de fecha de nacimiento está vacío
+        if (!fechaNacimientoInput) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Por favor, ingresa tu fecha de nacimiento.",
+           });
+           event.preventDefault();
+           return;
+        }
+
+        // Convertir la fecha de nacimiento a un objeto Date
+        var fechaNacimiento = new Date(fechaNacimientoInput);
+
+        // Calcular la fecha actual
+        var fechaActual = new Date();
+        
+        //Verificar si la fecha de nacimiento es mayor que la fecha actual
+        if (fechaNacimiento > fechaActual) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "La fecha de nacimiento no puede ser mayor que la fecha actual.",
+            });
+            event.preventDefault();
+            return;
+        }
+
+        // Calcular la edad del usuario
+        var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+        var mesActual = fechaActual.getMonth();
+        var mesNacimiento = fechaNacimiento.getMonth();
+
+        // Si el mes actual es menor que el mes de nacimiento o si es el mismo mes pero el día actual es menor que el día de nacimiento, resta un año
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && fechaActual.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+        }
+
+        // Verificar si la edad es menor que 18 años
+        if (edad < 18) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Debes tener al menos 18 años para registrarte.",
+        });
+        event.preventDefault();
+        return;
+        }
+/* ******************************************************************************** */
         // Validación del campo de celular
         var celularInput = document.getElementById("celular").value;
         var celularRegex = /^[0-9]{9}$/; // Expresión regular para un número de celular de 9 dígitos
@@ -82,6 +135,123 @@
             event.preventDefault();
             return;
         }
+
+        // Validación del campo de dirección
+        var direccionInput = document.getElementById("direccion").value;
+        // Validar la longitud mínima de caracteres de dirección
+        if (direccionInput.length < 2) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Por favor ingresa una dirección válida!",
+           });
+           event.preventDefault();
+           return;
+        }
+
+        var ciudadInput = document.getElementById("ciudad").value;
+        var ciudadRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; //Expresión regular para ciudad válida
+        if (ciudadInput.length < 2 || !ciudadRegex.test(ciudadInput)) {// Validar la longitud mínima de caracteres de ciudad y las expresiones regulares
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Por favor ingresa una ciudad válida!",
+           });
+           event.preventDefault();
+           return;
+        }
+
+        var empresa_experienciaInput = document.getElementById("empresa_experiencia").value;
+        // Validar la longitud mínima de caracteres de empresa previa
+        if (empresa_experienciaInput.length < 1) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Por favor ingresa una empresa válida!",
+           });
+           event.preventDefault();
+           return;
+        }
+
+        var cargo_experienciaInput = document.getElementById("cargo_experiencia").value;
+        // Validar la longitud mínima de caracteres de cargo previo
+        if (cargo_experienciaInput.length < 1) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Por favor ingresa un cargo válido!",
+           });
+           event.preventDefault();
+           return;
+        }
+
+        //Validación de la fecha de inicio del cargo
+        var fechaCargoDesdeInput = document.getElementById("fecha_cargo_desde").value;
+
+        // Verificar si el campo de fecha está vacío
+        if (!fechaCargoDesdeInput) {
+           Swal.fire({
+           icon: "error",
+           title: "Oops...",
+           text: "Por favor, ingresa la fecha de inicio del cargo.",
+        });
+           event.preventDefault();
+        return;
+        }
+
+        //Validación de la fecha de fin de cargo
+        var fechaCargoHastaInput = document.getElementById("fecha_cargo_hasta").value;
+
+        // Verificar si el campo de fecha está vacío
+        if (!fechaCargoHastaInput) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Por favor, ingresa la fecha de fin del cargo.",
+           });
+           event.preventDefault();
+           return;
+           }
+
+        // Convertir la fecha de fin del cargo a un objeto Date
+        var fechaCargoHasta = new Date(fechaCargoHastaInput + "-01"); // Se añade "-01" para tener el primer día del mes
+
+        // Calcular la fecha actual
+        var fechaActual = new Date();
+
+        // Verificar si la fecha de fin del cargo es mayor que la fecha de hoy
+        if (fechaCargoHasta > fechaActual) {
+           Swal.fire({
+               icon: "error",
+               title: "Oops...",
+             text: "La fecha de fin del cargo no puede ser mayor que la fecha actual.",
+           });
+           event.preventDefault();
+           return;
+        }
+
+        //Validación de campo de cualidades
+        var cualidadesInputs = document.querySelectorAll(".cualidades");
+
+       // Iterar sobre cada campo de texto
+       for (var i = 0; i < cualidadesInputs.length; i++) {
+       var input = cualidadesInputs[i];
+       var valor = input.value.trim(); // Obtener el valor del campo y eliminar espacios en blanco al principio y al final
+
+       // Verificar si el campo de texto está vacío
+       if (valor === "") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor, completa todos los campos de texto de cualidades.",
+        });
+        event.preventDefault();
+        return;
+        }
+}
+
+
+
 
     });
 /* ******************************************************************************** */

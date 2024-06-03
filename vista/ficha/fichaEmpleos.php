@@ -148,7 +148,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </select>
               </td>
               <td>
-                <input type="date" id="fecha-nacimiento" name="fecha_nacimiento">
+                <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" max="2024-12-31">
               </td>
               <td>
                 <select name="estado_civil">
@@ -284,7 +284,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </select>
               </td>
               <td>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad">
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad" onkeypress="return soloLetras(event)">
               </td>
             </tr>
           </tbody>
@@ -311,7 +311,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
               </td>
               <td>
-                <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo">
+                <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo" onkeypress="return soloLetras(event)">
 
               </td>
               <td>
@@ -359,8 +359,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <label class="form-check-label" for="no_estudio">No estudio</label>
         </div>
         <div class="col-md-3 form-check opciones">
-          <input class="form-check-input" type="radio" id="si_estudio" name="estudios">
-          <label class="form-check-label" for="si_estudio">Si estudio&nbsp; </label>
+          <input class="form-check-input" type="radio" id="si_estudio" name="estudios" onkeypress="return soloLetras(event)">
+          <label class="form-check-label" for="si_estudio" >Si estudio&nbsp; </label>
 
         </div>
         <div class="col-md-6 form-check opciones">
@@ -397,7 +397,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
       <div class="table-responsive">
         <table class="table table-bordered caption-top">
           <thead>
-            <caption>Describre 2 cualidades positivas y negativas que tienes</caption>
+            <caption>Describe 2 cualidades positivas y negativas que tienes</caption>
             <tr class="table-info cualidades-title">
               <th>POSITIVAS:</th>
               <th>NEGATIVAS:</th>
@@ -406,19 +406,19 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input class="cualidades" type="text" name="positivos_1" placeholder="1. ">
+                <input class="cualidades" type="text" name="positivos_1" placeholder="1. " onkeypress="return soloLetras(event)">
               </td>
               <td>
-                <input class="cualidades" type="text" name="negativos_1" placeholder="1. ">
+                <input class="cualidades" type="text" name="negativos_1" placeholder="1. " onkeypress="return soloLetras(event)">
 
               </td>
             </tr>
             <tr>
               <td>
-                <input class="cualidades" type="text" name="positivos_2" placeholder="2. ">
+                <input class="cualidades" type="text" name="positivos_2" placeholder="2. " onkeypress="return soloLetras(event)">
               </td>
               <td>
-                <input class="cualidades" type="text" name="negativos_2" placeholder="2. ">
+                <input class="cualidades" type="text" name="negativos_2" placeholder="2. " onkeypress="return soloLetras(event)">
 
               </td>
             </tr>
