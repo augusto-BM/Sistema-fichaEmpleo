@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="POST" action="../../../controlador/controlador-principal/controlador-modalEditarEmpresas.php">
+            <form method="POST" action="../../../controlador/controlador-secundario/controlador-modalEditarEmpresas.php">
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">

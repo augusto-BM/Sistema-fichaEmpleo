@@ -2,6 +2,7 @@
 @include '../../../../modelo/conexion.php';
 session_start();
 $EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
+
 ?>
 <div class="modal fade" id="editar_info_postulante" tabindex="-1" aria-labelledby="editar_info_postulanteLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl"> <!-- modal-xl para un modal más grande -->

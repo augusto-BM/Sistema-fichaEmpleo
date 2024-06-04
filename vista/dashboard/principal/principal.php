@@ -81,8 +81,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <script src="./js-principal/verInformacionTablaModalNoSeleccionados.js"></script>
     <!-- ------------------------------------------------------------------ -->
 
-
-
 </head>
 
 <body class="bg-content">
@@ -158,8 +156,13 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <!-- Necesario Clase busqueda: tabla -->
                     <table class="table student_list table-borderless table-striped tabla w-100" id="myTable">
                         <thead class="table-dark">
-                            <style>.centrado { text-align: center !important; vertical-align: middle !important;}</style>
-                            
+                            <style>
+                                .centrado {
+                                    text-align: center !important;
+                                    vertical-align: middle !important;
+                                }
+                            </style>
+
                             <tr class="align-middle"><!--  -->
                                 <th class="centrado" style="display: none;">ID</th>
                                 <th class="centrado">Nombre</th>
@@ -176,7 +179,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                             <?php
                             include '../../../modelo/conexion.php';
                             $sql = "SELECT * FROM fichaempleo WHERE proceso = 'Seleccionado' OR proceso = 'Postulante'/* ORDER BY fecha DESC, id DESC */";
-                            
+
                             $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador";
 
                             $resultado = mysqli_query($conn, $sql);

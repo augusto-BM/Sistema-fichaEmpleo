@@ -148,7 +148,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </select>
               </td>
               <td>
-                <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" max="2024-12-31">
+                <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" min="1973-01-01" max="2005-12-31">
               </td>
               <td>
                 <select name="estado_civil">
@@ -238,12 +238,12 @@ if (!isset($_SESSION['nombre_sesion'])) {
               </td>
               <td>
                 <select name="distrito">
-                  <option value="Lima">Lima</option>
                   <option value="Ancón">Ancón</option>
                   <option value="Ate">Ate</option>
                   <option value="Barranco">Barranco</option>
                   <option value="Breña">Breña</option>
                   <option value="Carabayllo">Carabayllo</option>
+                  <option value="Centro de lima" selected>Centro de lima</option>
                   <option value="Chaclacayo">Chaclacayo</option>
                   <option value="Chorrillos">Chorrillos</option>
                   <option value="Cieneguilla">Cieneguilla</option>
@@ -284,7 +284,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </select>
               </td>
               <td>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad" onkeypress="return soloLetras(event)">
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa el lugar" onkeypress="return soloLetras(event)">
               </td>
             </tr>
           </tbody>
@@ -359,12 +359,12 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <label class="form-check-label" for="no_estudio">No estudio</label>
         </div>
         <div class="col-md-3 form-check opciones">
-          <input class="form-check-input" type="radio" id="si_estudio" name="estudios" onkeypress="return soloLetras(event)">
+          <input class="form-check-input" type="radio" id="si_estudio" name="estudios">
           <label class="form-check-label" for="si_estudio" >Si estudio&nbsp; </label>
 
         </div>
         <div class="col-md-6 form-check opciones">
-          <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" readonly value="No">
+          <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" readonly value="No" onkeypress="return soloLetras(event)">
         </div>
       </div>
       <hr class="separador" />

@@ -24,3 +24,15 @@ document.addEventListener("DOMContentLoaded", function() {
         sidebar.classList.add("hidden-sidebar-mobile");
     });
 });
+
+//QUE LA FECHA DE HOY SE ESTABLEZCA POR DEFECTO AL INPUT DE FECHA FIN
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtener el input de fecha
+    const fechaInput = document.getElementById("fechaFin");
+
+    // Obtener la fecha actual en formato YYYY-MM-DD
+    const fechaActual = new Date().toISOString().split('T')[0];
+
+    // Establecer la fecha actual como el valor predeterminado del input
+    fechaInput.value = fechaActual;
+});

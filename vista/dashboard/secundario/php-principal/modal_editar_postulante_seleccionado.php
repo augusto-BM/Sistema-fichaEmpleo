@@ -10,7 +10,7 @@
       $result = $conn->query($sql_cedes);
       ?>
 
-      <form class="container p-5 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
+      <form class="container p-5 contenedor-formulario" action="../../../controlador/controlador-secundario/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
         <input type="hidden" id="user_id" name="id_postulante">
 
         <div class="table-responsive">

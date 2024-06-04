@@ -234,18 +234,18 @@ if (isset($_POST['click_btn_ver'])) {
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="ciudad" name="empresa" placeholder="Ingresa nombre de la empresa" readonly>
+                                    <input type="text" id="ciudad" name="empresa" placeholder="Ingresa nombre de la empresa" value="<?php echo $fila['empresa_que_trabajo'] ?>" readonly >
 
                                 </td>
                                 <td>
-                                    <input type="text" id="ciudad" name="cargo" placeholder="Ingresa el cargo" readonly>
+                                    <input type="text" id="ciudad" name="cargo" placeholder="Ingresa el cargo" value="<?php echo $fila['cargo_que_trabajo'] ?>" readonly>
 
                                 </td>
                                 <td>
-                                    <input class="fecha_cargo_desde" type="month" id="fecha_cargo_desde" name="fecha_cargo_desde" readonly>
+                                    <input class="fecha_cargo_desde" type="month" id="fecha_cargo_desde" name="fecha_cargo_desde" value="<?php echo $fila['desde'] ?>"  readonly>
                                 </td>
                                 <td>
-                                    <input class="fecha_cargo_hasta" type="month" id="fecha_cargo_hasta" name="fecha_cargo_hasta" readonly>
+                                    <input class="fecha_cargo_hasta" type="month" id="fecha_cargo_hasta" name="fecha_cargo_hasta" value="<?php echo $fila['hasta'] ?>" readonly>
                                 </td>
                             </tr>
                         </tbody>

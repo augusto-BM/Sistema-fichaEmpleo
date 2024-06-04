@@ -10,7 +10,7 @@
             $sql_cedes = "SELECT nombre_sede FROM sede WHERE estado = 'activo' AND id_Sede > 2";
             $result = $conn->query($sql_cedes);
             ?>
-            <form method="POST" action="../../../controlador/controlador-principal/controlador-modalEditarEntrevistadores.php">
+            <form method="POST" action="../../../controlador/controlador-secundario/controlador-modalEditarEntrevistadores.php">
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
