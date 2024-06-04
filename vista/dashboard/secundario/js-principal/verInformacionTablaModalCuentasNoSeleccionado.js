@@ -7,15 +7,15 @@ $(document).ready(function() {
         //console.log(user_id);
         $.ajax({
             method: "POST",
-            url: '../../../controlador/controlador-principal/controlador-modalVerEmpresasDesactivos.php',
+            url: '../../../controlador/controlador-secundario/controlador-modalVerCuentasDesactivos.php',
             data: {
                 'click_btn_verDesactivo': true,
                 'user_id': user_id,
             },
             success: function(response) {
                 console.log(response);
-                $('.ver_info_empresasDesactivos').html(response);
-                $('#ver_info_empresasDesactivos').modal('show');
+                $('.ver_info_cuentasDesactivos').html(response);
+                $('#ver_info_cuentasDesactivos').modal('show');
             }
         });
     });

@@ -10,12 +10,12 @@
   </div>
   <div class=" bg-list d-flex flex-column align-items-center fw-bold gap-2 mt-4 ">
     <ul class="d-flex flex-column list-unstyled sidebar-opciones">
-      <li class="h7"><a class="nav-link text-dark" href="secundario.php"><i class="fal fa-home-lg-alt me-2"></i> <span>Inicio</span></a></li>
-      <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fal fa-user-tie"></i></i> <span>Entrevistadores</span></a></li>
-
-      <li class="h7"><a class=" nav-link text-dark" href="empresas.php"><i class="fal fa-usd-square me-2"></i> <span>Empresas</span></a></li>
-      <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fal fa-file-chart-line me-2"></i> <span>Graficos</span></a></li>
-      <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fal fa-sliders-v-square me-2"></i> <span>Configuracion</span></a></li>
+      <li class="h7"><a class="nav-link text-dark" href="secundario.php"><i class="fas fa-home-lg-alt me-2"></i> <span>Inicio</span></a></li>
+      <li class="h7"><a class=" nav-link text-dark" href="entrevistadores.php"><i class="fas fa-user-tie"></i></i> <span>Entrevistadores</span></a></li>
+      <li class="h7"><a class=" nav-link text-dark" href="cuentas.php"><i class="fas fa-user-shield"></i> <span>Cuentas</span></a></li>
+      <li class="h7"><a class=" nav-link text-dark" href="empresas.php"><i class="fas fa-usd-square me-2"></i> <span>Empresas</span></a></li>
+      <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fas fa-file-chart-line me-2"></i> <span>Graficos</span></a></li>
+      <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fas fa-sliders-v-square me-2"></i> <span>Configuracion</span></a></li>
     </ul>
     <ul class="logout d-flex justify-content-start list-unstyled sidebar-cerrar-sesion">
       <li class=" h7"><a class="nav-link" href="../../../vista/login/cerrar-sesion.php"><span>Cerrar Sesion</span><i class="fal fa-sign-out-alt ms-2"></i></a></li>

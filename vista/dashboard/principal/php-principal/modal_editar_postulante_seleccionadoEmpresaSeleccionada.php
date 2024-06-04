@@ -1,8 +1,13 @@
+<?php 
+@include '../../../../modelo/conexion.php';
+session_start();
+$EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
+?>
 <div class="modal fade" id="editar_info_postulante" tabindex="-1" aria-labelledby="editar_info_postulanteLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl"> <!-- modal-xl para un modal más grande -->
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-center">
-        <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante- <?php echo $NOMBRE_SEDE_LOGUEADO ?></h5>
+        <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante hola <?php echo $EMPRESA_SELECCIONADA;?></h5>
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <?php
@@ -10,7 +15,7 @@
       $result = $conn->query($sql_cedes);
       ?>
 
-      <form class="container p-5 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditar.php" method="POST" class="formulario" id="editarForm">
+      <form class="container p-5 contenedor-formulario" action="../../../controlador/controlador-principal/controlador-modalEditarEmpresaSeleccionada.php" method="POST" class="formulario" id="editarForm">
         <input type="hidden" id="user_id" name="id_postulante">
 
         <div class="table-responsive">
@@ -33,7 +38,7 @@
                     }
 
                     // Consulta para obtener los datos de los entrevistadores
-                    $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador WHERE estado = 'activo' AND sede = '$NOMBRE_SEDE_LOGUEADO'";
+                    $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador WHERE estado = 'activo' AND sede = '$EMPRESA_SELECCIONADA'";
 
                     $resultado_entrevistadores = mysqli_query($conn, $sql_entrevistadores);
                     if ($resultado_entrevistadores && mysqli_num_rows($resultado_entrevistadores) > 0) {

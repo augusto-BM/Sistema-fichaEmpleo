@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
+$NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuentas</title>
+    <title>Entrevistadores</title>
     <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -48,20 +49,20 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.css" />
 
-    <!-- SCRIPT AJAX TABLA CUENTAS -->
-    <script src="./js-principal/tabla-cuentas.js"></script>
+    <!-- SCRIPT AJAX TABLA ENTREVISTADORES -->
+    <script src="./js-principal/tabla-entrevistadores.js"></script>
 
-    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DE LA CUENTA -->
-    <script src="./js-principal/estadoBotonCuentas.js"></script>
+    <!-- SCRIPT AJAX - ESTADO DEL BOTON Y DEL ENTREVISTADOR -->
+    <script src="./js-principal/estadoBotonEntrevistadores.js"></script>
 
-    <!-- SCRIPT AJAX - VER INFORMACION CUENTA SELECCIONADO-->
-    <script src="./js-principal/verInformacionCuentaSeleccionado.js"></script>
+    <!-- SCRIPT AJAX - VER INFORMACION ENTREVISATDOR SELECCIONADO-->
+    <script src="./js-principal/verInformacionEntrevistadorSeleccionado.js"></script>
 
-    <!-- SCRIPT AJAX - EDITAR INFORMACION CUENTA SELECCIONADO-->
-    <script src="./js-principal/editarInformacionCuentaSeleccionado.js"></script>
+    <!-- SCRIPT AJAX - EDITAR INFORMACION ENTREVISTADOR SELECCIONADO-->
+    <script src="./js-principal/editarInformacionEntrevistadorSeleccionado.js"></script>
 
-    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LAS CUENTAS DESACTIVOS -->
-    <script src="./js-principal/verInformacionTablaModalCuentasNoSeleccionado.js"></script>
+    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS ENTREVISTADORES DESACTIVOS -->
+    <script src="./js-principal/verInformacionTablaModalEntrevistadoresNoSeleccionado.js"></script>
 
 
 </head>
@@ -70,15 +71,15 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <main class="dashboard d-flex">
 
-        <!-- MODAL PARA VER LA TABLA COMPLETA DE LOS CUENTAS DESACTIVOS -->
-        <?php @include './php-principal/modal_ver_cuentas_desactivos.php' ?>
+        <!-- MODAL PARA VER LA TABLA COMPLETA DE LOS ENTREVISTADORES DESACTIVOS -->
+        <?php @include './php-principal/modal_ver_entrevistadores_desactivos.php' ?>
 
 
-        <!-- MODAL PARA VER LA INFORMACION COMPLETA DE LA CUENTA SELECCIONADO -->
-        <?php @include './php-principal/modal_ver_cuenta_seleccionado.php' ?>
+        <!-- MODAL PARA VER LA INFORMACION COMPLETA DEL ENTREVISTADOR SELECCIONADO -->
+        <?php @include './php-principal/modal_ver_entrevistador_seleccionado.php' ?>
 
-        <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DE LA CUENTA  -->
-        <?php @include './php-principal/modal_editar_cuenta_seleccionado.php' ?>
+        <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DEL ENTREVISTADOR  -->
+        <?php @include './php-principal/modal_editar_entrevistador_seleccionado.php' ?>
 
 
         <!-- EMPIEZA sidebar -->
@@ -102,12 +103,12 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
             <!-- EMPEZAR TABLA DE DLISTA DE ENTREVISTADORES -->
             <div class="student-list-header d-flex justify-content-between align-items-center py-2">
-                <div class="title h6 fw-bold">Lista de usuarios logueados</div>
+                <div class="title h6 fw-bold">Lista de Entrevistadores</div>
 
                 <div class="btn-add d-flex gap-3 align-items-center">
 
                     <!-- *** MODAL PARA CREAR ENTREVISTADORES ***-->
-                    <?php @include './php-principal/modal_crear_cuentas.php' ?>
+                    <?php @include './php-principal/modal_crear_entrevistadores.php' ?>
                     <!-- *************************************** -->
 
                     <div class="btn-postulantes-desactivos">
@@ -129,9 +130,9 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
                         <tr class="align-middle centrado"><!--  -->
                             <th style="display: none;">ID</th>
-                            <th>Usuario</th>
-                            <th>Contraseña</th>
-                            <th>Rol</th>
+                            <th>Nombre</th>
+                            <th>Apellido paterno</th>
+                            <th>Apellido materno</th>
                             <th>Sede</th>
                             <th> </th>
                             <th>Estado</th>
@@ -140,76 +141,23 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <tbody>
                         <?php
                         include '../../../modelo/conexion.php';
-                        $sql = "SELECT * FROM login WHERE estado = 'activo'/* ORDER BY id_entrevistador DESC */";
-
-                        $sql_cedes = "SELECT id_sede, nombre_sede FROM sede WHERE estado = 'activo'";
-                        $cedes = array();
-
-
-                        $sql_roles = "SELECT id_rol, rol FROM rol";
-                        $roles = array(); 
-
-                        /* $result_roles = $conn->query($sql_roles); */
-
+                        $sql = "SELECT * FROM entrevistador WHERE estado = 'activo' AND sede = '$NOMBRE_SEDE_LOGUEADO' /* ORDER BY id_entrevistador DESC */";
                         $resultado = mysqli_query($conn, $sql);
-
-                        // Obtener los nombres de los cedes
-                        $resultado_cedes = mysqli_query($conn, $sql_cedes);
-                        if ($resultado_cedes && mysqli_num_rows($resultado_cedes) > 0) {
-                            while ($fila_cede = mysqli_fetch_assoc($resultado_cedes)) {
-                                $cedes[$fila_cede['id_sede']] = $fila_cede['nombre_sede'];
-                            }
-                        }
-
-                        // Obtener los nombres de los roles
-                        $resultado_roles = mysqli_query($conn, $sql_roles);
-                        if ($resultado_roles && mysqli_num_rows($resultado_roles) > 0) {
-                            while ($fila_rol = mysqli_fetch_assoc($resultado_roles)) {
-                                $roles[$fila_rol['id_rol']] = $fila_rol['rol'];
-                            }
-                        }
-
-
-
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             while ($fila = mysqli_fetch_assoc($resultado)) {
-
-                                if (!is_null($fila['id_sede'])) {
-                                    $idSede = $fila['id_sede'];
-                                    if ($idSede == 2) {
-                                        $nombreCede = "Administrador";
-                                    } elseif ($idSede == 1) {
-                                        $nombreCede = "Postulante";
-                                    } else {
-                                        if (isset($cedes[$idSede])) {
-                                            $nombreCede = $cedes[$idSede];
-                                        } else {
-                                            $nombreCede = ""; // Si el ID de la sede no está definido en $cedes, asignamos una cadena vacía.
-                                        }
-                                    }
-                                } else {
-                                    $nombreCede = ""; // Si el ID de la sede es nulo, asignamos una cadena vacía.
-                                }
-
-                                if (!is_null($fila['id_rol']) && isset($roles[$fila['id_rol']])) {
-                                    $nombreRol = $roles[$fila['id_rol']];
-                                } else {
-                                    $nombreRol = "No asignado";
-                                }
                         ?>
-
                                 <tr class="bg-white align-middle">
-                                    <td class="user_id" style="display: none;"><?php echo $fila['id']; ?></td>
-                                    <td class=""><?php echo $fila['usuario']; ?></td>
-                                    <td class=""><?php echo $fila['contraseña']; ?></td>
-                                    <td class=""><?php echo $nombreRol;?></td>
-                                    <td class=""><?php echo $nombreCede; ?></td>
+                                    <td class="user_id" style="display: none;"><?php echo $fila['id_entrevistador']; ?></td>
+                                    <td class=""><?php echo $fila['nombre_entrevistador']; ?></td>
+                                    <td class=""><?php echo $fila['apellido_paterno_entrevistador']; ?></td>
+                                    <td class=""><?php echo $fila['apellido_materno_entrevistador']; ?></td>
+                                    <td class=""><?php echo $fila['sede']; ?></td>
                                     <td class="">
                                         <a href="" class=" btn-ver me-0"><i class="far fa-eye" style="color: #2E59EA;"></i></a>
                                         <a href="" class="btn-editar ms-0"><i class="far fa-pen" style="color: #EAD42E;"></i></a>
                                     </td>
                                     <td>
-                                        <button style="width: 100px;" class="btn <?php echo ($fila['estado'] == 'activo') ? 'btn-success' : 'btn-danger'; ?> estadoBtn" onclick="cambiarEstado(this)" data-id="<?php echo $fila['id']; ?>">
+                                        <button style="width: 100px;" class="btn <?php echo ($fila['estado'] == 'activo') ? 'btn-success' : 'btn-danger'; ?> estadoBtn" onclick="cambiarEstado(this)" data-id="<?php echo $fila['id_entrevistador']; ?>">
                                             <?php echo ($fila['estado'] == 'activo') ? 'Activo' : 'Inactivo'; ?>
                                         </button>
                                     </td>

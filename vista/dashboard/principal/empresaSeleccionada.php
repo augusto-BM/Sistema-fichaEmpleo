@@ -95,7 +95,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!-- -------------------------------------------------------------------------- -->
 
         <!-- ------ MODAL PARA EDITAR LA INFORMACION COMPLETA DEL POSTULANTE SELECCIONADO  ----->
-        <?php @include './php-principal/modal_editar_postulante_seleccionado.php' ?>
+        <?php @include './php-principal/modal_editar_postulante_seleccionadoEmpresaSeleccionada.php' ?>
         <!-- -------------------------------------------------------------------------- -->
 
         <!-- EMPIEZA sidebar -->

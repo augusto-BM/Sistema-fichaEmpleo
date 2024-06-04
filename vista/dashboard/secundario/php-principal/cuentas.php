@@ -60,7 +60,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- SCRIPT AJAX - EDITAR INFORMACION CUENTA SELECCIONADO-->
     <script src="./js-principal/editarInformacionCuentaSeleccionado.js"></script>
 
-    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LAS CUENTAS DESACTIVOS -->
+    <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS ENTREVISTADORES DESACTIVOS -->
     <script src="./js-principal/verInformacionTablaModalCuentasNoSeleccionado.js"></script>
 
 
@@ -142,7 +142,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                         include '../../../modelo/conexion.php';
                         $sql = "SELECT * FROM login WHERE estado = 'activo'/* ORDER BY id_entrevistador DESC */";
 
-                        $sql_cedes = "SELECT id_sede, nombre_sede FROM sede WHERE estado = 'activo'";
+                        $sql_cedes = "SELECT id_sede, nombre_sede FROM sede WHERE estado = 'activo' AND id_Sede > 2";
                         $cedes = array();
 
 

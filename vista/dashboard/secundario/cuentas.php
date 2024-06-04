@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
+$NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
 
 ?>
 <!DOCTYPE html>
@@ -140,14 +141,27 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     <tbody>
                         <?php
                         include '../../../modelo/conexion.php';
-                        $sql = "SELECT * FROM login WHERE estado = 'activo'/* ORDER BY id_entrevistador DESC */";
 
+                        //SENTENCIA PARA RECUPERAR EL ID DE LA SEDE 
+                        $sql_id_sede = "SELECT id_sede FROM sede WHERE nombre_sede = '$NOMBRE_SEDE_LOGUEADO'";
+                        $resultado_id_sede = mysqli_query($conn, $sql_id_sede);
+                        if (mysqli_num_rows($resultado_id_sede) > 0) {
+                            // Extraer el ID de la sede
+                            $fila_id = mysqli_fetch_assoc($resultado_id_sede);
+                            $solo_id_sede = $fila_id['id_sede'];
+                            /* echo "El ID de la sede '$nombre_sede' es: $id_sede"; */
+                        } else {
+                            echo "No se encontró ninguna sede con el nombre '$NOMBRE_SEDE_LOGUEADO'";
+                        }
+
+                        $sql = "SELECT * FROM login WHERE estado = 'activo' AND id_sede = '$solo_id_sede'";
+                        
                         $sql_cedes = "SELECT id_sede, nombre_sede FROM sede WHERE estado = 'activo'";
                         $cedes = array();
 
 
                         $sql_roles = "SELECT id_rol, rol FROM rol";
-                        $roles = array(); 
+                        $roles = array();
 
                         /* $result_roles = $conn->query($sql_roles); */
 
@@ -168,8 +182,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
                                 $roles[$fila_rol['id_rol']] = $fila_rol['rol'];
                             }
                         }
-
-
 
                         if ($resultado && mysqli_num_rows($resultado) > 0) {
                             while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -202,7 +214,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                                     <td class="user_id" style="display: none;"><?php echo $fila['id']; ?></td>
                                     <td class=""><?php echo $fila['usuario']; ?></td>
                                     <td class=""><?php echo $fila['contraseña']; ?></td>
-                                    <td class=""><?php echo $nombreRol;?></td>
+                                    <td class=""><?php echo $nombreRol; ?></td>
                                     <td class=""><?php echo $nombreCede; ?></td>
                                     <td class="">
                                         <a href="" class=" btn-ver me-0"><i class="far fa-eye" style="color: #2E59EA;"></i></a>

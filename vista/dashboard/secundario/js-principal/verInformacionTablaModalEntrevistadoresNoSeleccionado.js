@@ -7,7 +7,7 @@ $(document).ready(function() {
         //console.log(user_id);
         $.ajax({
             method: "POST",
-            url: '../../../controlador/controlador-principal/controlador-modalVerEntrevistadoresDesactivos.php',
+            url: '../../../controlador/controlador-secundario/controlador-modalVerEntrevistadoresDesactivos.php',
             data: {
                 'click_btn_verDesactivo': true,
                 'user_id': user_id,

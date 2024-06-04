@@ -71,7 +71,7 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
     <main class="dashboard d-flex">
 
         <!-- MODAL PARA VER LA TABLA COMPLETA DE LAS EMPRESAS DESACTIVOS -->
-        <?php @include './php-principal/modal_ver_entrevistadores_desactivos.php' ?>
+        <?php @include './php-principal/modal_ver_empresas_desactivos.php' ?>
 
 
         <!-- MODAL PARA VER LA INFORMACION COMPLETA DE LA EMPRESA SELECCIONADO -->

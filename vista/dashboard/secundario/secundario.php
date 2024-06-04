@@ -4,6 +4,8 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
+$NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
+
 ?>
 <!DOCTYPE html>
 

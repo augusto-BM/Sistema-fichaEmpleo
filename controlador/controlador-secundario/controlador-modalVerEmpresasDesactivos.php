@@ -1,3 +1,9 @@
+<?php
+  @include "../../modelo/conexion.php";
+  session_start();
+
+    $NOMBRE_EMPRESA = $_SESSION['nombre_sesion']; 
+?>
 <div class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xl-12">
     <!-- Necesario Clase busqueda: tabla -->
     <table class="table student_list table-borderless tabla table-striped tabla w-100" id="myTable2">
@@ -15,7 +21,7 @@
         <tbody>
             <?php
             include '../../modelo/conexion.php';
-            $sql = "SELECT * FROM sede WHERE estado = 'inactivo' AND id_Sede > 2";
+            $sql = "SELECT * FROM sede WHERE estado = 'inactivo' AND nombre_sede = '$NOMBRE_EMPRESA'";
             $resultado = mysqli_query($conn, $sql);
             if ($resultado && mysqli_num_rows($resultado) > 0) {
                 while ($fila = mysqli_fetch_assoc($resultado)) {

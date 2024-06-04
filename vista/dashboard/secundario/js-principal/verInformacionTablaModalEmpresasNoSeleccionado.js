@@ -14,8 +14,8 @@ $(document).ready(function() {
             },
             success: function(response) {
                 console.log(response);
-                $('.ver_info_entrevistadoresDesactivos').html(response);
-                $('#ver_info_entrevistadoresDesactivos').modal('show');
+                $('.ver_info_empresasDesactivos').html(response);
+                $('#ver_info_empresasDesactivos').modal('show');
             }
         });
     });
