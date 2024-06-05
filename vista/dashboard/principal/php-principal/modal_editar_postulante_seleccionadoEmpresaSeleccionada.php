@@ -1,14 +1,32 @@
-<?php 
-@include '../../../../modelo/conexion.php';
-session_start();
-$EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
+<?php
+    //RECUPERAMOS EL ID PARA OBTENER EL NOMBRE DE LA EMPRESA SELECCIONADA PARA VALIDAR LOS ENTREVISTADORES QUE SOLO PERTENECEN A ESA EMPRESA
+    if (isset($_GET['id_empresa'])) {
 
-?>
+      //GUARDAMOS EL VALOR DEL ID EN UNA VARIABLE
+      $idEmpresa = $_GET['id_empresa'];
+
+      //BUSCAMOS EL NOMBRE DE LA EMPRESA SEGUN SU ID
+      $sql_nombreEmpresas = "SELECT nombre_sede FROM sede WHERE id_sede = $idEmpresa";
+
+      $result_nombreEmpresas = mysqli_query($conn, $sql_nombreEmpresas);
+
+      if ($result_nombreEmpresas) {
+        $row_nombreEmpresas = mysqli_fetch_assoc($result_nombreEmpresas);
+
+        //OBTIENE EL VALOR DEL NOMBRE DE LA EMPRESA
+        $nombreEmpresas = $row_nombreEmpresas['nombre_sede'];
+      } else {
+        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
+      }
+    } else {
+      echo "No se ha proporcionado el ID de la empresa.";
+    }
+  ?>
 <div class="modal fade" id="editar_info_postulante" tabindex="-1" aria-labelledby="editar_info_postulanteLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl"> <!-- modal-xl para un modal más grande -->
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-center">
-        <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante hola <?php echo $EMPRESA_SELECCIONADA;?></h5>
+        <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante - <?php echo $nombreEmpresas ?></h5>
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <?php
@@ -38,8 +56,8 @@ $EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
                       die("Conexión fallida: " . $conn->connect_error);
                     }
 
-                    // Consulta para obtener los datos de los entrevistadores
-                    $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador WHERE estado = 'activo' AND sede = '$EMPRESA_SELECCIONADA'";
+                    // Consulta para obtener los datos de los entrevistadores solo de la empresa seleccioanda
+                    $sql_entrevistadores = "SELECT id_entrevistador, nombre_entrevistador FROM entrevistador WHERE estado = 'activo' AND sede = '$nombreEmpresas'";
 
                     $resultado_entrevistadores = mysqli_query($conn, $sql_entrevistadores);
                     if ($resultado_entrevistadores && mysqli_num_rows($resultado_entrevistadores) > 0) {
@@ -231,12 +249,12 @@ $EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
                 </td>
                 <td>
                   <select name="distrito" id="distrito">
-                    <option value="Lima">Lima</option>
                     <option value="Ancón">Ancón</option>
                     <option value="Ate">Ate</option>
                     <option value="Barranco">Barranco</option>
                     <option value="Breña">Breña</option>
                     <option value="Carabayllo">Carabayllo</option>
+                    <option value="Centro de lima">Centro de lima</option>
                     <option value="Chaclacayo">Chaclacayo</option>
                     <option value="Chorrillos">Chorrillos</option>
                     <option value="Cieneguilla">Cieneguilla</option>
@@ -302,7 +320,7 @@ $EMPRESA_SELECCIONADA = $_SESSION['nombre_empresas'];
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5_a_mas">5 a mas</option>
+                    <option value="5">5 a mas</option>
                   </select>
                 </td>
                 <td>

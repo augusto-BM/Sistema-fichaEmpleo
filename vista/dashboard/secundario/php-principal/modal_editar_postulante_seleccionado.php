@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-xl"> <!-- modal-xl para un modal más grande -->
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-center">
-        <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante- <?php echo $NOMBRE_SEDE_LOGUEADO ?></h5>
+        <h5 class=" modal-title " id=" editar_info_postulanteLabel">Editar Información del Postulante - <?php echo $NOMBRE_SEDE_LOGUEADO ?></h5>
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <?php
@@ -225,12 +225,12 @@
                 </td>
                 <td>
                   <select name="distrito" id="distrito">
-                    <option value="Lima">Lima</option>
                     <option value="Ancón">Ancón</option>
                     <option value="Ate">Ate</option>
                     <option value="Barranco">Barranco</option>
                     <option value="Breña">Breña</option>
                     <option value="Carabayllo">Carabayllo</option>
+                    <option value="Centro de lima">Centro de lima</option>
                     <option value="Chaclacayo">Chaclacayo</option>
                     <option value="Chorrillos">Chorrillos</option>
                     <option value="Cieneguilla">Cieneguilla</option>
@@ -296,7 +296,7 @@
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5_a_mas">5 a mas</option>
+                    <option value="5">5 a mas</option>
                   </select>
                 </td>
                 <td>

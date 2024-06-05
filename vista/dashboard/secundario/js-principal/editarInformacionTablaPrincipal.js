@@ -49,6 +49,11 @@ $(document).ready(function () {
           $("#negativos_1").val(value["cualidadNegativa_a"]);
           $("#negativos_2").val(value["cualidadNegativa_b"]);
 
+          $("#empresa_experiencia").val(value["empresa_que_trabajo"]);
+          $("#cargo_experiencia").val(value["cargo_que_trabajo"]);
+          $("#fecha_cargo_desde").val(value["desde"]);
+          $("#fecha_cargo_hasta").val(value["hasta"]);
+
           // Verificar si el valor de id_entrevistador es NULL
           if (value["id_entrevistador"] === null) {
             // Establecer la opción "No asignado" como seleccionada

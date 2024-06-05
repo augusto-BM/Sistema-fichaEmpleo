@@ -7,6 +7,40 @@
   <title>FICHA POSTULANTE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="../css-principal/imprimirFicha.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- //SCRIPT PARA IMPRIMIR -->
+    <script>
+      window.onload = function() {
+        window.print();
+      };
+    </script>
+
+    <!-- SCRIPT PARA REDIRECCIONAR SI SE CANCELA -->
+    <script>
+      // Función para redireccionar cuando se cancela la impresión
+      function redireccionarAlCancelar() {
+        /* window.location.href = '../principal.php'; */
+        window.close();
+      }
+
+      // Evento que se dispara antes de imprimir
+      window.onbeforeprint = function() {
+
+        // No es necesario hacer nada si se está imprimiendo
+      };
+
+      // Evento que se dispara después de imprimir
+      window.onafterprint = function() {
+        
+      };
+
+      // Evento que se dispara cuando se cancela la impresión
+      window.onafterprint = function() {
+        redireccionarAlCancelar(); // Llama a la función de redireccionamiento
+      };
+    </script>  
 </head>
 
 <style>
@@ -174,14 +208,16 @@
                 <tr>
                   <th scope="col">Nombre de la Empresa</th>
                   <th scope="col">Cargo</th>
-                  <th scope="col">(Mes y año) <br>Desde &nbsp;&nbsp;&nbsp;Hasta</th>
+                  <th scope="col ">Desde</th>
+                  <th scope="col">Hasta</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="text-center">
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo  $fila['empresa_que_trabajo'] ?></td>
+                  <td><?php echo  $fila['cargo_que_trabajo'] ?></td>
+                  <td><?php echo  $fila['desde'] ?></td>
+                  <td><?php echo  $fila['hasta'] ?></td>
                 </tr>
               </tbody>
             </table>
@@ -216,41 +252,7 @@
     }
     ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- //SCRIPT PARA IMPRIMIR -->
-    <script>
-      window.onload = function() {
-        window.print();
-      };
-    </script>
-
-    <!-- SCRIPT PARA REDIRECCIONAR SI SE CANCELA -->
-    <script>
-      // Función para redireccionar cuando se cancela la impresión
-      function redireccionarAlCancelar() {
-        /* window.location.href = '../principal.php'; */
-        window.close();
-      }
-
-      // Evento que se dispara antes de imprimir
-      window.onbeforeprint = function() {
-
-        // No es necesario hacer nada si se está imprimiendo
-      };
-
-      // Evento que se dispara después de imprimir
-      window.onafterprint = function() {
-        
-      };
-
-      // Evento que se dispara cuando se cancela la impresión
-      window.onafterprint = function() {
-        redireccionarAlCancelar(); // Llama a la función de redireccionamiento
-      };
-    </script>
-
-
+    
 
 </body>
 

@@ -72,14 +72,19 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- ----------------------------------------------------------- -->
 
     <!-- SCRIPT AJAX - EDITAR INFORMACION DE UN POSTULANTE SELECCIONADO -->
-    <script src="./js-principal/editarInformacionTablaPrincipal.js"></script>
+    <script src="./js-principal/editarInformacionTablaPrincipalEmpresaSeleccionada.js"></script>
     <!-- -------------------------------------------------------------- -->
 
     <!-- SCRIPT AJAX - VER INFORMACION DE TODOS LOS POSTULANTES NO SELECCIONADOS -->
     <script src="./js-principal/verInformacionTablaModalNoSeleccionadoEmpresaEscogida.js"></script>
     <!-- ------------------------------------------------------------------ -->
-
-
+    <script>
+        $(document).ready(function() {
+            $('#editar_info_postulante').on('show.bs.modal', function(e) {
+                $('#idEmpresa').text("<?php echo $idEmpresa; ?>");
+            });
+        });
+    </script>
 </head>
 
 <body class="bg-content">
@@ -289,7 +294,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!-- TERMINA EL CONTENIDO PRINCIPAL  -->
     </main>
 
-    
+
 </body>
 
 </html>

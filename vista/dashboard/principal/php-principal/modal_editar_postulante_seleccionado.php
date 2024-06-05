@@ -225,12 +225,12 @@
                 </td>
                 <td>
                   <select name="distrito" id="distrito">
-                    <option value="Lima">Lima</option>
                     <option value="Ancón">Ancón</option>
                     <option value="Ate">Ate</option>
                     <option value="Barranco">Barranco</option>
                     <option value="Breña">Breña</option>
                     <option value="Carabayllo">Carabayllo</option>
+                    <option value="Centro de lima">Centro de lima</option>
                     <option value="Chaclacayo">Chaclacayo</option>
                     <option value="Chorrillos">Chorrillos</option>
                     <option value="Cieneguilla">Cieneguilla</option>
@@ -296,7 +296,7 @@
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5_a_mas">5 a mas</option>
+                    <option value="5">5 a mas</option>
                   </select>
                 </td>
                 <td>

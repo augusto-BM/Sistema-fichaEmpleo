@@ -26,13 +26,22 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //QUE LA FECHA DE HOY SE ESTABLEZCA POR DEFECTO AL INPUT DE FECHA FIN
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Obtener el input de fecha
     const fechaInput = document.getElementById("fechaFin");
-
-    // Obtener la fecha actual en formato YYYY-MM-DD
-    const fechaActual = new Date().toISOString().split('T')[0];
-
-    // Establecer la fecha actual como el valor predeterminado del input
-    fechaInput.value = fechaActual;
-});
+  
+    // Obtener la fecha actual en formato YYYY-MM-DD en el huso horario UTC
+    const fechaActual = new Date(
+      Date.UTC(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate()
+      )
+    );
+  
+    // Convertir la fecha actual en formato YYYY-MM-DD
+    const fechaActualString = fechaActual.toISOString().split("T")[0];
+  
+    // Establecer el valor predeterminado del input como la fecha actual
+    fechaInput.value = fechaActualString;
+  });
