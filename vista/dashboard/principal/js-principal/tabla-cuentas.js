@@ -4,8 +4,10 @@ const configurarDataTable = {
     buttons: [{
         extend: 'excelHtml5',
         text: '<i class="fas fa-file-excel h4 text-success"></i>',
+        titleAttr:'Exportar a Excel',
         className: 'excelButton',
         exportOptions: {
+            columns:[1,2,3,4],
             modifier: {
                 search: 'applied',
                 order: 'applied'
@@ -20,8 +22,10 @@ const configurarDataTable = {
     }, {
         extend: 'pdfHtml5',
         text: '<i class="fas fa-file-pdf h4 text-danger"></i>',
+        titleAttr:'Exportar a Pdf',
         className: 'pdfButton',
         exportOptions: {
+            columns:[1,2,3,4],
             modifier: {
                 search: 'applied',
                 order: 'applied'
@@ -50,14 +54,6 @@ const configurarDataTable = {
             orderable: false,
             targets: [1,2, 3, 5,6]
         },
-        /* {
-            width: "15px",
-            targets: [6],
-
-            width: "35px",
-            targets: [5]
-        } */
-        //{searchable: false, targets: [1]}
     ],
     pageLength: 50,
     destroy: true,
@@ -94,8 +90,10 @@ const configurarDataTableDesactivo = {
     buttons: [{
         extend: 'excelHtml5',
         text: '<i class="fas fa-file-excel h4 text-success"></i>',
+        titleAttr:'Exportar a Excel',
         className: 'excelButton',
         exportOptions: {
+            columns:[1,2,3,4],
             modifier: {
                 search: 'applied',
                 order: 'applied'
@@ -110,8 +108,10 @@ const configurarDataTableDesactivo = {
     }, {
         extend: 'pdfHtml5',
         text: '<i class="fas fa-file-pdf h4 text-danger"></i>',
+        titleAttr:'Exportar a Pdf',
         className: 'pdfButton',
         exportOptions: {
+            columns:[1,2,3,4],
             modifier: {
                 search: 'applied',
                 order: 'applied'

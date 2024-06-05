@@ -26,7 +26,9 @@ if(isset($_POST['submit'])){
                         INNER JOIN rol ON login.id_rol = rol.id_rol
                         INNER JOIN sede ON login.id_sede = sede.id_sede
 
-               WHERE usuario = '$email' AND contraseña = '$password'";
+               WHERE login.usuario = '$email' 
+                AND login.contraseña = '$password'
+                AND login.estado = 'activo'";
 
    $correo_colaborador = " SELECT * FROM login WHERE usuario = '$email'";
    $contra_colaboradoor = " SELECT * FROM login WHERE contraseña = '$password' ";
@@ -75,7 +77,17 @@ if(isset($_POST['submit'])){
          $error[] = 'Contraseña no valido!';
       }else if((!mysqli_num_rows($result_contra_colaborador) > 0)){
          $error[] = 'contraseña equivocada!';
-      }
+      } else {
+        // Verifica si la contraseña proporcionada es correcta
+        $row = mysqli_fetch_array($result_contra_colaborador);
+        if ($row['contraseña'] !== $_POST['password']) {
+            // Si la contraseña no coincide, muestra un mensaje de error
+            $error[] = 'Contraseña equivocada!';
+        } else if ($row['estado'] !== 'activo') {
+            // Si la contraseña es correcta pero la cuenta no está activa, muestra un mensaje de error
+            $error[] = 'Su cuenta esta inactiva.';
+        }
+    }
  }
 }
 ?>

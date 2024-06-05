@@ -431,8 +431,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
       </style>
       <div class="importante">
-        <p><b><u>IMPORTANTE:</u></b></p>
-        <p>En caso de ser contratado, esta solicitud formará parte de su archivo individual permanente. Llénala con cuidado y con los datos correctos. Todas las preguntas deben ser contestadas. Si no le corresponde alguna de ellas, debe señalarlo expresamente.</p>
+        <p><b><u>IMPORTANTE:</u></b><br/>En caso de ser contratado, esta solicitud formará parte de su archivo individual permanente. Llénala con cuidado y con los datos correctos. <br/>Todas las preguntas deben ser contestadas. Si no le corresponde alguna de ellas, debe señalarlo expresamente.</p>
         <div class="terminos">
           <p><input type="checkbox" id="checkImportante" style=" cursor: pointer;"></p>
           <p><label for="checkImportante" style="color:black;   cursor: pointer;">HE LEIDO Y ACEPTO LOS <b style="color: #0f3eaa;"><i>TERMINOS Y CONDICIONES</i></b></label></p>

@@ -7,7 +7,7 @@
   <title>FICHA POSTULANTE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="../css-principal/imprimirFicha.css">
-
+  <link rel="icon" href="../../../login/icono.ico" type="image/x-icon">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -59,6 +59,12 @@
       visibility: none;
     }
 
+    .table thead th {
+      background-color: #D2E9FC !important;
+      -webkit-print-color-adjust: exact;
+      /* Asegura que los colores se impriman exactamente */
+    }
+
     /* Eliminar los márgenes del cuerpo de la página */
     /* body {
         margin: 0; 
@@ -66,7 +72,7 @@
   }
 </style>
 
-<br></br><br></br>
+<br /><br /><br />
 
 <body>
   <div class="contenedor-principal table-responsive col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -77,23 +83,21 @@
       // Recuperar el ID de la URL
       $id = $_GET['user_id'];
 
-      $sql = "SELECT * FROM fichaEmpleo WHERE id = '$id'";
+      $sql = "SELECT * FROM fichaempleo WHERE id = '$id'";
       $resultado = mysqli_query($conn, $sql);
 
       if (mysqli_num_rows($resultado) > 0) {
 
         while ($fila = mysqli_fetch_array($resultado)) {
           $id_entrevistador = $fila['id_entrevistador'] ?? 'No asignado';
-
     ?>
-
           <div class="container">
             <div class="row"></div>
-            <div class="col-md-6 ">
+            <div class="col-md-5 ">
               <h1 class="titulo-principal">Ficha de Empleo</h1>
             </div>
-            <div class="col-md-6 ">
-              <div class="form-group">
+            <div class="col-md-7 ">
+              <div class="form-group d-flex align-items-center">
                 <label for="cargo">Cargo al cual postula:</label>
                 <input class="text-center" type="text" name="cargo" id="cargo" value="<?php echo  $fila['cargoPostulante'] ?>" readonly>
               </div>
@@ -101,8 +105,7 @@
           </div>
 
           <div class="importante mx-auto">
-            <p><u>IMPORTANTE:</u></p>
-            <p>En caso de ser contratado, esta solicitud formará parte de su archivo individual permanente. Llénala con cuidado y con los datos correctos. Todas las preguntas deben ser contestadas. Si no le corresponde alguna de ellas, debe señalarlo expresamente.</p>
+            <p><u>IMPORTANTE:</u><br />En caso de ser contratado, esta solicitud formará parte de su archivo individual permanente. Llénala con cuidado y con los datos correctos.<br /> Todas las preguntas deben ser contestadas. Si no le corresponde alguna de ellas, debe señalarlo expresamente.</p>
           </div>
 
           <div class="container mx-auto">
@@ -207,6 +210,9 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
+                  <th colspan="4" class="table-info">Indique ultima experiencia relevante a cargo</th>
+                </tr>
+                <tr>
                   <th scope="col">Nombre de la Empresa</th>
                   <th scope="col">Cargo</th>
                   <th scope="col ">Desde</th>
@@ -227,6 +233,9 @@
           <div class="container mx-auto">
             <table class="table table-bordered">
               <thead>
+                <tr>
+                  <th colspan="4" class="table-info">Indique ultima experiencia relevante a cargo</th>
+                </tr>
                 <tr>
                   <th scope="col">POSITIVOS</th>
                   <th scope="col">NEGATIVOS</th>

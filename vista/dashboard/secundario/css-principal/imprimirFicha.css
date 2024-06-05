@@ -44,12 +44,12 @@ label {
 
 .importante {
     border: 1px solid #5480E5;
-    color: #3A7831;
+    color: #88CF70;
+    font-size: 13px;
     padding: 10px;
     font-family: "Lato", sans-serif;
     margin: 10px 30px 20px;
-    width: 88%;
-    
+    width: 88%; 
 }
 
 .table {

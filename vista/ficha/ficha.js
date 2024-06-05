@@ -25,9 +25,23 @@ document
 
     // Validación del campo de nombres
     var nombresInput = document.getElementById("nombres").value;
+    // Dividir los nombres por espacio en blanco
+    var nombresArray = nombresInput.split(" ");
+
+    // Aplicar formato de capitalización al primer nombre
+    var primerNombreFormateado =
+      nombresArray[0].charAt(0).toUpperCase() +
+      nombresArray[0].slice(1).toLowerCase();
+
+    // Unir los nombres formateados de nuevo en una sola cadena
+    var nombreFormateado =
+      primerNombreFormateado + " " + nombresArray.slice(1).join(" ");
+
     // Expresión regular para nombres válidos
     var nombresRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/;
-    if (!nombresRegex.test(nombresInput)) {
+
+    // Validar el nombre formateado
+    if (!nombresRegex.test(nombreFormateado)) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -40,11 +54,15 @@ document
     // Validación del campo de apellido paterno
     var apellidoPaternoInput =
       document.getElementById("apellido-paterno").value;
+    // Aplicar formato de capitalización a la primera letra y minúsculas al resto
+    var apellidoPaternoFormateado =
+      apellidoPaternoInput.charAt(0).toUpperCase() +
+      apellidoPaternoInput.slice(1).toLowerCase();
     // Expresión regular para apellido paterno válido
     var apellidoPaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido paterno válido
     if (
       apellidoPaternoInput.length < 2 ||
-      !apellidoPaternoRegex.test(apellidoPaternoInput)
+      !apellidoPaternoRegex.test(apellidoPaternoFormateado)
     ) {
       Swal.fire({
         icon: "error",
@@ -58,10 +76,14 @@ document
     // Validación del campo de apellido materno
     var apellidoMaternoInput =
       document.getElementById("apellido-materno").value;
+    // Aplicar formato de capitalización a la primera letra y minúsculas al resto
+    var apellidoMaternoFormateado =
+      apellidoMaternoInput.charAt(0).toUpperCase() +
+      apellidoMaternoInput.slice(1).toLowerCase();
     var apellidoMaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido materno válido
     if (
       apellidoMaternoInput.length < 2 ||
-      !apellidoMaternoRegex.test(apellidoMaternoInput)
+      !apellidoMaternoRegex.test(apellidoMaternoFormateado)
     ) {
       Swal.fire({
         icon: "error",

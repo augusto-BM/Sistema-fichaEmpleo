@@ -28,14 +28,17 @@
 
 .contenedor-logout {
   align-self: center;
-  /* Centra verticalmente el div */
   margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 3vw;
 }
+
 
 .cerrarSesion {
   background-color: #c44440;
   padding: 10px;
   border-radius: 20px;
+  font-weight: 700;
   color: white;
 }
 
@@ -51,7 +54,7 @@ main {
 /* ********************************** IMPORTANTE ****************************** */
 .importante{
     border: 1px solid #5480E5;
-    color: #3A7831;
+    color: #4A7831;
     padding: 10px;
     font-family: "Lato", sans-serif;
     margin-bottom: 20px;
@@ -79,11 +82,7 @@ main {
   margin-left: 5vw;
   font-style: italic;
 }
-.contenedor-logout {
-  margin-bottom: 20px;
-  margin-right: 5vw;
-  color: #0f3eaa;
-}
+
 
 .table-responsive {
   margin-bottom: 10px;
@@ -235,6 +234,10 @@ caption {
   }
   .bienvenido{
     font-size: 18px;
+  }
+  .contenedor-logout {
+    width: 80px;
+    font-size: 10px;
   }
 }
 
