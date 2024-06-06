@@ -2,7 +2,6 @@
 <?php
 @include '../../modelo/conexion.php';
 session_start();
-
 ?>
 
 <?php

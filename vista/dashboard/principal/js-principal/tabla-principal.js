@@ -257,8 +257,10 @@ const configurarDataTableDesactivo = {
     },
 };
 
-//FUNCION QUE SE EJECUTA SOLO CUANDO ABRIMOS EL MODAL VER POSTULANTE DESACTIVOS
-$('#ver_info_postulanteDesactivos').on('shown.bs.modal', function() {
-    var table = $('#mytablaDesacivos').DataTable(configurarDataTableDesactivo); 
-    table.draw(); // Fuerza un renderizado de la tabla
+$(document).ready(function() {
+    //FUNCION QUE SE EJECUTA SOLO CUANDO ABRIMOS EL MODAL VER POSTULANTE DESACTIVOS
+    $('#ver_info_postulanteDesactivos').on('shown.bs.modal', function() {
+        var table = $('#mytablaDesacivos').DataTable(configurarDataTableDesactivo); 
+        table.draw(); // Fuerza un renderizado de la tabla
+    });
 });
