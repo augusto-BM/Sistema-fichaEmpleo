@@ -23,76 +23,54 @@ document
       return;
     }
 
-    // Validación del campo de nombres
-    var nombresInput = document.getElementById("nombres").value;
-    // Dividir los nombres por espacio en blanco
-    var nombresArray = nombresInput.split(" ");
-
-    // Aplicar formato de capitalización al primer nombre
-    var primerNombreFormateado =
-      nombresArray[0].charAt(0).toUpperCase() +
-      nombresArray[0].slice(1).toLowerCase();
-
-    // Unir los nombres formateados de nuevo en una sola cadena
-    var nombreFormateado =
-      primerNombreFormateado + " " + nombresArray.slice(1).join(" ");
-
-    // Expresión regular para nombres válidos
-    var nombresRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/;
-
-    // Validar el nombre formateado
-    if (!nombresRegex.test(nombreFormateado)) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Por favor ingresa un nombre válido!",
-      });
-      event.preventDefault();
-      return;
-    }
-
-    // Validación del campo de apellido paterno
-    var apellidoPaternoInput =
-      document.getElementById("apellido-paterno").value;
-    // Aplicar formato de capitalización a la primera letra y minúsculas al resto
-    var apellidoPaternoFormateado =
-      apellidoPaternoInput.charAt(0).toUpperCase() +
-      apellidoPaternoInput.slice(1).toLowerCase();
-    // Expresión regular para apellido paterno válido
-    var apellidoPaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido paterno válido
-    if (
-      apellidoPaternoInput.length < 2 ||
-      !apellidoPaternoRegex.test(apellidoPaternoFormateado)
-    ) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Por favor ingresa un apellido paterno válido!",
-      });
-      event.preventDefault();
-      return;
-    }
-
-    // Validación del campo de apellido materno
-    var apellidoMaternoInput =
-      document.getElementById("apellido-materno").value;
-    // Aplicar formato de capitalización a la primera letra y minúsculas al resto
-    var apellidoMaternoFormateado =
-      apellidoMaternoInput.charAt(0).toUpperCase() +
-      apellidoMaternoInput.slice(1).toLowerCase();
-    var apellidoMaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido materno válido
-    if (
-      apellidoMaternoInput.length < 2 ||
-      !apellidoMaternoRegex.test(apellidoMaternoFormateado)
-    ) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Por favor ingresa un apellido materno válido!",
-      });
-      event.preventDefault();
-      return;
-    }
+     // Validación del campo de nombres
+     var nombresInput = document.getElementById("nombres").value;
+     // Expresión regular para nombres válidos
+     var nombresRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/;
+     if (!nombresRegex.test(nombresInput)) {
+       Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: "Por favor ingresa un nombre válido!",
+       });
+       event.preventDefault();
+       return;
+     }
+ 
+     // Validación del campo de apellido paterno
+     var apellidoPaternoInput =
+       document.getElementById("apellido-paterno").value;
+     // Expresión regular para apellido paterno válido
+     var apellidoPaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido paterno válido
+     if (
+       apellidoPaternoInput.length < 2 ||
+       !apellidoPaternoRegex.test(apellidoPaternoInput)
+     ) {
+       Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: "Por favor ingresa un apellido paterno válido!",
+       });
+       event.preventDefault();
+       return;
+     }
+ 
+     // Validación del campo de apellido materno
+     var apellidoMaternoInput =
+       document.getElementById("apellido-materno").value;
+     var apellidoMaternoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/; // Expresión regular para apellido materno válido
+     if (
+       apellidoMaternoInput.length < 2 ||
+       !apellidoMaternoRegex.test(apellidoMaternoInput)
+     ) {
+       Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: "Por favor ingresa un apellido materno válido!",
+       });
+       event.preventDefault();
+       return;
+     }
 
     // Validación del campo de DNI/Cédula
     var dniInput = document.getElementById("dni").value;
@@ -332,6 +310,37 @@ document
   });
 /* ******************************************************************************** */
 
+/* *********** FUNCION PARA VALIDAR EL IMPUT TRANSFORMA PRIMERA LETRA MAYUSCULA***********/
+function primeraLetraMayuscula(e) {
+  e.value = e.value.replace(/^\s+/, '');                        // Elimina los espacios al inicio
+  e.value = e.value.replace(/ {1,}/g, ' ');                     // Solo deja un espacio entre palabras
+  e.value = e.value.toLowerCase();                              // Convierte todo el texto a minúsculas
+  e.value = e.value.charAt(0).toUpperCase() + e.value.slice(1); // Convierte la primera letra a mayúscula
+}
+/* ************************************************************************************* */
+function validarNombre(e) {
+  e.value = e.value.replace(/^\s+/, '');                        // Elimina los espacios al inicio
+  e.value = e.value.replace(/ {1,}/g, ' ');                     // Solo deja un espacio entre palabras
+  e.value = e.value.toLowerCase();                              // Convierte todo el texto a minúsculas
+  e.value = e.value.replace(/\b\w/g, function(l){ return l.toUpperCase() });  // Convierte la primera letra de cada palabra a mayúscula
+}
+/* *********** FUNCION PARA VALIDAR EL (APELLIDO) sin espacio Y primera letra mayuscula**********/
+function validarApellido(e) {
+  e.value = e.value.replace(/^\s+/, '');                          // Elimina los espacios al inicio
+  e.value = e.value.replace(/\s/g, '');                           //No deja poner espacios entre palabras
+  e.value = e.value.toLowerCase();                                // Convierte todo el texto a minúsculas
+  e.value = e.value.charAt(0).toUpperCase() + e.value.slice(1);   // Convierte la primera letra a mayúscula
+}
+/* ************************************************************************************* */
+/* *********** FUNCION PARA VALIDAR EL (CORREO) sin espacio al incio y final **********/
+function validarCorreo(e) {
+  if (e.value.slice(-1) === ' ') {                        // Si el último carácter es un espacio
+    e.value = e.value.trim();                             // Elimina los espacios al inicio y al final
+    e.value = e.value.replace(/\s/g, '');                 // Elimina los espacios en medio
+  }
+}
+/* ************************************************************************************* */
+
 /* *********** FUNCION PARA VALIDAR EL IMPUT SOLO SE PUEDE ESCRIBIR NUMEROS ***********/
 function soloNumeros(event) {
   const charCode = event.which ? event.which : event.keyCode;
@@ -394,19 +403,15 @@ const noHijosRadio = document.getElementById("no_Hijos");
 const siHijosRadio = document.getElementById("si_Hijos");
 const hijosSelect = document.getElementById("hijosSelect");
 const selectDiv = document.querySelector(".tercera-seccion .col-md-8");
-const radioDivs = document.querySelectorAll(
-  ".tercera-seccion .col-md-2.form-check"
-);
+const radioDivs = document.querySelectorAll(".tercera-seccion .col-md-2.form-check");
 
 noHijosRadio.addEventListener("change", function () {
   if (this.checked) {
     hijosSelect.disabled = true;
     hijosSelect.value = "0";
-    selectDiv.style.display = "none";
+    selectDiv.classList.remove('visible');
     radioDivs.forEach((div) => {
-      div.classList.remove("col-md-2");
-      // Agrega clases para centrar los radio buttons
-      div.classList.add("col-md-2", "offset-md-3");
+      div.style.flex = "0 0 33.3333%";
     });
   }
 });
@@ -415,29 +420,27 @@ siHijosRadio.addEventListener("change", function () {
   if (this.checked) {
     hijosSelect.disabled = false;
     hijosSelect.value = "1";
-    // Muestra el div que contiene el select
-    selectDiv.style.display = "block";
+    selectDiv.classList.add('visible');
     radioDivs.forEach((div) => {
-      div.classList.remove("offset-md-3");
-      // Restaura las clases originales
-      div.classList.add("col-md-2");
+      div.style.flex = "0 0 20%";
     });
   }
 });
 
-// Ejecuta una vez al inicio para asegurarte de que el estado inicial coincide con el radio button seleccionado
 if (noHijosRadio.checked) {
   hijosSelect.disabled = true;
   hijosSelect.value = "0";
-  selectDiv.style.display = "none";
+  selectDiv.classList.remove('visible');
   radioDivs.forEach((div) => {
-    div.classList.remove("col-md-2");
-    div.classList.add("col-md-2", "offset-md-3");
+    div.style.flex = "0 0 33.3333%";
   });
 } else {
   hijosSelect.disabled = false;
   hijosSelect.value = "1";
-  selectDiv.style.display = "block";
+  selectDiv.classList.add('visible');
+  radioDivs.forEach((div) => {
+    div.style.flex = "0 0 20%";
+  });
 }
 /* ******************************************************************************** */
 
@@ -445,22 +448,46 @@ if (noHijosRadio.checked) {
 const noEstudioRadio = document.getElementById("no_estudio");
 const siEstudioRadio = document.getElementById("si_estudio");
 const estudiosInput = document.getElementById("estudios");
+const inputDiv = document.querySelector(".sexta-seccion .col-md-6");
+const radioDivsEstudio = document.querySelectorAll(".sexta-seccion .col-md-3.form-check");
 
 noEstudioRadio.addEventListener("change", function () {
   if (this.checked) {
-    // Si "No estudio" está seleccionado, desactivar el input y establecer su valor en "No"
-    estudiosInput.readOnly = true;
     estudiosInput.value = "No";
+    estudiosInput.disabled = true;
+    inputDiv.classList.remove('visible');
+    radioDivsEstudio.forEach((div) => {
+      div.style.flex = "0 0 33.3333%";
+    });
   }
 });
 
 siEstudioRadio.addEventListener("change", function () {
   if (this.checked) {
-    // Si "Si estudio" está seleccionado, activar el input
-    estudiosInput.readOnly = false;
-    estudiosInput.value = ""; // Limpiar el valor si es necesario
+    estudiosInput.value = "";
+    estudiosInput.disabled = false;
+    inputDiv.classList.add('visible');
+    radioDivsEstudio.forEach((div) => {
+      div.style.flex = "0 0 25%";
+    });
   }
 });
+
+if (noEstudioRadio.checked) {
+  estudiosInput.value = "No";
+  estudiosInput.disabled = true;
+  inputDiv.classList.remove('visible');
+  radioDivsEstudio.forEach((div) => {
+    div.style.flex = "0 0 33.3333%";
+  });
+} else {
+  estudiosInput.value = "";
+  estudiosInput.disabled = false;
+  inputDiv.classList.add('visible');
+  radioDivsEstudio.forEach((div) => {
+    div.style.flex = "0 0 25%";
+  });
+}
 /* ******************************************************************************** */
 
 /* *********** FUNCION PARA VALIDAR EL RADIO DE TERMINOS Y CONDICIONES ***********/

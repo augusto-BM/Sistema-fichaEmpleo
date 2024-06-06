@@ -1,5 +1,3 @@
-
-
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 * {
   margin: 0;
@@ -33,7 +31,6 @@
   margin-right: 3vw;
 }
 
-
 .cerrarSesion {
   background-color: #c44440;
   padding: 10px;
@@ -52,12 +49,12 @@ main {
   margin-top: 100px;
 }
 /* ********************************** IMPORTANTE ****************************** */
-.importante{
-    border: 1px solid #5480E5;
-    color: #4A7831;
-    padding: 10px;
-    font-family: "Lato", sans-serif;
-    margin-bottom: 20px;
+.importante {
+  border: 1px solid #5480e5;
+  color: #4a7831;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 20px;
 }
 .terminos {
   display: flex;
@@ -83,7 +80,6 @@ main {
   font-style: italic;
 }
 
-
 .table-responsive {
   margin-bottom: 10px;
 }
@@ -94,8 +90,8 @@ thead {
 
 th {
   vertical-align: middle;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .cargo {
@@ -122,7 +118,7 @@ input {
 }
 
 th {
-  color: #091D58 !important;
+  color: #091d58 !important;
 }
 caption {
   margin-left: 80px;
@@ -146,39 +142,80 @@ caption {
   color: #0f3eaa;
 }
 
-.titulo-tercera-seccion, .titulo-sexta-seccion, .titulo-septima-seccion {
-    margin-top: 30px;
-    text-align: center;
-    margin-bottom: 30px;
+.titulo-tercera-seccion,
+.titulo-sexta-seccion,
+.titulo-septima-seccion {
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
-
-
 
 .opciones {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .form-check-label {
-    margin-bottom: 0;
-    margin-left: 5px;
+  margin-bottom: 0;
+  margin-left: 5px;
 }
 
 /* ********************************** BOTON FORMULARIO ****************************** */
-.container-button{
-    display: flex;
-    justify-content: center;
+.container-button {
+  display: flex;
+  justify-content: center;
 }
 
-.formulario__btn{
-    width: 20%;
-    background-color: #0f3eaa;
-    border-radius: 20px;
-    font-weight: bold;
-    font-family: monospace;
-    margin-bottom: 20px;
+.formulario__btn {
+  width: 20%;
+  background-color: #0f3eaa;
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: monospace;
+  margin-bottom: 20px;
 }
 /* ****************************************************************************** */
+
+/* =======================   ANIMACION DE LOS RADIO BUTTON    =============================== */
+.tercera-seccion {
+  justify-content: center;
+}
+
+.hijos-select {
+  opacity: 0;
+  /* Establecemos la opacidad inicial en 0 */
+  pointer-events: none;
+  /* Evitamos que el elemento sea interactivo mientras está oculto */
+  transition: opacity 0.5s ease;
+  /* Agregamos una transición suave de opacidad */
+}
+
+.hijos-select.visible {
+  opacity: 1;
+  /* Cambiamos la opacidad a 1 cuando la clase 'visible' está presente */
+  pointer-events: auto;
+  /* Permitimos la interacción con el elemento cuando está visible */
+}
+
+.sexta-seccion .col-md-6 {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.sexta-seccion .col-md-6.visible {
+  opacity: 1;
+}
+
+.sexta-seccion .col-md-3 {
+  transition: flex 0.2s ease-in-out;
+  flex: 0 0 25%;
+}
+
+.sexta-seccion {
+  display: flex;
+  justify-content: center;
+}
+/* =========================================================================================== */
 
 /* TAMAÑO ESCRITORIO MAYORE O IGUAL A 1200 px */
 @media screen and (min-width: 1200px) {
@@ -188,30 +225,31 @@ caption {
 }
 /* TAMAÑO TABLET DE 960 A 1199 px */
 @media screen and (max-width: 1199px) {
-
 }
 
 /* TAMAÑO CELULARES DE 600 A 959 px */
 @media screen and (max-width: 959px) {
-    th {
-      font-size: 15px;
-    }
-    input, select{
-      font-size: 15px;
-      text-align: center;
-    }
-    caption {
-        font-size: 15px;
-        text-align: left;
-      }
+  th {
+    font-size: 15px;
   }
+  input,
+  select {
+    font-size: 15px;
+    text-align: center;
+  }
+  caption {
+    font-size: 15px;
+    text-align: left;
+  }
+}
 
 /* TAMAÑO CELULARES PEQUEÑOS MENORES  A 600 px */
 @media screen and (max-width: 599px) {
   th {
     font-size: 10px;
   }
-  input, select {
+  input,
+  select {
     font-size: 10px;
     text-align: center;
   }
@@ -219,20 +257,21 @@ caption {
     font-size: 10px;
     text-align: left;
   }
-  .titulo-tercera-seccion, .titulo-sexta-seccion, .titulo-septima-seccion {
+  .titulo-tercera-seccion,
+  .titulo-sexta-seccion,
+  .titulo-septima-seccion {
     font-size: 15px;
     margin-bottom: 1px;
   }
   .form-check-label {
     font-size: 10px;
   }
-
 }
 @media screen and (max-width: 420px) {
-  .navbar{
+  .navbar {
     font-size: 16px;
   }
-  .bienvenido{
+  .bienvenido {
     font-size: 18px;
   }
   .contenedor-logout {
@@ -246,12 +285,10 @@ caption {
     font-size: 10px;
     text-align: center;
   }
-  .contenedor-logout{
+  .contenedor-logout {
     margin: 0 auto;
   }
-  .bienvenido{
+  .bienvenido {
     margin: 0 auto;
   }
 }
-
-    

@@ -18,7 +18,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/c174601175.js" crossorigin="anonymous"></script>
 
-
 </head>
 
 <body>
@@ -102,14 +101,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event)">
+                <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event);" onkeyup="validarNombre(this);">
               </td>
               <td>
-                <input type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event)">
+                <input type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event);" onkeyup="validarApellido(this);">
 
               </td>
               <td>
-                <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event)">
+                <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event);" onkeyup="validarApellido(this);">
 
               </td>
             </tr>
@@ -178,7 +177,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" onkeypress="return soloNumeros(event)">
               </td>
               <td>
-                <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico">
+                <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico" onkeyup="validarCorreo(this);" onkeydown="return event.key !== ' ';">
               </td>
               <td>
                 <select name="edad">
@@ -234,7 +233,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección">
+                <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" onkeyup="primeraLetraMayuscula(this);">
               </td>
               <td>
                 <select name="distrito">
@@ -284,7 +283,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </select>
               </td>
               <td>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa el lugar" onkeypress="return soloLetras(event)">
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa el lugar" onkeypress="return soloLetras(event);" onkeyup="primeraLetraMayuscula(this);">
               </td>
             </tr>
           </tbody>
@@ -307,11 +306,11 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input type="text" id="empresa_experiencia" name="empresa_experiencia" placeholder="Ingresa nombre de la empresa">
+                <input type="text" id="empresa_experiencia" name="empresa_experiencia" placeholder="Ingresa nombre de la empresa" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
               <td>
-                <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo" onkeypress="return soloLetras(event)">
+                <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo" onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
               <td>
@@ -328,17 +327,17 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
       <h4 class="titulo-tercera-seccion">¿Tienes hijos? ¿Cuántos?:</h4>
       <div class="row tercera-seccion">
-        <div class="col-md-2 form-check text-center opciones"> <!-- Agregado text-center -->
+        <div class="col-md-2 form-check text-center opciones">
           <input class="form-check-input" type="radio" id="no_Hijos" name="hijos" checked>
           <label class="form-check-label" for="no_hijos">No tengo</label>
         </div>
 
-        <div class="col-md-2 form-check text-center opciones"> <!-- Agregado text-center -->
+        <div class="col-md-2 form-check text-center opciones">
           <input class="form-check-input" type="radio" id="si_Hijos" name="hijos">
           <label class="form-check-label" for="si_hijos">Si tengo</label>
         </div>
 
-        <div class="col-md-8 form-check">
+        <div class="col-md-8 form-check hijos-select" style="margin-top: 10px;">
           <label for="nombres">Número de hijos:</label>
           <select name="hijos" id="hijosSelect" disabled>
             <option value="1">1</option>
@@ -360,13 +359,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
         </div>
         <div class="col-md-3 form-check opciones">
           <input class="form-check-input" type="radio" id="si_estudio" name="estudios">
-          <label class="form-check-label" for="si_estudio" >Si estudio&nbsp; </label>
+          <label class="form-check-label" for="si_estudio">Si estudio&nbsp; </label>
 
         </div>
         <div class="col-md-6 form-check opciones">
-          <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" readonly value="No" onkeypress="return soloLetras(event)">
+          <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" value="No" onkeypress="return soloLetras(event);" onkeyup="primeraLetraMayuscula(this);">
         </div>
       </div>
+      <br/>
       <hr class="separador" />
 
       <h4 class="titulo-sexta-seccion">¿Dónde viste la oferta de trabajo?</h4>
@@ -392,6 +392,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <label class="form-check-label" for="otros">Otros&nbsp; &nbsp; &nbsp; &nbsp; </label>
         </div>
       </div>
+      <br/><br/>
       <hr class="separador" />
 
       <div class="table-responsive">
@@ -406,19 +407,19 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input class="cualidades" type="text" name="positivos_1" placeholder="1. " onkeypress="return soloLetras(event)">
+                <input class="cualidades" type="text" name="positivos_1" placeholder="1. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
               </td>
               <td>
-                <input class="cualidades" type="text" name="negativos_1" placeholder="1. " onkeypress="return soloLetras(event)">
+                <input class="cualidades" type="text" name="negativos_1" placeholder="1. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
             </tr>
             <tr>
               <td>
-                <input class="cualidades" type="text" name="positivos_2" placeholder="2. " onkeypress="return soloLetras(event)">
+                <input class="cualidades" type="text" name="positivos_2" placeholder="2. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
               </td>
               <td>
-                <input class="cualidades" type="text" name="negativos_2" placeholder="2. " onkeypress="return soloLetras(event)">
+                <input class="cualidades" type="text" name="negativos_2" placeholder="2. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
             </tr>
@@ -431,7 +432,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
       </style>
       <div class="importante">
-        <p><b><u>IMPORTANTE:</u></b><br/>En caso de ser contratado, esta solicitud formará parte de su archivo individual permanente. Llénala con cuidado y con los datos correctos. <br/>Todas las preguntas deben ser contestadas. Si no le corresponde alguna de ellas, debe señalarlo expresamente.</p>
+        <p><b><u>IMPORTANTE:</u></b><br />En caso de ser contratado, esta solicitud formará parte de su archivo individual permanente. Llénala con cuidado y con los datos correctos. <br />Todas las preguntas deben ser contestadas. Si no le corresponde alguna de ellas, debe señalarlo expresamente.</p>
         <div class="terminos">
           <p><input type="checkbox" id="checkImportante" style=" cursor: pointer;"></p>
           <p><label for="checkImportante" style="color:black;   cursor: pointer;">HE LEIDO Y ACEPTO LOS <b style="color: #0f3eaa;"><i>TERMINOS Y CONDICIONES</i></b></label></p>
