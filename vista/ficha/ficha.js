@@ -342,36 +342,14 @@ function validarCorreo(e) {
 /* ************************************************************************************* */
 
 /* *********** FUNCION PARA VALIDAR EL IMPUT SOLO SE PUEDE ESCRIBIR NUMEROS ***********/
-function soloNumeros(event) {
-  const charCode = event.which ? event.which : event.keyCode;
-  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    return false;
-  }
-  return true;
+function soloNumeros(input) {
+  input.value = input.value.replace(/[^\d]/g, '');
 }
 /* ******************************************************************************** */
 
 /* *********** FUNCION PARA VALIDAR EL IMPUT SOLO SE PUEDE ESCRIBIR TEXTO ***********/
-function soloLetras(event) {
-  const charCode = event.which ? event.which : event.keyCode;
-  const charCodeLatin1 = event.charCode;
-  if (
-    (charCode < 65 || charCode > 90) &&
-    (charCode < 97 || charCode > 122) &&
-    (charCode < 160 || charCode > 159) &&
-    charCode !== 32 &&
-    (charCodeLatin1 < 161 || charCodeLatin1 > 172) &&
-    charCodeLatin1 !== 241 &&
-    charCode !== 193 &&
-    charCode !== 205 &&
-    charCode !== 225 &&
-    charCode !== 233 &&
-    charCode !== 237 &&
-    charCode !== 243
-  ) {
-    return false;
-  }
-  return true;
+function soloLetras(input) {
+  input.value = input.value.replace(/[^a-zA-ZñÑ\s]/g, '');
 }
 /* ******************************************************************************** */
 

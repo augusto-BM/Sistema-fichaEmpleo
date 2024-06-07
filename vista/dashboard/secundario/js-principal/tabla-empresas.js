@@ -183,8 +183,10 @@ const configurarDataTableDesactivo = {
     },
 };
 //FUNCION QUE SE EJECUTA SOLO CUANDO ABRIMOS EL MODAL VER POSTULANTE DESACTIVOS
-$('#ver_info_entrevistadoresDesactivos').on('shown.bs.modal', function() {
-    var table = $('#myTable2').DataTable(configurarDataTableDesactivo);
-    // Fuerza un renderizado de la tabla para que se ajuste al contenedor
-    table.draw();
+$(document).ready(function() {
+    $('#ver_info_empresasDesactivos').on('shown.bs.modal', function() {
+        var table = $('#myTable2').DataTable(configurarDataTableDesactivo);
+        // Fuerza un renderizado de la tabla para que se ajuste al contenedor
+        table.draw();
+    });
 });

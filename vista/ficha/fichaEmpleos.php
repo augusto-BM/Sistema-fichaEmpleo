@@ -101,14 +101,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event);" onkeyup="validarNombre(this);">
+                <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" oninput="soloLetras(this)" onkeyup="validarNombre(this);">
               </td>
               <td>
-                <input type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event);" onkeyup="validarApellido(this);">
+                <input type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
 
               </td>
               <td>
-                <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event);" onkeyup="validarApellido(this);">
+                <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
 
               </td>
             </tr>
@@ -129,7 +129,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input type="text" name="dni" id="dni" placeholder="Ingresa tu DNI/Cédula" onkeypress="return soloNumeros(event)">
+                <input type="text" name="dni" id="dni" placeholder="Ingresa tu DNI/Cédula" oninput="soloNumeros(this)">
               </td>
               <td>
                 <select name="nacionalidad">
@@ -174,7 +174,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" onkeypress="return soloNumeros(event)">
+                <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" oninput="soloNumeros(this)">
               </td>
               <td>
                 <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico" onkeyup="validarCorreo(this);" onkeydown="return event.key !== ' ';">
@@ -283,7 +283,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </select>
               </td>
               <td>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa el lugar" onkeypress="return soloLetras(event);" onkeyup="primeraLetraMayuscula(this);">
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa el lugar" oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
               </td>
             </tr>
           </tbody>
@@ -310,7 +310,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
               </td>
               <td>
-                <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo" onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
+                <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo" oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
               <td>
@@ -372,23 +372,23 @@ if (!isset($_SESSION['nombre_sesion'])) {
       <h4 class="titulo-sexta-seccion">¿Dónde viste la oferta de trabajo?</h4>
       <div class="row sexta-seccion">
         <div class="col-md-2 form-check opciones">
-          <input class="form-check-input" type="radio" id="bumeran" name="fuente_trabajo" value="bumeran">
+          <input class="form-check-input" type="radio" id="bumeran" name="fuente_trabajo" value="Bumeran">
           <label class="form-check-label" for="bumeran">Bumeran&nbsp; </label>
         </div>
         <div class="col-md-2 form-check opciones">
-          <input class="form-check-input" type="radio" id="facebook" name="fuente_trabajo" value="facebook">
+          <input class="form-check-input" type="radio" id="facebook" name="fuente_trabajo" value="Facebook">
           <label class="form-check-label" for="facebook">Facebook&nbsp; </label>
         </div>
         <div class="col-md-2 form-check opciones">
-          <input class="form-check-input" type="radio" id="tiktok" name="fuente_trabajo" value="tiktok">
-          <label class="form-check-label" for="tiktok">Tik Tok&nbsp; &nbsp; &nbsp; </label>
+          <input class="form-check-input" type="radio" id="tiktok" name="fuente_trabajo" value="Tiktok">
+          <label class="form-check-label" for="tiktok">TikTok&nbsp; &nbsp; &nbsp; </label>
         </div>
         <div class="col-md-2 form-check opciones">
-          <input class="form-check-input" type="radio" id="instagram" name="fuente_trabajo" value="instagram">
+          <input class="form-check-input" type="radio" id="instagram" name="fuente_trabajo" value="Instagram">
           <label class="form-check-label" for="instagram">Instagram</label>
         </div>
         <div class="col-md-4 form-check opciones">
-          <input class="form-check-input" type="radio" id="otros" name="fuente_trabajo" value="otros" checked>
+          <input class="form-check-input" type="radio" id="otros" name="fuente_trabajo" value="Otros" checked>
           <label class="form-check-label" for="otros">Otros&nbsp; &nbsp; &nbsp; &nbsp; </label>
         </div>
       </div>
@@ -407,19 +407,19 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <tbody>
             <tr>
               <td>
-                <input class="cualidades" type="text" name="positivos_1" placeholder="1. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
+                <input class="cualidades" type="text" name="positivos_1" placeholder="1. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
               </td>
               <td>
-                <input class="cualidades" type="text" name="negativos_1" placeholder="1. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
+                <input class="cualidades" type="text" name="negativos_1" placeholder="1. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
             </tr>
             <tr>
               <td>
-                <input class="cualidades" type="text" name="positivos_2" placeholder="2. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
+                <input class="cualidades" type="text" name="positivos_2" placeholder="2. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
               </td>
               <td>
-                <input class="cualidades" type="text" name="negativos_2" placeholder="2. " onkeypress="return soloLetras(event)" onkeyup="primeraLetraMayuscula(this);">
+                <input class="cualidades" type="text" name="negativos_2" placeholder="2. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
 
               </td>
             </tr>

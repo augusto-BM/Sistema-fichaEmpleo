@@ -31,6 +31,7 @@
 
     const getOptionChart2 = () => {
         return {
+            
             color: ["#3246a8", "#00cc66", "#ff5050", "#c6de76", "#D96A8D"],
             tooltip: {
                 show: true,
@@ -153,6 +154,52 @@
             ]
         };
     };
+
+    function updateChart3(data) {
+            
+        // Configuración del gráfico
+        var optionChart3 = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: data.redes_sociales,
+                axisTick: {
+                    alignWithLabel: true
+                }
+            },
+            yAxis: {
+                type: "value"
+            },
+            series: [{
+                name: 'Direct',
+                type: 'bar',
+                barWidth: '60%',
+                data: data.conteos,
+                itemStyle: {
+                    color: function(params) {
+                        // Array de colores
+                        var colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#749f83', '#ca8622', '#bda29a'];
+                        return colorList[params.dataIndex]; // Asignar color según el índice de datos
+                    }
+                }
+            }, ]
+        };
+
+        // Obtener el gráfico y aplicar la nueva configuración
+        var chart3 = echarts.init(document.getElementById("chart3"));
+        chart3.setOption(optionChart3);
+    }
 
     const initCharts = () => {
         const chart1 = echarts.init(document.getElementById("chart1"));
