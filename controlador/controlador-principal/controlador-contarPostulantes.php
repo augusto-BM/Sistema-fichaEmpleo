@@ -1,6 +1,6 @@
 <?php
 
-include '../../../modelo/conexion.php';
+/* include '../../../modelo/conexion.php';
 
 $contar_imfca  = "SELECT COUNT(id) as total FROM fichaempleo WHERE sede = 'Imfca Contacto' AND fecha = CURDATE()";
 $contar_imfca_seleccionados  = "SELECT COUNT(id) as total FROM fichaempleo WHERE sede = 'Imfca Contacto' AND fecha = CURDATE() AND proceso = 'Seleccionado'";
@@ -34,5 +34,5 @@ if ($result_imfca && $result_jbg && $result_bkn && $result_imfca_seleccionados &
     $row_bkn_seleccionados = mysqli_fetch_assoc($result_bkn_seleccionados);
 } else {
     echo "Error al ejecutar la consulta: " . mysqli_error($conn);
-}
+} */
 ?>

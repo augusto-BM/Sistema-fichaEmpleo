@@ -4,6 +4,30 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
+
+if (isset($_GET['id_empresa'])) {
+
+    //GUARDAMOS EL VALOR DEL ID EN UNA VARIABLE
+    $idEmpresa = $_GET['id_empresa'];
+
+    //BUSCAMOS EL NOMBRE DE LA EMPRESA SEGUN SU ID
+    $sql_nombreEmpresas = "SELECT nombre_sede FROM sede WHERE id_sede = $idEmpresa";
+
+    $result_nombreEmpresas = mysqli_query($conn, $sql_nombreEmpresas);
+
+    if ($result_nombreEmpresas) {
+
+        $row_nombreEmpresas = mysqli_fetch_assoc($result_nombreEmpresas);
+
+        //OBTIENE EL VALOR DEL NOMBRE DE LA EMPRESA
+        $nombreEmpresas = $row_nombreEmpresas['nombre_sede'];
+
+    } else {
+        echo "Error al ejecutar la consulta: para obtener el nombre de la mepresa " . mysqli_error($conn);
+    }
+} else {
+    echo "No se ha proporcionado el ID de la empresa.";
+}
 ?>
 <!DOCTYPE html>
 
@@ -13,7 +37,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adminitrador Principal</title>
+    <title>Postulantes - <?php echo $nombreEmpresas; ?></title>
     <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
@@ -28,6 +52,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <link rel="stylesheet" href="./style.css">
 
     <script src="./script.js"></script>
+    <script src="./js-principal/validarInputs.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
@@ -179,7 +204,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
             <div class="principal-contenedor">
                 <div class="student-list-header d-flex justify-content-between align-items-center py-2">
-                    <div class="title h6 fw-bold">Dashboard - <?php echo $_SESSION['nombre_sede']; ?></div>
+                    <div class="title h6 fw-bold">Lista de Postulantes - <?php echo $nombreEmpresas; ?></div>
                     <div class="btn-postulantes-desactivos">
                         <a href="" class="btn-verDesactivo"><i class="fas fa-user-slash me-5 h4"></i></a>
                     </div>

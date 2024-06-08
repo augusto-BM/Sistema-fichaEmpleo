@@ -13,11 +13,11 @@
                             <form method="POST" action="../../../controlador/controlador-principal/controlador-agregarEmpesas.php" enctype="multipart/form-data">
                                 <div class="">
                                     <div class="nombre-empresa" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Sede:</label></div>
-                                    <input type="text" class="form-control" id="nombre_sede" name="nombre_sede" style="margin-bottom: 5px;">
+                                    <input type="text" class="form-control" id="nombre_sede" name="nombre_sede" style="margin-bottom: 5px;" oninput="soloLetras(this)" onkeyup="validarEmpresa(this);">
                                 </div>
                                 <div class="">
                                     <div class="nombre-empresa" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"> <label for="recipient-name" class="col-form-label">Lugar:</label></div>
-                                    <input type="text" class="form-control" id="lugar_sede" name="lugar_sede" style="margin-bottom: 5px;">
+                                    <input type="text" class="form-control" id="lugar_sede" name="lugar_sede" style="margin-bottom: 5px;" oninput="soloLetras(this)">
                                 </div>
 
                                 <div class="modal-footer d-flex justify-content-center">

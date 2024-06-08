@@ -13,7 +13,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graficos</title>
+    <title>Graficos - <?php echo $_SESSION['nombre_sede']; ?></title>
     <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
@@ -65,10 +65,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
             <!--  ------------------------------------------------ -->
             <div class="principal-contenedor">
                 <div class="student-list-header d-flex justify-content-between align-items-center py-2">
-                    <div class="title h6 fw-bold">Dashboard - <?php echo $_SESSION['nombre_sede']; ?></div>
-                    <div class="btn-postulantes-desactivos">
-                        <a href="" class="btn-verDesactivo"><i class="fas fa-user-slash me-5 h4"></i></a>
-                    </div>
+                    <div class="title h6 fw-bold">Graficos - <?php echo $_SESSION['nombre_sede']; ?></div>
                 </div>
 
                 <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
@@ -102,7 +99,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
     <!-- JavaScript -->
-    <!-- <script src="./js-principal/graficos.js"></script> -->
+    <script src="./js-principal/graficos.js"></script>
 
     <script>
         // Función para obtener datos mediante AJAX
@@ -124,7 +121,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
         }
 
         // Función para actualizar el gráfico con los nuevos datos
-        function updateChart3(data) {
+/*         function updateChart3(data) {
 
             // Configuración del gráfico
             var optionChart3 = {
@@ -168,7 +165,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
             // Obtener el gráfico y aplicar la nueva configuración
             var chart3 = echarts.init(document.getElementById("chart3"));
             chart3.setOption(optionChart3);
-        }
+        } */
 
         // Llamar a la función fetchData al cargar la página para obtener datos inicialmente
         window.addEventListener("load", () => {

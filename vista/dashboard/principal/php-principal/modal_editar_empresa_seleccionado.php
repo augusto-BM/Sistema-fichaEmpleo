@@ -14,11 +14,11 @@
                             <input type="hidden" id="sede_id" name="id_sede">
                             <div class="">
                                 <div class="nombre-cede" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px; "><label for="recipient-name" class="col-form-label">Empresa:</label></div>
-                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="nombre_sede" name="nombre_sede">
+                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="nombre_sede" name="nombre_sede" oninput="soloLetras(this)" onkeyup="validarEmpresa(this);">
                             </div>
                             <div class="">
                                 <div class="nombre-lugar" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Lugar:</label></div>
-                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="lugar_sede" name="lugar_sede">
+                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="lugar_sede" name="lugar_sede" oninput="soloLetras(this)">
                             </div>
                         </div>
                     </div>

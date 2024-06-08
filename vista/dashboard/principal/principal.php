@@ -13,7 +13,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adminitrador Principal</title>
+    <title>Postulantes - <?php echo $_SESSION['nombre_sede']; ?></title>
     <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
@@ -30,6 +30,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
 
     <script src="./script.js"></script>
+    <script src="./js-principal/validarInputs.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
@@ -120,7 +121,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
             <!--  ------------------------------------------------ -->
             <div class="principal-contenedor">
                 <div class="student-list-header d-flex justify-content-between align-items-center py-2">
-                    <div class="title h6 fw-bold">Dashboard - <?php echo $_SESSION['nombre_sede']; ?></div>
+                    <div class="title h6 fw-bold">Lista de Postulantes - <?php echo $_SESSION['nombre_sede']; ?></div>
                     <div class="btn-postulantes-desactivos">
                         <a href="" class="btn-verDesactivo"><i class="fas fa-user-slash me-5 h4"></i></a>
                     </div>

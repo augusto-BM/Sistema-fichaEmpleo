@@ -17,7 +17,7 @@ const configurarDataTable = {
             var d = new Date();
             var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
             var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
-            return 'Administrador Principal - ' + fecha + ' - ' + hora;
+            return 'Administrador - ' + fecha + ' - ' + hora;
         }
     }, {
         extend: 'pdfHtml5',
@@ -35,7 +35,7 @@ const configurarDataTable = {
             var d = new Date();
             var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
             var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
-            return 'Administrador Principal - ' + fecha + ' - ' + hora;
+            return 'Administrador - ' + fecha + ' - ' + hora;
         },
 
     }],
@@ -186,7 +186,7 @@ const configurarDataTableDesactivo = {
             var d = new Date();
             var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
             var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
-            return 'Administrador Principal - ' + fecha + ' - ' + hora;
+            return 'Administrador - ' + fecha + ' - ' + hora;
         }
     }, {
         extend: 'pdfHtml5',
@@ -204,7 +204,7 @@ const configurarDataTableDesactivo = {
             var d = new Date();
             var fecha = 'F(' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear().toString().substr(-2) + ')';
             var hora = 'T(' + d.getHours() + 'h ' + d.getMinutes() + 'm ' + d.getSeconds() + 's)';
-            return 'Administrador Principal - ' + fecha + ' - ' + hora;
+            return 'Administrador - ' + fecha + ' - ' + hora;
         },
 
     }],

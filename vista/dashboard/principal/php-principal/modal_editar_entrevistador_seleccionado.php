@@ -17,15 +17,15 @@
                             <input type="hidden" id="entrevistador_id" name="id_entrevistador">
                             <div class="">
                                 <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px; "><label for="recipient-name" class="col-form-label">Nombre:</label></div>
-                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="nombre_entrevistador" name="nombre_entrevistador">
+                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="nombre_entrevistador" name="nombre_entrevistador" oninput="soloLetras(this)" onkeyup="validarNombre(this);">
                             </div>
                             <div class="">
                                 <div class="apelliPaterno-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Apellido paterno:</label></div>
-                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="apellido_paterno_entrevistador" name="apellido_paterno_entrevistador">
+                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="apellido_paterno_entrevistador" name="apellido_paterno_entrevistador" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
                             </div>
                             <div class="">
                                 <div class="apelliMaterno-entrevistador" style="text-align:center; background-color:#CFE2FF;border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Apellido Materno:</label></div>
-                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="apellido_materno_entrevistador" name="apellido_materno_entrevistador">
+                                <input type="text" class="form-control" style="margin-bottom: 5px;" id="apellido_materno_entrevistador" name="apellido_materno_entrevistador" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
                             </div>
 
                             <div class="">

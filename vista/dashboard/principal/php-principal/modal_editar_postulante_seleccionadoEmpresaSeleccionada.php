@@ -1,27 +1,27 @@
 <?php
-    //RECUPERAMOS EL ID PARA OBTENER EL NOMBRE DE LA EMPRESA SELECCIONADA PARA VALIDAR LOS ENTREVISTADORES QUE SOLO PERTENECEN A ESA EMPRESA
-    if (isset($_GET['id_empresa'])) {
+//RECUPERAMOS EL ID PARA OBTENER EL NOMBRE DE LA EMPRESA SELECCIONADA PARA VALIDAR LOS ENTREVISTADORES QUE SOLO PERTENECEN A ESA EMPRESA
+if (isset($_GET['id_empresa'])) {
 
-      //GUARDAMOS EL VALOR DEL ID EN UNA VARIABLE
-      $idEmpresa = $_GET['id_empresa'];
+  //GUARDAMOS EL VALOR DEL ID EN UNA VARIABLE
+  $idEmpresa = $_GET['id_empresa'];
 
-      //BUSCAMOS EL NOMBRE DE LA EMPRESA SEGUN SU ID
-      $sql_nombreEmpresas = "SELECT nombre_sede FROM sede WHERE id_sede = $idEmpresa";
+  //BUSCAMOS EL NOMBRE DE LA EMPRESA SEGUN SU ID
+  $sql_nombreEmpresas = "SELECT nombre_sede FROM sede WHERE id_sede = $idEmpresa";
 
-      $result_nombreEmpresas = mysqli_query($conn, $sql_nombreEmpresas);
+  $result_nombreEmpresas = mysqli_query($conn, $sql_nombreEmpresas);
 
-      if ($result_nombreEmpresas) {
-        $row_nombreEmpresas = mysqli_fetch_assoc($result_nombreEmpresas);
+  if ($result_nombreEmpresas) {
+    $row_nombreEmpresas = mysqli_fetch_assoc($result_nombreEmpresas);
 
-        //OBTIENE EL VALOR DEL NOMBRE DE LA EMPRESA
-        $nombreEmpresas = $row_nombreEmpresas['nombre_sede'];
-      } else {
-        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
-      }
-    } else {
-      echo "No se ha proporcionado el ID de la empresa.";
-    }
-  ?>
+    //OBTIENE EL VALOR DEL NOMBRE DE LA EMPRESA
+    $nombreEmpresas = $row_nombreEmpresas['nombre_sede'];
+  } else {
+    echo "Error al ejecutar la consulta: " . mysqli_error($conn);
+  }
+} else {
+  echo "No se ha proporcionado el ID de la empresa.";
+}
+?>
 <div class="modal fade" id="editar_info_postulante" tabindex="-1" aria-labelledby="editar_info_postulanteLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl"> <!-- modal-xl para un modal más grande -->
     <div class="modal-content">
@@ -113,15 +113,13 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" onkeypress="return soloLetras(event)">
+                  <input type="text" id="nombres" name="nombres" placeholder="Ingresa tu nombre" oninput="soloLetras(this)" onkeyup="validarNombre(this);"">
                 </td>
                 <td>
-                  <input type="text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" onkeypress="return soloLetras(event)">
-
+                  <input type=" text" id="apellido-paterno" name="apellido_paterno" placeholder="Ingresa tu apellido paterno" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
                 </td>
                 <td>
-                  <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" onkeypress="return soloLetras(event)">
-
+                  <input type="text" id="apellido-materno" name="apellido_materno" placeholder="Ingresa tu apellido materno" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
                 </td>
               </tr>
             </tbody>
@@ -141,21 +139,21 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="text" name="dni" id="dni" placeholder="Ingresa tu DNI/Cédula" onkeypress="return soloNumeros(event)">
+                  <input type="text" name="dni" id="dni" placeholder="Ingresa tu DNI/Cédula" oninput="soloNumeros(this)">
                 </td>
                 <td>
                   <select name="nacionalidad" id="nacionalidad">
-                    <option value="CHL">Chile</option>
-                    <option value="COL">Colombia</option>
-                    <option value="ECU">Ecuador</option>
-                    <option value="ECU">España</option>
-                    <option value="MEX">México</option>
-                    <option value="PRY">Paraguay</option>
-                    <option value="PER" selected>Perú</option>
-                    <option value="URY">Uruguay</option>
-                    <option value="VEN">Venezuela</option>
-                    <option value="ARG">Argentina</option>
-                    <option value="BOL">Bolivia</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="España">España</option>
+                    <option value="México">México</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Perú</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
                   </select>
                 </td>
                 <td>
@@ -163,7 +161,7 @@
                 </td>
                 <td>
                   <select name="estado_civil" id="estado_civil">
-                    <option value="Soltero(a)" selected>Soltero(a)</option>
+                    <option value="Soltero(a)">Soltero(a)</option>
                     <option value="Casado(a)">Casado(a)</option>
                     <option value="Viudo(a)">Viudo(a)</option>
                     <option value="Divorciado(a)">Divorciado(a)</option>
@@ -186,10 +184,10 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" onkeypress="return soloNumeros(event)">
+                  <input type="text" id="celular" name="celular" placeholder="Ingresa tu numero de celular" oninput="soloNumeros(this)">
                 </td>
                 <td>
-                  <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico">
+                  <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electronico" onkeyup="validarCorreo(this);" onkeydown="return event.key !== ' ';">
                 </td>
                 <td>
                   <select name="edad">
@@ -245,7 +243,7 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección">
+                  <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" onkeyup="primeraLetraMayuscula(this);">
                 </td>
                 <td>
                   <select name="distrito" id="distrito">
@@ -254,7 +252,6 @@
                     <option value="Barranco">Barranco</option>
                     <option value="Breña">Breña</option>
                     <option value="Carabayllo">Carabayllo</option>
-                    <option value="Centro de lima">Centro de lima</option>
                     <option value="Chaclacayo">Chaclacayo</option>
                     <option value="Chorrillos">Chorrillos</option>
                     <option value="Cieneguilla">Cieneguilla</option>
@@ -264,6 +261,7 @@
                     <option value="Jesús María">Jesús María</option>
                     <option value="La Molina">La Molina</option>
                     <option value="La Victoria">La Victoria</option>
+                    <option value="Lima Centro">Lima Centro</option>
                     <option value="Lince">Lince</option>
                     <option value="Los Olivos">Los Olivos</option>
                     <option value="Lurigancho">Lurigancho</option>
@@ -295,7 +293,7 @@
                   </select>
                 </td>
                 <td>
-                  <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad">
+                  <input type="text" id="ciudad" name="ciudad" placeholder="Ingresa tu ciudad" onkeyup="primeraLetraMayuscula(this);">
                 </td>
               </tr>
             </tbody>
@@ -324,16 +322,16 @@
                   </select>
                 </td>
                 <td>
-                  <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando">
+                  <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" oninput="soloLetras(this)" onkeyup="validarNombre(this);">
 
                 </td>
                 <td>
                   <select class="form-select" name="fuente_trabajo" id="fuente_trabajo">
-                    <option value="bumeran">Bumeran</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="tiktok">Tik Tok</option>
-                    <option value="instagram">Instagram</option>
-                    <option value="otros">Otros</option>
+                    <option value="Bumeran">Bumeran</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Tiktok">Tik Tok</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Otros">Otros</option>
                   </select>
                 </td>
               </tr>
@@ -357,12 +355,10 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="text" id="empresa_experiencia" name="empresa_experiencia" placeholder="Ingresa nombre de la empresa">
-
+                  <input type="text" id="empresa_experiencia" name="empresa_experiencia" placeholder="Ingresa nombre de la empresa" onkeyup="primeraLetraMayuscula(this);">
                 </td>
                 <td>
-                  <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo">
-
+                  <input type="text" id="cargo_experiencia" name="cargo_experiencia" placeholder="Ingresa el cargo" onkeyup="primeraLetraMayuscula(this);">
                 </td>
                 <td>
                   <input class="fecha_cargo_desde" type="month" id="fecha_cargo_desde" name="fecha_cargo_desde">
@@ -389,19 +385,19 @@
             <tbody>
               <tr>
                 <td>
-                  <input class="cualidades" type="text" name="positivos_1" id="positivos_1" placeholder="1. ">
+                  <input class="cualidades" type="text" name="positivos_1" id="positivos_1" placeholder="1. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
                 </td>
                 <td>
-                  <input class="cualidades" type="text" name="negativos_1" id="negativos_1" placeholder="1. ">
+                  <input class="cualidades" type="text" name="negativos_1" id="negativos_1" placeholder="1. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
 
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input class="cualidades" type="text" name="positivos_2" id="positivos_2" placeholder="2. ">
+                  <input class="cualidades" type="text" name="positivos_2" id="positivos_2" placeholder="2. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
                 </td>
                 <td>
-                  <input class="cualidades" type="text" name="negativos_2" id="negativos_2" placeholder="2. ">
+                  <input class="cualidades" type="text" name="negativos_2" id="negativos_2" placeholder="2. " oninput="soloLetras(this)" onkeyup="primeraLetraMayuscula(this);">
 
                 </td>
               </tr>

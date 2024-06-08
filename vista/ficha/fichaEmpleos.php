@@ -133,17 +133,17 @@ if (!isset($_SESSION['nombre_sesion'])) {
               </td>
               <td>
                 <select name="nacionalidad">
-                  <option value="CHL">Chile</option>
-                  <option value="COL">Colombia</option>
-                  <option value="ECU">Ecuador</option>
-                  <option value="ECU">España</option>
-                  <option value="MEX">México</option>
-                  <option value="PRY">Paraguay</option>
-                  <option value="PER" selected>Perú</option>
-                  <option value="URY">Uruguay</option>
-                  <option value="VEN">Venezuela</option>
-                  <option value="ARG">Argentina</option>
-                  <option value="BOL">Bolivia</option>
+                  <option value="Chile">Chile</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="España">España</option>
+                  <option value="México">México</option>
+                  <option value="Paraguay">Paraguay</option>
+                  <option value="Peru" selected>Perú</option>
+                  <option value="Uruguay">Uruguay</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Bolivia">Bolivia</option>
                 </select>
               </td>
               <td>
@@ -242,7 +242,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
                   <option value="Barranco">Barranco</option>
                   <option value="Breña">Breña</option>
                   <option value="Carabayllo">Carabayllo</option>
-                  <option value="Centro de lima" selected>Centro de lima</option>
                   <option value="Chaclacayo">Chaclacayo</option>
                   <option value="Chorrillos">Chorrillos</option>
                   <option value="Cieneguilla">Cieneguilla</option>
@@ -252,6 +251,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                   <option value="Jesús María">Jesús María</option>
                   <option value="La Molina">La Molina</option>
                   <option value="La Victoria">La Victoria</option>
+                  <option value="Lima Centro" selected>Lima Centro</option>
                   <option value="Lince">Lince</option>
                   <option value="Los Olivos">Los Olivos</option>
                   <option value="Lurigancho">Lurigancho</option>
@@ -366,7 +366,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <input type="text" id="estudios" name="estudios" placeholder="Detalla que estas estudiando" value="No" onkeypress="return soloLetras(event);" onkeyup="primeraLetraMayuscula(this);">
         </div>
       </div>
-      <br/>
+      <br />
       <hr class="separador" />
 
       <h4 class="titulo-sexta-seccion">¿Dónde viste la oferta de trabajo?</h4>
@@ -392,7 +392,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
           <label class="form-check-label" for="otros">Otros&nbsp; &nbsp; &nbsp; &nbsp; </label>
         </div>
       </div>
-      <br/><br/>
+      <br /><br />
       <hr class="separador" />
 
       <div class="table-responsive">

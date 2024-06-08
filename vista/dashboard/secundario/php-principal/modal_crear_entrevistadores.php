@@ -18,15 +18,15 @@
                             <form method="POST" action="../../../controlador/controlador-principal/controlador-agregarEntrevistadores.php" enctype="multipart/form-data">
                                 <div class="">
                                     <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Nombre:</label></div>
-                                    <input type="text" class="form-control" id="nombre_entrevistador" name="nombre_entrevistador" style="margin-bottom: 5px;">
+                                    <input type="text" class="form-control" id="nombre_entrevistador" name="nombre_entrevistador" style="margin-bottom: 5px;" oninput="soloLetras(this)" onkeyup="validarNombre(this);">
                                 </div>
                                 <div class="">
                                     <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"> <label for="recipient-name" class="col-form-label">Apellido paterno:</label></div>
-                                    <input type="text" class="form-control" id="apellido_paterno_entrevistador" name="apellido_paterno_entrevistador" style="margin-bottom: 5px;">
+                                    <input type="text" class="form-control" id="apellido_paterno_entrevistador" name="apellido_paterno_entrevistador" style="margin-bottom: 5px;" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
                                 </div>
                                 <div class="">
                                     <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Apellido Materno:</label></div>
-                                    <input type="text" class="form-control" id="apellido_materno_entrevistador" name="apellido_materno_entrevistador" style="margin-bottom: 5px;">
+                                    <input type="text" class="form-control" id="apellido_paterno_entrevistador" name="apellido_paterno_entrevistador" style="margin-bottom: 5px;" oninput="soloLetras(this)" onkeyup="validarApellido(this);">
                                 </div>
                                 <div class="">
                                     <div class="nombre-entrevistador" style="text-align:center; background-color:#CFE2FF; border: 1px solid #9ec5fe; margin-bottom: 5px;"><label for="recipient-name" class="col-form-label">Sede</label></div>
