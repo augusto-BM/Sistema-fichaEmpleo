@@ -32,6 +32,7 @@
     const getOptionChart2 = () => {
         return {
             
+            
             color: ["#3246a8", "#00cc66", "#ff5050", "#c6de76", "#D96A8D"],
             tooltip: {
                 show: true,
@@ -112,6 +113,11 @@
 
     const getOptionChart4 = () => {
         return {
+            title: {
+                text: 'TOTAL DE POSTULANTES - GENERAL',
+                left: 'center',
+                padding: [0, 0, 0, 0]
+              },
             tooltip: {
                 trigger: "item"
             },
@@ -159,6 +165,7 @@
             
         // Configuración del gráfico
         var optionChart3 = {
+            
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -202,9 +209,9 @@
     }
 
     const initCharts = () => {
-        const chart1 = echarts.init(document.getElementById("chart1"));
+        /* const chart1 = echarts.init(document.getElementById("chart1")); */
         const chart2 = echarts.init(document.getElementById("chart2"));
-        const chart3 = echarts.init(document.getElementById("chart3"));
+        /* const chart3 = echarts.init(document.getElementById("chart3")); */
         const chart4 = echarts.init(document.getElementById("chart4"));
 
 /*         chart1.setOption(getOptionChart1());

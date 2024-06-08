@@ -4,6 +4,8 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
+$NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
+
 ?>
 <!DOCTYPE html>
 
@@ -13,7 +15,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graficos - <?php echo $_SESSION['nombre_sede']; ?></title>
+    <title>Graficos - <?php echo $NOMBRE_SEDE_LOGUEADO; ?></title>
     <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
@@ -60,20 +62,28 @@ if (!isset($_SESSION['nombre_sesion'])) {
                 </nav>
             </header>
 
+            <!-- --------- CARDS DE LAS INFO DE LAS EMPRESAS -------->
+            <!--  ------------------------------------------------ -->
             <div class="principal-contenedor">
                 <div class="student-list-header d-flex justify-content-between align-items-center py-2">
-                    <div class="title h6 fw-bold">Graficos - <?php echo $_SESSION['nombre_sede']; ?></div>
+                    <div class="title h6 fw-bold">Graficos - <?php echo $_SESSION['nombre_sesion']; ?></div>
                 </div>
-
-                <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
-                <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>
-                <!-- ************************************************************************** -->
             </div>
 
             <div class="graficos" style="margin: 20px;">
-                <!-- <div id="chart3" style="width: 600px; height: 400px;"></div> -->
-                <div class="row my-4">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" style="display: none;">
+                <div class="row my-1">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="mx-auto" id="chart3" style="width: 600px; height: 400px;"></div>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="mx-auto" id="chart4" style="width: 600px; height: 400px;"></div>
+                    </div>
+                </div>
+
+                <!-- <div class="row my-4">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div id="chart1" class="chart"></div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -81,13 +91,13 @@ if (!isset($_SESSION['nombre_sesion'])) {
                     </div>
                 </div>
                 <div class="row my-4">
-                    <div style="display: none;" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div id="chart3" class="chart"></div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div id="chart4" class="chart"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -98,18 +108,34 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <!-- JavaScript -->
     <script src="./js-principal/graficos.js"></script>
 
-    <!-- <script>
+    <script>
         // Función para obtener datos mediante AJAX
-        function fetchData() {
+        function fetchDataRedesSociales() {
             $.ajax({
-                url: '../../../controlador/controlador-principal/controlador-graficos.php',
+                url: '../../../controlador/controlador-secundario/controlador-graficoRedes.php',
                 type: 'GET',
                 success: function(response) {
                     // Parsear la respuesta JSON
                     var data = JSON.parse(response);
 
                     // Actualizar gráfico con los nuevos datos
-                    updateChart3(data);
+                    updateRedesSociales(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener datos:', error);
+                }
+            });
+        }
+        function fetchDataTotal() {
+            $.ajax({
+                url: '../../../controlador/controlador-secundario/controlador-graficoTotal.php',
+                type: 'GET',
+                success: function(response) {
+                    // Parsear la respuesta JSON
+                    var data = JSON.parse(response);
+
+                    // Actualizar gráfico con los nuevos datos
+                    updateTotal(data);
                 },
                 error: function(xhr, status, error) {
                     console.error('Error al obtener datos:', error);
@@ -117,60 +143,15 @@ if (!isset($_SESSION['nombre_sesion'])) {
             });
         }
 
-        // Función para actualizar el gráfico con los nuevos datos
-/*         function updateChart3(data) {
-
-            // Configuración del gráfico
-            var optionChart3 = {
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis: {
-                    type: "category",
-                    data: data.redes_sociales,
-                    axisTick: {
-                        alignWithLabel: true
-                    }
-                },
-                yAxis: {
-                    type: "value"
-                },
-                series: [{
-                    name: 'Direct',
-                    type: 'bar',
-                    barWidth: '60%',
-                    data: data.conteos,
-                    itemStyle: {
-                        color: function(params) {
-                            // Array de colores
-                            var colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#749f83', '#ca8622', '#bda29a'];
-                            return colorList[params.dataIndex]; // Asignar color según el índice de datos
-                        }
-                    }
-                }, ]
-            };
-
-            // Obtener el gráfico y aplicar la nueva configuración
-            var chart3 = echarts.init(document.getElementById("chart3"));
-            chart3.setOption(optionChart3);
-        } */
 
         // Llamar a la función fetchData al cargar la página para obtener datos inicialmente
         window.addEventListener("load", () => {
-            fetchData();
+            fetchDataRedesSociales();
+            fetchDataTotal();
             // Opcional: configurar intervalo para actualizar datos periódicamente
             // setInterval(fetchData, 30000); // por ejemplo, para actualizar cada 30 segundos
         });
-    </script> -->
+    </script>
 
 </body>
 
