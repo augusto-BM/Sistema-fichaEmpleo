@@ -15,7 +15,7 @@
       <li class="h7"><a class=" nav-link text-dark" href="cuentas.php"><i class="fas fa-user-shield"></i> <span>Cuentas</span></a></li>
       <li class="h7"><a class=" nav-link text-dark" href="empresas.php"><i class="fas fa-usd-square me-2"></i> <span>Empresas</span></a></li>
       <li class="h7"><a class=" nav-link text-dark" href="graficos.php"><i class="fas fa-file-chart-line me-2"></i> <span>Graficos</span></a></li>
-      <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fas fa-sliders-v-square me-2"></i> <span>Configuracion</span></a></li>
+      <!-- <li class="h7"><a class=" nav-link text-dark" href="#"><i class="fas fa-sliders-v-square me-2"></i> <span>Configuracion</span></a></li> -->
     </ul>
     <ul class="logout d-flex justify-content-start list-unstyled sidebar-cerrar-sesion">
       <li class=" h7"><a class="nav-link" href="../../../vista/login/cerrar-sesion.php"><span>Cerrar Sesion</span><i class="fal fa-sign-out-alt ms-2"></i></a></li>

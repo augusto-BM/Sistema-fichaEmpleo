@@ -27,8 +27,8 @@
       <h3 class="titulo-Formulario">INICIAR SESION</h3>
       <?php
           if(isset($error)){
-              foreach($error as $error){
-                  echo '<span class="error-msg">'.$error.'</span>';
+              foreach($error as $error_msg){
+                  echo '<span class="error-msg">'.htmlspecialchars($error_msg).'</span>';
               };
           }
       ?>

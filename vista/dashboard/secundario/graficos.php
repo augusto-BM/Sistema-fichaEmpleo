@@ -38,6 +38,12 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
+    <!-- LIBRERIA APACHE EACHARTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
+    <!-- DIBUJAR LOS GRAFICOS -->
+    <script src="./js-principal/graficos.js"></script>
+    <!-- SOLICITUD AJAX DE LOS GRAFICOS EN PHP -->
+    <script src="./js-principal/graficoAjax.js"></script>
 
 </head>
 
@@ -86,14 +92,6 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
         </div>
         <!-- TERMINA EL CONTENIDO PRINCIPAL  -->
     </main>
-
-    <!-- LIBRERIA APACHE EACHARTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
-    <!-- DIBUJAR LOS GRAFICOS -->
-    <script src="./js-principal/graficos.js"></script>
-    <!-- SOLICITUD AJAX DE LOS GRAFICOS EN PHP -->
-    <script src="./js-principal/graficoAjax.js"></script>
-
 </body>
 
 </html>
