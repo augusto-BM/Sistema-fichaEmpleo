@@ -117,11 +117,6 @@
                                 </tr>
                         <?php
                             }
-                        } else {
-                            // Si no hay resultados, imprimir una fila indicando que no hay datos
-                            echo '<tr>';
-                            echo '<td colspan="6">No hay datos disponibles</td>'; // Ajusta el colspan según el número de columnas en tu tabla
-                            echo '</tr>';
                         }
                         mysqli_free_result($resultado);
                         mysqli_close($conn);

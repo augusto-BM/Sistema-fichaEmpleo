@@ -73,85 +73,26 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
             <div class="graficos" style="margin: 20px;">
                 <div class="row my-1">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="mx-auto" id="chart3" style="width: 600px; height: 400px;"></div>
+                        <div class="mx-auto" id="graficoRedesSociales" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
                 <div class="row my-5">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="mx-auto" id="chart4" style="width: 600px; height: 400px;"></div>
+                        <div class="mx-auto" id="graficoTotal" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
-
-                <!-- <div class="row my-4">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart1" class="chart"></div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart2" class="chart"></div>
-                    </div>
-                </div>
-                <div class="row my-4">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart3" class="chart"></div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart4" class="chart"></div>
-                    </div>
-                </div> -->
             </div>
 
         </div>
         <!-- TERMINA EL CONTENIDO PRINCIPAL  -->
     </main>
 
+    <!-- LIBRERIA APACHE EACHARTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
-    <!-- JavaScript -->
+    <!-- DIBUJAR LOS GRAFICOS -->
     <script src="./js-principal/graficos.js"></script>
-
-    <script>
-        // Función para obtener datos mediante AJAX
-        function fetchDataRedesSociales() {
-            $.ajax({
-                url: '../../../controlador/controlador-secundario/controlador-graficoRedes.php',
-                type: 'GET',
-                success: function(response) {
-                    // Parsear la respuesta JSON
-                    var data = JSON.parse(response);
-
-                    // Actualizar gráfico con los nuevos datos
-                    updateRedesSociales(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error al obtener datos:', error);
-                }
-            });
-        }
-        function fetchDataTotal() {
-            $.ajax({
-                url: '../../../controlador/controlador-secundario/controlador-graficoTotal.php',
-                type: 'GET',
-                success: function(response) {
-                    // Parsear la respuesta JSON
-                    var data = JSON.parse(response);
-
-                    // Actualizar gráfico con los nuevos datos
-                    updateTotal(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error al obtener datos:', error);
-                }
-            });
-        }
-
-
-        // Llamar a la función fetchData al cargar la página para obtener datos inicialmente
-        window.addEventListener("load", () => {
-            fetchDataRedesSociales();
-            fetchDataTotal();
-            // Opcional: configurar intervalo para actualizar datos periódicamente
-            // setInterval(fetchData, 30000); // por ejemplo, para actualizar cada 30 segundos
-        });
-    </script>
+    <!-- SOLICITUD AJAX DE LOS GRAFICOS EN PHP -->
+    <script src="./js-principal/graficoAjax.js"></script>
 
 </body>
 

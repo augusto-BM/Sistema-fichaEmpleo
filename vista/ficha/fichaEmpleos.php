@@ -25,7 +25,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
   <header>
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <p class="navbar-brand bienvenido">Bienvenido - <?php echo $_SESSION['nombre_sesion']  ?></p>
+        <p class="navbar-brand bienvenido">Bienvenido - <?php echo $_SESSION['nombre_sesion']?></p>
         <div class="d-flex contenedor-logout dropdown show">
           <a class="dropdown-item cerrarSesion" href="../login/cerrar-sesion.php">Cerrar Sesión</a>
         </div>

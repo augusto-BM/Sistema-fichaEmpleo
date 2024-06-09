@@ -2,7 +2,7 @@ function updateRedesSociales(data) {
     // Configuración del gráfico
     var optionRedesSociales = {
         title: {
-            text: 'Redes Sociales mas solicitados como fuente de trabajo',
+            text: 'REDES SOCIALES MAS SOLICITADOS COMO FUENTE DE TRABAJO',
             left: 'center' // Puedes ajustar la alineación según tu preferencia
         },
         tooltip: {
@@ -48,7 +48,7 @@ function updateRedesSociales(data) {
     };
 
     // Obtener el gráfico y aplicar la nueva configuración
-    var chartRedesSociales = echarts.init(document.getElementById("chart3"));
+    var chartRedesSociales = echarts.init(document.getElementById("graficoRedesSociales"));
     chartRedesSociales.setOption(optionRedesSociales);
 }
 
@@ -102,6 +102,6 @@ function updateTotal(data) {
     };
 
     // Obtener el gráfico y aplicar la nueva configuración
-    var chartTotal = echarts.init(document.getElementById("chart4"));
+    var chartTotal = echarts.init(document.getElementById("graficoTotal"));
     chartTotal.setOption(optionTotal);
 }

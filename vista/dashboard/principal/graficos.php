@@ -71,21 +71,14 @@ if (!isset($_SESSION['nombre_sesion'])) {
             </div>
 
             <div class="graficos" style="margin: 20px;">
-                <!-- <div id="chart3" style="width: 600px; height: 400px;"></div> -->
-                <div class="row my-4">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" style="display: none;">
-                        <div id="chart1" class="chart"></div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart2" class="chart"></div>
+                <div class="row my-1">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="mx-auto" id="graficoRedesSociales" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
-                <div class="row my-4">
-                    <div style="display: none;" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart3" class="chart"></div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart4" class="chart"></div>
+                <div class="row my-5">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="mx-auto" id="graficoTotal" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -94,84 +87,13 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!-- TERMINA EL CONTENIDO PRINCIPAL  -->
     </main>
 
+    <!-- LIBRERIA APACHE EACHARTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
-    <!-- JavaScript -->
+    <!-- DIBUJAR LOS GRAFICOS -->
     <script src="./js-principal/graficos.js"></script>
-
-    <!-- <script>
-        // Función para obtener datos mediante AJAX
-        function fetchData() {
-            $.ajax({
-                url: '../../../controlador/controlador-principal/controlador-graficos.php',
-                type: 'GET',
-                success: function(response) {
-                    // Parsear la respuesta JSON
-                    var data = JSON.parse(response);
-
-                    // Actualizar gráfico con los nuevos datos
-                    updateChart3(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error al obtener datos:', error);
-                }
-            });
-        }
-
-        // Función para actualizar el gráfico con los nuevos datos
-/*         function updateChart3(data) {
-
-            // Configuración del gráfico
-            var optionChart3 = {
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis: {
-                    type: "category",
-                    data: data.redes_sociales,
-                    axisTick: {
-                        alignWithLabel: true
-                    }
-                },
-                yAxis: {
-                    type: "value"
-                },
-                series: [{
-                    name: 'Direct',
-                    type: 'bar',
-                    barWidth: '60%',
-                    data: data.conteos,
-                    itemStyle: {
-                        color: function(params) {
-                            // Array de colores
-                            var colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#749f83', '#ca8622', '#bda29a'];
-                            return colorList[params.dataIndex]; // Asignar color según el índice de datos
-                        }
-                    }
-                }, ]
-            };
-
-            // Obtener el gráfico y aplicar la nueva configuración
-            var chart3 = echarts.init(document.getElementById("chart3"));
-            chart3.setOption(optionChart3);
-        } */
-
-        // Llamar a la función fetchData al cargar la página para obtener datos inicialmente
-        window.addEventListener("load", () => {
-            fetchData();
-            // Opcional: configurar intervalo para actualizar datos periódicamente
-            // setInterval(fetchData, 30000); // por ejemplo, para actualizar cada 30 segundos
-        });
-    </script> -->
-
+    <!-- SOLICITUD AJAX DE LOS GRAFICOS EN PHP -->
+    <script src="./js-principal//graficoAjax.js"></script>
+    
 </body>
 
 </html>
