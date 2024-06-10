@@ -29,7 +29,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css-principal/graficos.css" />
 
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -42,39 +43,24 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <script src="./js-principal/graficos.js"></script>
     <!-- SOLICITUD AJAX DE LOS GRAFICOS EN PHP -->
     <script src="./js-principal/graficoAjax.js"></script>
-    
+
 
 </head>
 
 <body class="bg-content">
 
+    <!-- EMPIEZA sidebar -->
+    <?php @include './php-principal/sidebar.php' ?>
+    <!-- FINALIZA sidebar -->
+
     <main class="dashboard d-flex">
-
-
-        <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
-        <!-- FINALIZA sidebar -->
-
         <!-- EMPIEZA EL CONTENIDO PRINCIPAL -->
         <div class="container">
-
-            <!-- HEADER -->
-            <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none hamburguesa"></i>
-                    </div>
-                </nav>
-            </header>
 
             <div class="principal-contenedor">
                 <div class="student-list-header d-flex justify-content-between align-items-center py-2">
                     <div class="title h6 fw-bold">Graficos - <?php echo $_SESSION['nombre_sede']; ?></div>
                 </div>
-
-                <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
-                <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>
-                <!-- ************************************************************************** -->
             </div>
 
             <div class="graficos" style="margin: 20px;">

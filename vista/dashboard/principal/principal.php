@@ -17,7 +17,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <link rel="icon" href="../../login/icono.ico" type="image/x-icon">
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -28,7 +27,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
     <link rel="stylesheet" href="./style.css">
 
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
     <script src="./js-principal/validarInputs.js"></script>
 
@@ -37,7 +37,6 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <!-- DATA TABLES -->
-    <!--     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>-->
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/b-1.7.1/b-html5-1.7.1/datatables.min.js"></script>
@@ -86,6 +85,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
 <body class="bg-content">
 
+    <?php @include './php-principal/sidebar.php' ?>
+
     <main class="dashboard d-flex">
 
         <!-- ------- MODAL PARA VER LISTADO DE LA TABLA DE POSTULANTES DESACTIVOS --------->
@@ -101,20 +102,11 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!-- -------------------------------------------------------------------------- -->
 
         <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
+        <?php /* @include './php-principal/sidebar.php' */ ?>
         <!-- FINALIZA sidebar -->
 
         <!-- EMPIEZA EL CONTENIDO PRINCIPAL -->
         <div class="container">
-
-            <!-- HEADER -->
-            <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none hamburguesa"></i>
-                    </div>
-                </nav>
-            </header>
 
             <!-- --------- CARDS DE LAS INFO DE LAS EMPRESAS -------->
             <?php @include './php-principal/cards_empresas.php' ?>

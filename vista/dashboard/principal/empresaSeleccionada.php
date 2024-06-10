@@ -21,7 +21,6 @@ if (isset($_GET['id_empresa'])) {
 
         //OBTIENE EL VALOR DEL NOMBRE DE LA EMPRESA
         $nombreEmpresas = $row_nombreEmpresas['nombre_sede'];
-
     } else {
         echo "Error al ejecutar la consulta: para obtener el nombre de la mepresa " . mysqli_error($conn);
     }
@@ -50,7 +49,9 @@ if (isset($_GET['id_empresa'])) {
     <link rel="stylesheet" href="./css-principal/modal_ver_y_editar.css"> <!-- Archivo CSS externo -->
 
     <link rel="stylesheet" href="./style.css">
-
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
     <script src="./js-principal/validarInputs.js"></script>
 
@@ -113,6 +114,10 @@ if (isset($_GET['id_empresa'])) {
 </head>
 
 <body class="bg-content">
+    
+    <!-- EMPIEZA sidebar -->
+    <?php @include './php-principal/sidebar.php' ?>
+    <!-- FINALIZA sidebar -->
 
     <main class="dashboard d-flex">
 
@@ -128,21 +133,13 @@ if (isset($_GET['id_empresa'])) {
         <?php @include './php-principal/modal_editar_postulante_seleccionadoEmpresaSeleccionada.php' ?>
         <!-- -------------------------------------------------------------------------- -->
 
-        <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
-        <!-- FINALIZA sidebar -->
-
         <!-- EMPIEZA EL CONTENIDO PRINCIPAL -->
         <div class="container">
 
             <!-- HEADER -->
             <header>
                 <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none"></i>
-                    </div>
                     <div style="margin-right: 20px;"><a href="./principal.php"><i class="far fa-arrow-alt-circle-left h1" style="color: #48344E;"></i></a></div>
-
                 </nav>
             </header>
 

@@ -4,7 +4,6 @@ session_start();
 if (!isset($_SESSION['nombre_sesion'])) {
     header('location:../../../index.php');
 }
-
 ?>
 <!DOCTYPE html>
 
@@ -23,7 +22,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./style.css">
 
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -67,6 +67,10 @@ if (!isset($_SESSION['nombre_sesion'])) {
 </head>
 
 <body class="bg-content">
+    
+    <!-- EMPIEZA sidebar -->
+    <?php @include './php-principal/sidebar.php' ?>
+    <!-- FINALIZA sidebar -->
 
     <main class="dashboard d-flex">
 
@@ -80,22 +84,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DE LA CUENTA  -->
         <?php @include './php-principal/modal_editar_cuenta_seleccionado.php' ?>
 
-
-        <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
-        <!-- FINALIZA sidebar -->
-
         <!-- start content page -->
         <div class="container-fluid px">
-
-            <!-- HEADER -->
-            <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none"></i>
-                    </div>
-                </nav>
-            </header>
 
             <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
             <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>
@@ -147,7 +137,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
 
 
                         $sql_roles = "SELECT id_rol, rol FROM rol";
-                        $roles = array(); 
+                        $roles = array();
 
                         /* $result_roles = $conn->query($sql_roles); */
 
@@ -202,7 +192,7 @@ if (!isset($_SESSION['nombre_sesion'])) {
                                     <td class="user_id" style="display: none;"><?php echo $fila['id']; ?></td>
                                     <td class=""><?php echo $fila['usuario']; ?></td>
                                     <td class=""><?php echo $fila['contraseña']; ?></td>
-                                    <td class=""><?php echo $nombreRol;?></td>
+                                    <td class=""><?php echo $nombreRol; ?></td>
                                     <td class=""><?php echo $nombreCede; ?></td>
                                     <td class="">
                                         <a href="" class=" btn-ver me-0"><i class="far fa-eye" style="color: #2E59EA;"></i></a>

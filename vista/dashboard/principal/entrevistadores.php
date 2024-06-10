@@ -23,7 +23,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./style.css">
 
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
     <script src="./js-principal/validarInputs.js"></script>
 
@@ -68,6 +69,9 @@ if (!isset($_SESSION['nombre_sesion'])) {
 </head>
 
 <body class="bg-content">
+    <!-- EMPIEZA sidebar -->
+    <?php @include './php-principal/sidebar.php' ?>
+        <!-- FINALIZA sidebar -->
 
     <main class="dashboard d-flex">
 
@@ -81,22 +85,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
         <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DEL ENTREVISTADOR  -->
         <?php @include './php-principal/modal_editar_entrevistador_seleccionado.php' ?>
 
-
-        <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
-        <!-- FINALIZA sidebar -->
-
         <!-- start content page -->
         <div class="container-fluid px">
-
-            <!-- HEADER -->
-            <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none"></i>
-                    </div>
-                </nav>
-            </header>
 
             <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
             <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>

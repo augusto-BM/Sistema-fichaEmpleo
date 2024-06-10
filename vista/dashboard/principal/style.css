@@ -1,323 +1,470 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@200&display=swap");
-* {
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap");
+:root {
+  --color-barra-lateral: rgb(255, 255, 255);
+
+  --color-texto: rgb(0, 0, 0);
+  --color-texto-menu: rgb(134, 136, 144);
+
+  --color-menu-hover: rgb(238, 238, 238);
+  --color-menu-hover-texto: rgb(0, 0, 0);
+
+  --color-boton: rgb(0, 0, 0);
+  --color-boton-texto: rgb(255, 255, 255);
+
+  --color-linea: rgb(180, 180, 180);
+
+  --color-switch-base: rgb(201, 202, 206);
+  --color-switch-circulo: rgb(241, 241, 241);
+
+  --color-scroll: rgb(192, 192, 192);
+  --color-scroll-hover: rgb(134, 134, 134);
 }
+
+.dark-mode {
+  --color-barra-lateral: rgb(44, 45, 49);
+
+  --color-texto: rgb(255, 255, 255);
+  --color-texto-menu: rgb(110, 110, 117);
+
+  --color-menu-hover: rgb(0, 0, 0);
+  --color-menu-hover-texto: rgb(238, 238, 238);
+
+  --color-boton: rgb(255, 255, 255);
+  --color-boton-texto: rgb(0, 0, 0);
+
+  --color-linea: rgb(90, 90, 90);
+
+  --color-switch-base: rgb(39, 205, 64);
+  --color-switch-circulo: rgb(255, 255, 255);
+
+  --color-scroll: rgb(68, 69, 74);
+  --color-scroll-hover: rgb(85, 85, 85);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+body {
+  height: 100vh;
+  width: 100%;
+  /* background-color: darkcyan; */
+}
+
+/*-----------------Menu*/
+.menu {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--color-boton);
+  color: var(--color-boton-texto);
+  right: 15px;
+  top: 15px;
+  z-index: 100;
+}
+
+/*----------------Barra Lateral*/
+.barra-lateral {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  height: 100%;
+  overflow: hidden;
+  padding: 20px 15px;
+  background-color: #020e39;
+  color: white;
+  transition: width 0.5s ease, background-color 0.3s ease, left 0.5s ease;
+  z-index: 50;
+}
+
+.mini-barra-lateral {
+  width: 80px;
+}
+.barra-lateral span {
+  width: 100px;
+  white-space: nowrap;
+  font-size: 18px;
+  text-align: left;
+  opacity: 1;
+  transition: opacity 0.5s ease, width 0.5s ease;
+}
+.barra-lateral span.oculto {
+  opacity: 0;
+  width: 0;
+}
+
+/*------------> Nombre de la página */
+.barra-lateral .nombre-pagina {
+  width: 100%;
+  height: 45px;
+  color: white;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+.barra-lateral .nombre-pagina ion-icon {
+  min-width: 50px;
+  font-size: 40px;
+  cursor: pointer;
+}
+.barra-lateral .nombre-pagina span {
+  margin-left: 5px;
+  font-size: 25px;
+}
+.nombre-lugar{
+    color: #04b7ee;
+}
+/*------------> Botón*/
+.barra-lateral .boton {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-boton);
+  color: var(--color-boton-texto);
+}
+.barra-lateral .boton ion-icon {
+  min-width: 50px;
+  font-size: 25px;
+}
+
+/*--------------> Menu Navegación*/
+.navegacion{
+    margin-top: 30px;
+}
+.barra-lateral .navegacion {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.barra-lateral .navegacion::-webkit-scrollbar {
+  width: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb {
+  background-color: var(--color-scroll);
+  border-radius: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scroll-hover);
+}
+.barra-lateral .navegacion li {
+  list-style: none;
+  display: flex;
+  margin-bottom: 4px;
+  
+}
+.barra-lateral .navegacion a {
+  width: 85%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 10px;
+  padding-left: 5px;
+  color: white;
+}
+.barra-lateral .navegacion a:hover {
+  background-color: var(--color-menu-hover);
+  color: var(--color-menu-hover-texto);
+}
+.barra-lateral .navegacion ion-icon {
+  min-width: 50px;
+  font-size: 20px;
+}
+
+/*-----------------> Linea*/
+.barra-lateral .linea {
+  width: 100%;
+  height: 1px;
+  margin-top: 15px;
+  background-color: var(--color-linea);
+}
+
+/*----------------> Modo Oscuro*/
+.barra-lateral .modo-oscuro {
+  width: 100%;
+  margin-bottom: 80px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.barra-lateral .modo-oscuro .info {
+  width: 150px;
+  height: 45px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: var(--color-texto-menu);
+}
+.barra-lateral .modo-oscuro ion-icon {
+  width: 50px;
+  font-size: 20px;
+}
+
+/*--->switch*/
+.barra-lateral .modo-oscuro .switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  height: 45px;
+  cursor: pointer;
+}
+.barra-lateral .modo-oscuro .base {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 35px;
+  height: 20px;
+  background-color: var(--color-switch-base);
+  border-radius: 50px;
+}
+.barra-lateral .modo-oscuro .circulo {
+  position: absolute;
+  width: 18px;
+  height: 90%;
+  background-color: var(--color-switch-circulo);
+  border-radius: 50%;
+  left: 2px;
+  transition: left 0.5s ease;
+}
+.barra-lateral .modo-oscuro .circulo.prendido {
+  left: 15px;
+}
+
+/*---------------> Usuario*/
+.barra-lateral .usuario {
+  width: 100%;
+  display: flex;
+}
+.barra-lateral .usuario img {
+  width: 50px;
+  min-width: 50px;
+  border-radius: 10px;
+}
+.barra-lateral .usuario .info-usuario {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-texto);
+  overflow: hidden;
+}
+.barra-lateral .usuario .nombre-email {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+.barra-lateral .usuario .nombre {
+  font-size: 15px;
+  font-weight: 600;
+}
+.barra-lateral .usuario .email {
+  font-size: 13px;
+}
+.barra-lateral .usuario ion-icon {
+  font-size: 20px;
+}
+.usuario {
+    display: flex;
+    justify-content: center;  }
+/*-------------main*/
+
+#inbox {
+  background-color: var(--color-menu-hover);
+  color: var(--color-menu-hover-texto);
+}
+
+main {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.5s ease;
+}
+main.min-main {
+  margin-left: 80px;
+}
+.general{
+    text-align: center;
+}
+
 .container {
   padding: 0;
 }
 .principal-contenedor {
   margin: 10px;
 }
-
-/* start dashboard */
-/* start sidebar */
-.bg-sidebar {
-  background-color: #020e39;
-  transition: margin 0.6s ease-in-out;
-  z-index: 1000;
-  color: white;
-}
-.bg-content {
-  background: #f8f8f8;
-}
-.h7 {
-  font-size: 14px;
-}
-.icono-contraer {
-  margin-left: 10px;
-  font-size: 35px;
-  color: #020e39;
-}
-.icono-contraer:hover {
-  color: #3d1fff;
-  cursor: pointer;
-}
-.sidebar-opciones i,
-.sidebar-opciones span {
-  color: white;
-  font-size: 16px;
-  margin-bottom: 20px;
-  padding: 5px;
+.nombre-sesion{
+    color: white;
 }
 .sidebar-cerrar-sesion {
-  background-color: #c44440;
-  padding: 10px;
-  border-radius: 20px;
-  color: white;
-}
-.sidebar-cerrar-sesion span:hover {
-  border-radius: 20px;
-  margin: 3px;
-}
-
-.sidebar-opciones span:hover {
-  background-color: #0a9099;
-  border-radius: 20px;
-}
-/* end sidebar */
-
+    margin-top: 20px;
+    background-color: #c44440;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+  }
+  .sidebar-cerrar-sesion span:hover {
+    border-radius: 20px;
+    margin: 3px;
+  }
+  
 /* start cards */
 .cards {
-  background-image: url('../../../vista/login/fondo-login.jpg');
-  /* Ruta a tu imagen de fondo */
-  background-size: cover;
-  /* Ajustar el tamaño de la imagen para cubrir el contenedor */
-  background-position: center;
-  /* Centrar la imagen */
-  background-repeat: no-repeat;
-  /* Evitar que la imagen de fondo se repita */
-  min-height: 300px;
-  align-items: center;
-}
-
-.card__items {
-  text-align: center;
-  position: relative;/* Establecer posición relativa para poder superponer elementos */
-  margin-bottom: 10px;
-  color: white;
-
-}
-
-.card__items:hover {
-  background-color: #020e39 !important;
-  cursor: pointer;
-  color: white;
-}
-
-.card__background {
-  position: absolute;
-  /* Establecer posición absoluta para superponer la imagen sobre el contenido */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.5); */
-  /* Color de fondo con transparencia */
-}
-
-.card__empresas {
-  margin: 0 auto;
-  /* Centrar horizontalmente los elementos hijos */
-  width: 80%;
-  /* Ajusta el ancho según tus necesidades */
-  position: relative;
-  /* Establecer posición relativa para que los elementos hijos se superpongan correctamente */
-  z-index: 1;
-  /* Establecer un índice z para que los elementos hijos estén sobre la imagen de fondo */
-}
-/* .cards {
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
+    background-image: url('../../../vista/login/fondo-login.jpg');
+    /* Ruta a tu imagen de fondo */
+    background-size: cover;
+    /* Ajustar el tamaño de la imagen para cubrir el contenedor */
+    background-position: center;
+    /* Centrar la imagen */
+    background-repeat: no-repeat;
+    /* Evitar que la imagen de fondo se repita */
+    min-height: 300px;
+    align-items: center;
+  }
   
-  background-image: linear-gradient(rgba(0, 184, 156, 0),
-      rgba(0, 184, 156, 0)), url("../../../vista/login/fondo-login.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
-.admin-color {
-  color: #04b7ee;
-  font-size: larger;
-}
-.cards .card__items {
-  border-radius: 10px;
-  width: 220px;
-  height: 140px;
-}
-
-.pasaron {
-  color: #b2ff98 !important;
-  font-size: 25px !important;
-}
-.asistieron {
-  font-size: 12px !important;
-}
-.total {
-  margin-top: 15px !important;
-}
-
-
-/* 
-.card__items--imfca {
-  background-color: #af64f9;
-}
-.card__items--imfca:hover {
-  background-color: #020e39;
-  cursor: pointer;
-}
-.card__items--imfca i {
-  color: whitesmoke;
-  margin: 0 auto;
-}
-.card__items--imfca span {
-  color: #fff;
-  text-align: center;
-  font-size: 22px;
-  border-radius: 10px;
-}
-.card__items--imfca p {
-  color: whitesmoke;
-  text-align: center;
-  font-style: italic;
-  margin: 0 !important;
-}
-
-
-.card__items--jbg {
-  background-color: #0081e3;
-}
-.card__items--jbg:hover {
-  background-color: #020e39;
-  cursor: pointer;
-}
-.card__items--jbg i {
-  color: whitesmoke;
-  margin: 0 auto;
-}
-.card__items--jbg span {
-  color: #fff;
-  text-align: center;
-  font-size: 22px;
- border-radius: 10px;
-}
-.card__items--jbg p {
-  color: whitesmoke;
-  text-align: center;
-  font-style: italic;
-  margin: 0 !important;
-}
-
-.card__items--bkn {
-  background-color: #5a23a2;
-}
-.card__items--bkn:hover {
-  background-color: #020e39;
-  cursor: pointer;
-}
-.card__items--bkn i {
-  color: whitesmoke;
-  margin: 0 auto;
-}
-.card__items--bkn span {
-  color: #fff;
-  text-align: center;
-  font-size: 22px;
-   border-radius: 10px;
-}
-.card__items--bkn p {
-  color: whitesmoke;
-  text-align: center;
-  font-style: italic;
-  margin: 0 !important;
-}
-
-.nbr {
-  position: absolute;
-  right: 30px;
-  top: 18px;
-} 
-*/
-/* end cards */
-
-.btn-postulantes-desactivos i {
-  color: #c44440 !important;
-}
-.btn-postulantes-desactivos i:hover {
-  cursor: pointer;
-  color: #ff0000 !important;
-}
-/* end dashboard */
-
-/* ----- DIV FILTROS DE FECHAS ----- */
-.filtradoFecha {
-  width: 100%;
-  display: flex;
-}
-
-.fecha_col {
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0 auto;
-}
-
-/* ---------------------------------- */
-/* start listado de postulantes  */
-.student_list {
-  border-collapse: separate;
-  border-spacing: 0 15px;
-}
-.table th {
-  font-size: 12px;
-  color: #acacac;
-}
-table tbody {
-  font-size: 14px;
-}
-.table a {
-  color: #00c1fe;
-}
-.student-list-header {
-  border-bottom: 2px solid #e5e5e5;
-}
-.student-list-header i {
-  color: #00c1fe;
-}
-
-.btn-primary {
-  background-color: #00c1fe;
-  border-color: #00c1fe;
-}
-.btn-primary:hover {
-  background-color: #04a6d8;
-  border-color: #04a6d8;
-}
-.btn-primary:focus {
-  background-color: none;
-}
-/* end students list */
-
-.fa-search {
-  left: -5px;
-}
-
-.valid {
-  color: red;
-}
-@media screen and (min-width: 768px) {
-  .bg-sidebar {
-    position: sticky !important;
+  .card__items {
+    text-align: center;
+    position: relative;/* Establecer posición relativa para poder superponer elementos */
+    margin-bottom: 10px;
+    color: white;
+  
+  }
+  
+  .card__items:hover {
+    background-color: #020e39 !important;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .card__background {
+    position: absolute;
+    /* Establecer posición absoluta para superponer la imagen sobre el contenido */
     top: 0;
-    width: 25% !important;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* Color de fondo con transparencia */
   }
-  .hidden-sidebar {
-    margin-left: -25%;
+  
+  .card__empresas {
+    margin: 0 auto;
+    /* Centrar horizontalmente los elementos hijos */
+    width: 80%;
+    /* Ajusta el ancho según tus necesidades */
+    position: relative;
+    /* Establecer posición relativa para que los elementos hijos se superpongan correctamente */
+    z-index: 1;
+    /* Establecer un índice z para que los elementos hijos estén sobre la imagen de fondo */
+  }
+
+  .admin-color {
+    color: #04b7ee;
+    font-size: larger;
+  }
+  .cards .card__items {
+    border-radius: 10px;
+    width: 220px;
+    height: 140px;
+  }
+  
+  .pasaron {
+    color: #b2ff98 !important;
+    font-size: 25px !important;
+  }
+  .asistieron {
+    font-size: 12px !important;
+  }
+  .total {
+    margin-top: 15px !important;
+  }
+  
+  .btn-postulantes-desactivos i {
+    color: #c44440 !important;
+  }
+  .btn-postulantes-desactivos i:hover {
+    cursor: pointer;
+    color: #ff0000 !important;
+  }
+  /* end dashboard */
+  
+  /* ----- DIV FILTROS DE FECHAS ----- */
+  .filtradoFecha {
+    width: 100%;
+    display: flex;
+  }
+  
+  .fecha_col {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  
+  .fa-search {
+    left: -5px;
+  }
+  
+  .valid {
+    color: red;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card__items{
+      margin: 10px;
+    }
+    .fecha_col label {
+      font-size: 10px;
+    }
+  }
+
+/*------------------> Responsive*/
+@media (max-height: 768px) {
+  .barra-lateral .nombre-pagina {
+    margin-bottom: 5px;
+  }
+  .barra-lateral .modo-oscuro {
+    margin-bottom: 3px;
   }
 }
-@media screen and (max-width: 768px) {
-  .hidden-sidebar-mobile {
-    margin-left: -50%;
+@media (max-width: 768px) {
+  .barra-lateral {
+    position: fixed;
+    left: -250px;
   }
-  .card__items{
-    margin: 10px;
+  .max-barra-lateral {
+    left: 0;
   }
-  .fecha_col label {
-    font-size: 10px;
+  .menu {
+    display: flex;
   }
-  .hamburguesa{
-    margin-top: 10px !important;
+  .menu ion-icon:nth-child(2) {
+    display: none;
   }
-}
-@media screen and (max-width: 575px) {
-  .hamburguesa{
-    margin: 10px 0 0 20px !important;
+  main {
+    margin-left: 0;
+  }
+  main.min-main {
+    margin-left: 0;
   }
 }
 @media screen and (max-width: 400px) {
 
-  .filtradoFecha {
-    flex-direction: column;
+    .filtradoFecha {
+      flex-direction: column;
+    }
   }
-}

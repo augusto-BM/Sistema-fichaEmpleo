@@ -1,32 +1,44 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let menutoggle = document.querySelector(".menutoggle");
-    let barhamburger = document.querySelector(".fa-bars");
-    let closemenu = document.querySelector(".close");
-    let sidebar = document.querySelector(".bg-sidebar");
+document.addEventListener("DOMContentLoaded", function () {
+  const cloud = document.getElementById("cloud");
+  const barraLateral = document.querySelector(".barra-lateral");
+  const spans = document.querySelectorAll("span");
+  const palanca = document.querySelector(".switch");
+  const circulo = document.querySelector(".circulo");
+  const menu = document.querySelector(".menu");
+  const main = document.querySelector("main");
 
-    // Función para mostrar/ocultar la barra lateral
-    function toggleSidebar() {
-        sidebar.classList.toggle("hidden-sidebar");
-        menutoggle.classList.toggle("fa-rotate-270");
-        sidebar.classList.remove("hidden-sidebar-mobile");
+  menu.addEventListener("click", () => {
+    barraLateral.classList.toggle("max-barra-lateral");
+    if (barraLateral.classList.contains("max-barra-lateral")) {
+      menu.children[0].style.display = "none";
+      menu.children[1].style.display = "block";
+    } else {
+      menu.children[0].style.display = "block";
+      menu.children[1].style.display = "none";
     }
-
-    // Event listener para el botón de menú
-    menutoggle.addEventListener("click", toggleSidebar);
-
-    // Event listener para el botón de hamburguesa
-    barhamburger.addEventListener("click", function() {
-        sidebar.classList.remove("hidden-sidebar-mobile");
-    });
-
-    // Event listener para el botón de cerrar menú
-    closemenu.addEventListener("click", function() {
-        sidebar.classList.add("hidden-sidebar-mobile");
-    });
-    // Verificar el tamaño de la pantalla al cargar la página
-    if (window.innerWidth <= 768) {
-      sidebar.classList.add("hidden-sidebar-mobile");
+    if (window.innerWidth <= 320) {
+      barraLateral.classList.add("mini-barra-lateral");
+      main.classList.add("min-main");
+      spans.forEach((span) => {
+        span.classList.add("oculto");
+      });
     }
+  });
+
+  palanca.addEventListener("click", () => {
+    let body = document.body;
+    body.classList.toggle("dark-mode");
+    body.classList.toggle("");
+    circulo.classList.toggle("prendido");
+  });
+
+  cloud.addEventListener("click", () => {
+    barraLateral.classList.toggle("mini-barra-lateral");
+    main.classList.toggle("min-main");
+    spans.forEach((span) => {
+      span.classList.toggle("oculto");
+    });
+  });
 });
 
 //QUE LA FECHA DE HOY SE ESTABLEZCA POR DEFECTO AL INPUT DE FECHA FIN
