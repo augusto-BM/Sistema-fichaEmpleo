@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", function() {
     closemenu.addEventListener("click", function() {
         sidebar.classList.add("hidden-sidebar-mobile");
     });
+    // Verificar el tamaño de la pantalla al cargar la página
+    if (window.innerWidth <= 768) {
+      sidebar.classList.add("hidden-sidebar-mobile");
+    }
 });
 
 //QUE LA FECHA DE HOY SE ESTABLEZCA POR DEFECTO AL INPUT DE FECHA FIN
