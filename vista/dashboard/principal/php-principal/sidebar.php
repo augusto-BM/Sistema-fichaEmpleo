@@ -4,17 +4,17 @@
 </div>
 <div class="barra-lateral">
     <div class="general">
-        <h1 class="E-classe text-center ms-auto me-auto  h5 mb-4"><b>DASHBOARD</b></h1>
+        <h1 class="E-classe text-center ms-auto me-auto  h5 "><b>DASHBOARD</b></h1>
+        <img class="rounded-circle" src="./imagen-principal/admin-logo.png" alt="img-admin" height="80" width="80">
 
         <div class="">
             <span><?php echo $_SESSION['nombre_sesion']; ?></span>
         </div>
-        <h1 class="E-classe text-center ms-auto me-auto h6 nombre-lugar mb-4 "><b>GENERAL</b></h1>
-        <img class="rounded-circle" src="./imagen-principal/admin-logo.png" alt="img-admin" height="120" width="120">
+        <h1 class="E-classe text-center ms-auto me-auto h6 nombre-lugar "><b>GENERAL</b></h1>
     </div>
     <div class="linea"></div>
 
-    <nav class="navegacion">
+    <nav class="navegacion ">
         <ul>
             <li>
                 <a href="principal.php">

@@ -29,6 +29,8 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
     <link rel="stylesheet" href="./style.css">
 
 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
     <script src="./js-principal/validarInputs.js"></script>
 
@@ -83,6 +85,9 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
 </head>
 
 <body class="bg-content">
+    <!-- EMPIEZA sidebar -->
+    <?php @include './php-principal/sidebar.php' ?>
+        <!-- FINALIZA sidebar -->
 
     <main class="dashboard d-flex">
 
@@ -98,22 +103,8 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
         <?php @include './php-principal/modal_editar_postulante_seleccionado.php' ?>
         <!-- -------------------------------------------------------------------------- -->
 
-        <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
-        <!-- FINALIZA sidebar -->
-
         <!-- EMPIEZA EL CONTENIDO PRINCIPAL -->
         <div class="container">
-
-            <!-- HEADER -->
-            <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none hamburguesa"></i>
-                    </div>
-                </nav>
-            </header>
-
             <!-- --------- CARDS DE LAS INFO DE LAS EMPRESAS -------->
             <?php @include './php-principal/cards_empresas.php' ?>
             <!--  ------------------------------------------------ -->

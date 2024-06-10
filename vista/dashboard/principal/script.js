@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const cloud = document.getElementById("cloud");
+
   const barraLateral = document.querySelector(".barra-lateral");
   const spans = document.querySelectorAll("span");
-  const palanca = document.querySelector(".switch");
   const circulo = document.querySelector(".circulo");
   const menu = document.querySelector(".menu");
   const main = document.querySelector("main");
@@ -25,39 +24,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  palanca.addEventListener("click", () => {
-    let body = document.body;
-    body.classList.toggle("dark-mode");
-    body.classList.toggle("");
-    circulo.classList.toggle("prendido");
-  });
+  //QUE LA FECHA DE HOY SE ESTABLEZCA POR DEFECTO AL INPUT DE FECHA FIN
 
-  cloud.addEventListener("click", () => {
-    barraLateral.classList.toggle("mini-barra-lateral");
-    main.classList.toggle("min-main");
-    spans.forEach((span) => {
-      span.classList.toggle("oculto");
-    });
-  });
+  // Obtener el input de fecha
+  const fechaInput = document.getElementById("fechaFin");
+  
+  // Obtener la fecha actual en formato YYYY-MM-DD en el huso horario UTC
+  const fechaActual = new Date(
+    Date.UTC(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    )
+  );
+
+  // Convertir la fecha actual en formato YYYY-MM-DD
+  const fechaActualString = fechaActual.toISOString().split("T")[0];
+
+  // Establecer el valor predeterminado del input como la fecha actual
+  fechaInput.value = fechaActualString;
+
 });
-
-//QUE LA FECHA DE HOY SE ESTABLEZCA POR DEFECTO AL INPUT DE FECHA FIN
-document.addEventListener("DOMContentLoaded", function () {
-    // Obtener el input de fecha
-    const fechaInput = document.getElementById("fechaFin");
-  
-    // Obtener la fecha actual en formato YYYY-MM-DD en el huso horario UTC
-    const fechaActual = new Date(
-      Date.UTC(
-        new Date().getFullYear(),
-        new Date().getMonth(),
-        new Date().getDate()
-      )
-    );
-  
-    // Convertir la fecha actual en formato YYYY-MM-DD
-    const fechaActualString = fechaActual.toISOString().split("T")[0];
-  
-    // Establecer el valor predeterminado del input como la fecha actual
-    fechaInput.value = fechaActualString;
-  });

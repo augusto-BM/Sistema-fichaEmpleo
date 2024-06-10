@@ -56,22 +56,21 @@ if (!isset($_SESSION['nombre_sesion'])) {
     <main class="dashboard d-flex">
         <!-- EMPIEZA EL CONTENIDO PRINCIPAL -->
         <div class="container">
-
             <div class="principal-contenedor">
-                <div class="student-list-header d-flex justify-content-between align-items-center py-2">
+                <div class="student-list-header d-flex py-2">
                     <div class="title h6 fw-bold">Graficos - <?php echo $_SESSION['nombre_sede']; ?></div>
                 </div>
             </div>
 
             <div class="graficos" style="margin: 20px;">
-                <div class="row my-1">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="mx-auto" id="graficoRedesSociales" style="width: 600px; height: 400px;"></div>
+                <div class="row ">
+                    <div class="col-sm-12 col-md-8">
+                        <div class="text-center" id="graficoRedesSociales" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="mx-auto" id="graficoTotal" style="width: 600px; height: 400px;"></div>
+                    <div class="col-sm-12 col-md-8">
+                        <div class="text-center" id="graficoTotal" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
             </div>

@@ -25,6 +25,8 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
     <link rel="stylesheet" href="./style.css">
 
 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -68,12 +70,13 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
 </head>
 
 <body class="bg-content">
-
+    <!-- EMPIEZA sidebar -->
+    <?php @include './php-principal/sidebar.php' ?>
+    <!-- FINALIZA sidebar -->
     <main class="dashboard d-flex">
 
         <!-- MODAL PARA VER LA TABLA COMPLETA DE LOS CUENTAS DESACTIVOS -->
         <?php @include './php-principal/modal_ver_cuentas_desactivos.php' ?>
-
 
         <!-- MODAL PARA VER LA INFORMACION COMPLETA DE LA CUENTA SELECCIONADO -->
         <?php @include './php-principal/modal_ver_cuenta_seleccionado.php' ?>
@@ -81,22 +84,8 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
         <!--  MODAL PARA EDITAR LA INFORMACION COMPLETA DE LA CUENTA  -->
         <?php @include './php-principal/modal_editar_cuenta_seleccionado.php' ?>
 
-
-        <!-- EMPIEZA sidebar -->
-        <?php @include './php-principal/sidebar.php' ?>
-        <!-- FINALIZA sidebar -->
-
         <!-- start content page -->
         <div class="container-fluid px">
-
-            <!-- HEADER -->
-            <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div class=""><i class="fal fa-caret-circle-down h5 d-none d-md-block menutoggle fa-rotate-90 icono-contraer"></i>
-                        <i class="fas fa-bars h4  d-md-none"></i>
-                    </div>
-                </nav>
-            </header>
 
             <!-- ***** MODAL DE ALERTA DE PROCESO EXITOSO USANDO SESSION Y SWEET ALERT2 ***** -->
             <?php @include './php-principal/modal_alerta_exitoso_conSession.php' ?>
@@ -155,7 +144,7 @@ $NOMBRE_SEDE_LOGUEADO = $_SESSION['nombre_sesion'];
                         }
 
                         $sql = "SELECT * FROM login WHERE estado = 'activo' AND id_sede = '$solo_id_sede'";
-                        
+
                         $sql_cedes = "SELECT id_sede, nombre_sede FROM sede WHERE estado = 'activo'";
                         $cedes = array();
 
