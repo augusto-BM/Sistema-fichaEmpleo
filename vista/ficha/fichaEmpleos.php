@@ -77,8 +77,8 @@ if (!isset($_SESSION['nombre_sesion'])) {
                   <option value="Asesor">Asesor</option>
                   <option value="Backoffice">Backoffice</option>
                   <option value="Mantenimiento">Mantenimiento</option>
-                  <option value="Recursos">Recursos</option>
-                  <option value="Soporte">Soporte</option>
+                  <option value="Recursos">Recursos Humanos</option>
+                  <option value="Soporte">Soporte TI</option>
                 </select>
               </td>
               <td>
