@@ -49,7 +49,7 @@ if (isset($_GET['id_empresa'])) {
     <link rel="stylesheet" href="./css-principal/modal_ver_y_editar.css"> <!-- Archivo CSS externo -->
 
     <link rel="stylesheet" href="./style.css">
-    
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
@@ -114,7 +114,7 @@ if (isset($_GET['id_empresa'])) {
 </head>
 
 <body class="bg-content">
-    
+
     <!-- EMPIEZA sidebar -->
     <?php @include './php-principal/sidebar.php' ?>
     <!-- FINALIZA sidebar -->
@@ -138,8 +138,12 @@ if (isset($_GET['id_empresa'])) {
 
             <!-- HEADER -->
             <header>
-                <nav class="navbar container navbar-light bg-white position-sticky top-0">
-                    <div style="margin-right: 20px;"><a href="./principal.php"><i class="far fa-arrow-alt-circle-left h1" style="color: #48344E;"></i></a></div>
+                <nav class="navbar container navbar-light bg-white position-relative top-0">
+                    <div class="position-absolute" style="left: 13px; top:13px;">
+                        <a href="./principal.php">
+                            <i class="far fa-arrow-alt-circle-left" style="color:white; background-color:#48344E; border-radius:50%; font-size: 47px;"></i>
+                        </a>
+                    </div>
                 </nav>
             </header>
 
@@ -186,7 +190,7 @@ if (isset($_GET['id_empresa'])) {
             }
             ?>
 
-            <div class="cards row gap-3 justify-content-center mt-2">
+            <div class="cards row gap-3 justify-content-center">
                 <div class=" card__items position-relative col-sm-12 col-md-6 col-lg-6 col-xl-6" id="card-imfcaContacto" style="background-color: #48344E;">
                     <div class="card__students d-flex flex-column gap-2 mt-3 ">
                         <span><?php echo  $row_nombreEmpresas['nombre_sede'] ?></span>

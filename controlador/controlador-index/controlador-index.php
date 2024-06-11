@@ -8,9 +8,9 @@ session_start();
 // Verificar si se ha enviado el formulario
 if(isset($_POST['submit'])){
    // Obtener el valor del campo de correo electrónico
-   $email = $_POST['email'];
+   $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
    // Obtener el valor del campo de contraseña
-   $password = $_POST['password'];
+   $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
 
    // Validar los campos de entrada
    if(empty($email) && empty($password)){
@@ -64,9 +64,9 @@ if(isset($_POST['submit'])){
          // Verificar si la contraseña ingresada coincide con la almacenada
          if($password === $stored_password) {
             // Establecer variables de sesión para la sesión actual
-            $_SESSION['nombre_sesion'] = htmlspecialchars($row['sede']); // Escapar la salida HTML
-            $_SESSION['nombre_sede'] = htmlspecialchars($row['lugar_sede']); // Escapar la salida HTML
-            $rol = htmlspecialchars($row['rol']); // Escapar la salida HTML
+            $_SESSION['nombre_sesion'] = htmlspecialchars($row['sede'], ENT_QUOTES, 'UTF-8'); // Escapar la salida HTML
+            $_SESSION['nombre_sede'] = htmlspecialchars($row['lugar_sede'], ENT_QUOTES, 'UTF-8'); // Escapar la salida HTML
+            $rol = htmlspecialchars($row['rol'], ENT_QUOTES, 'UTF-8'); // Escapar la salida HTML
             // Redirigir a la página correspondiente según el rol del usuario
             switch ($rol) {
                case "admin":

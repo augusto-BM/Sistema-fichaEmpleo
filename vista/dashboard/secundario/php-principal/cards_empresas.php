@@ -1,4 +1,4 @@
-<div class="cards row gap-3 justify-content-center mt-2">
+<div class="cards row gap-3 justify-content-center">
 
   <?php
   include '../../../modelo/conexion.php';
@@ -14,7 +14,7 @@
   if (mysqli_num_rows($resultado_empresas) > 0) {
 
   ?>
-    <div class="row gap-3 justify-content-center mt-2">
+    <div class="row gap-3 justify-content-center">
       <?php
 
       $index_color = 0; // Variable para controlar el índice del color
