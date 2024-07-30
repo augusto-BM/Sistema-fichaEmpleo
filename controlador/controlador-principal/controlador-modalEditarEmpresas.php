@@ -41,10 +41,8 @@ if (isset($_POST['click_btn_editar_cambios'])) {
     } else {
         $_SESSION['mensaje'] = "Error al actualizar los datos";
         header("Location: ../../vista/dashboard/principal/empresas.php");
-    }
-    
+    }    
 }
-
 ?>
 
 
